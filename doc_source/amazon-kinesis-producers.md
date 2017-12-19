@@ -1,0 +1,12 @@
+# Producers for Amazon Kinesis Streams<a name="amazon-kinesis-producers"></a>
+
+A *producer* puts data records into Kinesis streams\. For example, a web server sending log data to a Kinesis stream is a producer\. A consumer processes the data records from a stream\.
+
+**Important**  
+[Changing the Data Retention Period](kinesis-extended-retention.md)
+
+To put data into the stream, you must specify the name of the stream, a partition key, and the data blob to be added to the stream\. The partition key is used to determine which shard in the stream the data record is added to\.
+
+All the data in the shard is sent to the same worker that is processing the shard\. Which partition key you use depends on your application logic\. The number of partition keys should typically be much greater than the number of shards\. This is because the partition key is used to determine how to map a data record to a particular shard\. If you have enough partition keys, the data can be evenly distributed across the shards in a stream\.
+
+For more information, see [Adding Data to a Stream](developing-producers-with-sdk.md#kinesis-using-sdk-java-add-data-to-stream) \(includes Java example code\), the [PutRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html) and [PutRecord](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html) operations in the Kinesis Streams API, or the [put\-record](http://docs.aws.amazon.com/cli/latest/reference/kinesis/put-record.html) command\.
