@@ -21,7 +21,7 @@ Main class of the consumer, provided for you, which performs the following tasks
 Implementation of the `RecordProcessor` instance, which in turn implements three required methods: `initialize`, `processRecords`, and `shutdown`\.  
 As the names suggest, `initialize` and `shutdown` are used by KCL to let the record processor know when it should be ready to start receiving records and when it should expect to stop receiving records, respectively, so it can do any application\-specific setup and termination tasks\. The code for these is provided for you\. The main processing happens in the `processRecords` method, which in turn uses `processRecord` for each record\. This latter method is provided as mostly empty skeleton code for you to implement in the next step, where it is explained further\.  
 Also of note is the implementation of support methods for `processRecord`: `reportStats`, and `resetStats`, which are empty in the original source code\.  
-The `processsRecords` method is implemented for you, and performs the following steps:  
+The `processRecords` method is implemented for you, and performs the following steps:  
 
 +  For each record passed in, call `processRecord` on it\.
 
