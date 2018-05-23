@@ -1,35 +1,27 @@
-# Tagging Your Streams in Amazon Kinesis Streams<a name="tagging"></a>
+# Tagging Your Streams in Amazon Kinesis Data Streams<a name="tagging"></a>
 
-You can assign your own metadata to streams you create in Amazon Kinesis Streams in the form of *tags*\. A tag is a key\-value pair that you define for a stream\. Using tags is a simple yet powerful way to manage AWS resources and organize data, including billing data\. 
+You can assign your own metadata to streams you create in Amazon Kinesis Data Streams in the form of *tags*\. A tag is a key\-value pair that you define for a stream\. Using tags is a simple yet powerful way to manage AWS resources and organize data, including billing data\. 
 
-
+**Topics**
 + [Tag Basics](#tagging-basics)
 + [Tracking Costs Using Tagging](#tagging-billing)
 + [Tag Restrictions](#tagging-restrictions)
-+ [Tagging Streams Using the Kinesis Streams Console](#tagging-console)
++ [Tagging Streams Using the Kinesis Data Streams Console](#tagging-console)
 + [Tagging Streams Using the AWS CLI](#tagging-cli)
-+ [Tagging Streams Using the Kinesis Streams API](#tagging-api)
++ [Tagging Streams Using the Kinesis Data Streams API](#tagging-api)
 
 ## Tag Basics<a name="tagging-basics"></a>
 
-You use the Kinesis Streams console, AWS CLI, or Kinesis Streams API to complete the following tasks:
-
+You use the Kinesis Data Streams console, AWS CLI, or Kinesis Data Streams API to complete the following tasks:
 + Add tags to a stream
-
 + List the tags for your streams
-
 + Remove tags from a stream
 
 You can use tags to categorize your streams\. For example, you can categorize streams by purpose, owner, or environment\. Because you define the key and value for each tag, you can create a custom set of categories to meet your specific needs\. For example, you might define a set of tags that helps you track streams by owner and associated application\. Here are several examples of tags:
-
 + Project: Project name
-
 + Owner: Name
-
 + Purpose: Load testing 
-
 + Application: Application name
-
 + Environment: Production 
 
 ## Tracking Costs Using Tagging<a name="tagging-billing"></a>
@@ -41,36 +33,27 @@ You can use tags to categorize and track your AWS costs\. When you apply tags to
 The following restrictions apply to tags\.
 
 **Basic restrictions**
-
-+ The maximum number of tags per resource \(stream\) is 10\.
-
++ The maximum number of tags per resource \(stream\) is 50\.
 + Tag keys and values are case\-sensitive\.
-
 + You can't change or edit tags for a deleted stream\.
 
 **Tag key restrictions**
-
 + Each tag key must be unique\. If you add a tag with a key that's already in use, your new tag overwrites the existing key\-value pair\. 
-
 + You can't start a tag key with `aws:` because this prefix is reserved for use by AWS\. AWS creates tags that begin with this prefix on your behalf, but you can't edit or delete them\.
-
 + Tag keys must be between 1 and 128 Unicode characters in length\.
-
 + Tag keys must consist of the following characters: Unicode letters, digits, white space, and the following special characters: `_ . / = + - @`\.
 
 **Tag value restrictions**
-
 + Tag values must be between 0 and 255 Unicode characters in length\.
-
 + Tag values can be blank\. Otherwise, they must consist of the following characters: Unicode letters, digits, white space, and any of the following special characters: `_ . / = + - @`\.
 
-## Tagging Streams Using the Kinesis Streams Console<a name="tagging-console"></a>
+## Tagging Streams Using the Kinesis Data Streams Console<a name="tagging-console"></a>
 
-You can add, list, and remove tags using the Kinesis Streams console\.
+You can add, list, and remove tags using the Kinesis Data Streams console\.
 
 **To view the tags for a stream**
 
-1. Open the Kinesis Streams console\. In the navigation bar, expand the region selector and select a region\.
+1. Open the Kinesis Data Streams console\. In the navigation bar, expand the region selector and select a region\.
 
 1. On the **Stream List** page, select a stream\.
 
@@ -78,7 +61,7 @@ You can add, list, and remove tags using the Kinesis Streams console\.
 
 **To add a tag to a stream**
 
-1. Open the Kinesis Streams console\. In the navigation bar, expand the region selector and select a region\.
+1. Open the Kinesis Data Streams console\. In the navigation bar, expand the region selector and select a region\.
 
 1. On the **Stream List** page, select a stream\.
 
@@ -92,7 +75,7 @@ You can add, list, and remove tags using the Kinesis Streams console\.
 
 **To remove a tag from a stream**
 
-1. Open the Kinesis Streams console\. In the navigation bar, expand the region selector and select a region\.
+1. Open the Kinesis Data Streams console\. In the navigation bar, expand the region selector and select a region\.
 
 1. On the Stream List page, select a stream\.
 
@@ -113,9 +96,9 @@ Lists the tags for the specified stream\.
  [remove\-tags\-from\-stream](http://docs.aws.amazon.com/cli/latest/reference/kinesis/remove-tags-from-stream.html)  
 Removes tags from the specified stream\.
 
-## Tagging Streams Using the Kinesis Streams API<a name="tagging-api"></a>
+## Tagging Streams Using the Kinesis Data Streams API<a name="tagging-api"></a>
 
-You can add, list, and remove tags using the Kinesis Streams API\. For examples, see the following documentation:
+You can add, list, and remove tags using the Kinesis Data Streams API\. For examples, see the following documentation:
 
  [AddTagsToStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_AddTagsToStream.html)   
 Adds or updates tags for the specified stream\.

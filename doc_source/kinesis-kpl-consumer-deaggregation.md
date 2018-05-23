@@ -2,9 +2,9 @@
 
 Beginning with release 1\.4\.0, the KCL supports automatic de\-aggregation of KPL user records\. Consumer application code written with previous versions of the KCL will compile without any modification after you update the KCL\. However, if KPL aggregation is being used on the producer side, there is a subtlety involving checkpointing: all subrecords within an aggregated record have the same sequence number, so additional data has to be stored with the checkpoint if you need to distinguish between subrecords\. This additional data is referred to as the *subsequence number*\.
 
-## Migration From Previous Versions of the KCL<a name="w3ab1c11b7b7c27b5"></a>
+## Migrating from Previous Versions of the KCL<a name="kinesis-kpl-consumer-deaggregation-migration"></a>
 
-You are not required to change your existing calls to do checkpointing in conjunction with aggregation\. It is still guaranteed that you can retrieve all records successfully stored in Kinesis Streams\. The KCL now provide two new checkpoint operations to support particular use cases, described below\.
+You are not required to change your existing calls to do checkpointing in conjunction with aggregation\. It is still guaranteed that you can retrieve all records successfully stored in Kinesis Data Streams\. The KCL now provides two new checkpoint operations to support particular use cases, described below\.
 
 In the event that your existing code was written for the KCL prior to KPL support, and your checkpoint operation is called without arguments, it is equivalent to checkpointing the sequence number of the last KPL user record in the batch\. If your checkpoint operation is called with a sequence number string, it is equivalent to checkpointing the given sequence number of the batch along with the implicit subsequence number 0 \(zero\)\.
 
@@ -18,7 +18,7 @@ In any of these cases, after the checkpoint is stored in the Amazon DynamoDB che
 
 The next section discusses details of sequence and subsequence checkpointing for consumers that need to avoid skipping and duplication of records\. If skipping \(or duplication\) of records when stopping and restarting your consumer’s record processing is not important, you can run your existing code with no modification\.
 
-## KCL Extensions for KPL De\-aggregation<a name="w3ab1c11b7b7c27b7"></a>
+## KCL Extensions for KPL De\-aggregation<a name="kinesis-kpl-consumer-deaggregation-extensions"></a>
 
 As previously discussed, KPL de\-aggregation can involve subsequence checkpointing\. To facilitate using subsequence checkpointing, a `UserRecord` class has been added to the KCL:
 
@@ -71,9 +71,9 @@ The cast from `Record`to`UserRecord` always succeeds because the implementation 
 
 While processing KPL user records, the KCL writes the subsequence number into Amazon DynamoDB as an extra field for each row\. Previous versions of the KCL used `AFTER_SEQUENCE_NUMBER` to fetch records when resuming checkpoints\. The current KCL with KPL support uses `AT_SEQUENCE_NUMBER` instead\. When the record at the checkpointed sequence number is retrieved, the checkpointed subsequence number is checked, and subrecords are dropped as appropriate \(which may be all of them, if the last subrecord is the one checkpointed\)\. Again, non\-aggregated records can be thought of as aggregated records with a single subrecord, so the same algorithm works for both aggregated and non\-aggregated records\.
 
-## Using GetRecords Directly<a name="w3ab1c11b7b7c27b9"></a>
+## Using GetRecords Directly<a name="kinesis-kpl-consumer-deaggregation-getrecords"></a>
 
-You can also choose not to use the KCL but instead invoke the API operation `GetRecords` directly to retrieve Kinesis Streams records\. To unpack these retrieved records into your original KPL user records, call one of the following static operations in `UserRecord.java`:
+You can also choose not to use the KCL but instead invoke the API operation `GetRecords` directly to retrieve Kinesis Data Streams records\. To unpack these retrieved records into your original KPL user records, call one of the following static operations in `UserRecord.java`:
 
 ```
 public static List<Record> deaggregate(List<Record> records)
@@ -83,4 +83,4 @@ public static List<UserRecord> deaggregate(List<UserRecord> records, BigInteger 
 
 The first operation uses the default value `0` \(zero\) for `startingHashKey` and the default value `2^128 -1` for `endingHashKey`\.
 
-Each of these operations de\-aggregates the given list of Kinesis Streams records into a list of KPL user records\. Any KPL user records whose explicit hash key or partition key falls outside the range of the `startingHashKey` \(inclusive\) and the `endingHashKey` \(inclusive\) are discarded from the returned list of records\.
+Each of these operations de\-aggregates the given list of Kinesis Data Streams records into a list of KPL user records\. Any KPL user records whose explicit hash key or partition key falls outside the range of the `startingHashKey` \(inclusive\) and the `endingHashKey` \(inclusive\) are discarded from the returned list of records\.

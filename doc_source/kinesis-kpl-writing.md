@@ -1,10 +1,10 @@
-# Writing to your Kinesis Streams Stream Using the KPL<a name="kinesis-kpl-writing"></a>
+# Writing to your Kinesis Data Stream Using the KPL<a name="kinesis-kpl-writing"></a>
 
-The following sections show sample code in a progression from the simplest possible "barebones" producer on through to fully asynchronous code\.
+The following sections show sample code in a progression from the simplest possible "bare\-bones" producer on through to fully asynchronous code\.
 
-## Barebones Producer Code<a name="w3ab1c11b7b7c23b5"></a>
+## Barebones Producer Code<a name="kinesis-kpl-writing-code"></a>
 
-The following code is all that is needed to write a minimal working producer\. The KPL user records are processed in the background\.
+The following code is all that is needed to write a minimal working producer\. The Kinesis Producer Library \(KPL\) user records are processed in the background\.
 
 ```
 // KinesisProducer gets credentials automatically like 
@@ -20,9 +20,9 @@ for (int i = 0; i < 100; ++i) {
 // Do other stuff ...
 ```
 
-## Responding to Results Synchronously<a name="w3ab1c11b7b7c23b7"></a>
+## Responding to Results Synchronously<a name="kinesis-kpl-writing-synchronous"></a>
 
-In the previous example, the code didn't check whether the KPL user records succeeded\. The KPL performs any retries needed to account for failures, but if you want to check on the results, you can examine them using the `Future` objects that are returned from `addUserRecord`, as in the following example \(previous example shown for context\):
+In the previous example, the code didn't check whether the KPL user records succeeded\. The KPL performs any retries needed to account for failures\. But if you want to check on the results, you can examine them using the `Future` objects that are returned from `addUserRecord`, as in the following example \(previous example shown for context\):
 
 ```
 KinesisProducer kinesis = new KinesisProducer();  
@@ -50,28 +50,26 @@ for (Future<UserRecordResult> f : putFutures) {
 }
 ```
 
-## Responding to Results Asynchronously<a name="w3ab1c11b7b7c23b9"></a>
+## Responding to Results Asynchronously<a name="kinesis-kpl-writing-asynchronous"></a>
 
 The previous example is calling `get()` on a `Future` object, which blocks execution\. If you don't want to block execution, you can use an asynchronous callback, as shown in the following example:
 
 ```
-KinesisProducer kinesis = new KinesisProducer();  
-    FutureCallback<UserRecordResult> myCallback = 
-    new FutureCallback<UserRecordResult>() {     
-        @Override public void onFailure(Throwable t) {
-            /* Analyze and respond to the failure  */ 
-        };     
-        @Override 
-        public void onSuccess(UserRecordResult result) { 
-            /* Respond to the success */ 
-        };
+KinesisProducer kinesis = new KinesisProducer();
+
+FutureCallback<UserRecordResult> myCallback = new FutureCallback<UserRecordResult>() {     
+    @Override public void onFailure(Throwable t) {
+        /* Analyze and respond to the failure  */ 
+    };     
+    @Override public void onSuccess(UserRecordResult result) { 
+        /* Respond to the success */ 
+    };
 };
+
 for (int i = 0; i < 100; ++i) {
     ByteBuffer data = ByteBuffer.wrap("myData".getBytes("UTF-8"));      
-    ListenableFuture<UserRecordResult> f = 
-        kinesis.addUserRecord("myStream", "myPartitionKey", data);     
-    // If the Future is complete by the time we call addCallback, 
-    //the callback will be invoked immediately.
+    ListenableFuture<UserRecordResult> f = kinesis.addUserRecord("myStream", "myPartitionKey", data);     
+    // If the Future is complete by the time we call addCallback, the callback will be invoked immediately.
     Futures.addCallback(f, myCallback); 
 }
 ```

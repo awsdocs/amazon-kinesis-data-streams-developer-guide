@@ -24,7 +24,7 @@ A stream is a sequence of records\. A record is a serialization of a `StockTrade
 `StockTradeGenerator` has a method called `getRandomTrade()` that returns a new randomly generated stock trade every time it is invoked\. This class is implemented for you\.
 
 **StockTradesWriter class**  
-The `main` method of the producer, `StockTradesWriter` continuously retrieves a random trade and then sends it to Kinesis Streams by performing the following tasks:  
+The `main` method of the producer, `StockTradesWriter` continuously retrieves a random trade and then sends it to Kinesis Data Streams by performing the following tasks:  
 
 1. Reads the stream name and Region name as input\.
 
@@ -64,13 +64,11 @@ private static void sendStockTrade(StockTrade trade, AmazonKinesis kinesisClient
 ```
 
 Refer to the following code breakdown:
-
 + The `PutRecord` API expects a byte array, and you need to convert `trade` to JSON format\. This single line of code performs that operation:
 
   ```
   byte[] bytes = trade.toJsonAsBytes();
   ```
-
 + Before you can send the trade, you create a new `PutRecordRequest` instance \(called `putRecord` in this case\):
 
   ```
@@ -92,7 +90,6 @@ Refer to the following code breakdown:
   ```
   kinesisClient.putRecord(putRecord);
   ```
-
 + Error checking and logging are always useful additions\. This code logs error conditions:
 
   ```
@@ -112,14 +109,13 @@ Refer to the following code breakdown:
   }
   ```
 
-  This is because a Kinesis Streams `put` operation can fail because of a network error, or due to the stream reaching its throughput limits and getting throttled\. We recommend carefully considering your retry policy for `put` operations to avoid data loss, such using as a simple retry\. 
-
+  This is because a Kinesis Data Streams `put` operation can fail because of a network error, or due to the stream reaching its throughput limits and getting throttled\. We recommend carefully considering your retry policy for `put` operations to avoid data loss, such using as a simple retry\. 
 + Status logging is helpful but optional:
 
   ```
   LOG.info("Putting trade: " + trade.toString());
   ```
-The producer shown here uses the Kinesis Streams API single record functionality, `PutRecord`\. In practice, if an individual producer is generating a lot of records, it is often more efficient to use the multiple records functionality of `PutRecords` and send batches of records at a time\. For more information, see [Adding Data to a Stream](developing-producers-with-sdk.md#kinesis-using-sdk-java-add-data-to-stream)\.
+The producer shown here uses the Kinesis Data Streams API single record functionality, `PutRecord`\. In practice, if an individual producer is generating a lot of records, it is often more efficient to use the multiple records functionality of `PutRecords` and send batches of records at a time\. For more information, see [Adding Data to a Stream](developing-producers-with-sdk.md#kinesis-using-sdk-java-add-data-to-stream)\.
 
 **To run the producer**
 
@@ -147,4 +143,4 @@ com.amazonaws.services.kinesis.samples.stocktrades.writer.StockTradesWriter send
 INFO: Putting trade: ID 10: BUY 322 shares of WMT for $90.08
 ```
 
-Your stock trade stream is now being ingested by Kinesis Streams\.
+Your stock trade stream is now being ingested by Kinesis Data Streams\.

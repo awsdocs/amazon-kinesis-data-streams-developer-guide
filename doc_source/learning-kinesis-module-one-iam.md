@@ -2,25 +2,25 @@
 
 Security best practices for AWS dictate the use of fine\-grained permissions to control access to different resources\. AWS Identity and Access Management allows you to manage users and user permissions in AWS\. An [IAM policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html) explicitly lists actions which are allowed and the resources on which the actions are applicable\.
 
-The following are the minimum permissions generally required for a Kinesis Streams producer and consumer\.
+The following are the minimum permissions generally required for a Kinesis Data Streams producer and consumer\.
 
 
 **Producer**  
 
 | Actions | Resource | Purpose | 
 | --- | --- | --- | 
-| DescribeStream | Kinesis stream | Before attempting to write records, the producer should check if the stream exists and is active\. | 
-| PutRecord, PutRecords | Kinesis stream | Write records to Kinesis Streams\. | 
+| DescribeStream | Kinesis data stream | Before attempting to write records, the producer should check if the stream exists and is active\. | 
+| PutRecord, PutRecords | Kinesis data stream | Write records to Kinesis Data Streams\. | 
 
 
 **Consumer**  
 
 | **Actions** | **Resource** | **Purpose** | 
 | --- | --- | --- | 
-| DescribeStream | Kinesis stream | Before attempting to read records, the consumer checks if the stream exists and is active, and if the shards are contained in the stream\. | 
-| GetRecords, GetShardIterator  | Kinesis stream | Read records from a Kinesis Streams shard\. | 
+| DescribeStream | Kinesis data stream | Before attempting to read records, the consumer checks if the stream exists and is active, and if the shards are contained in the stream\. | 
+| GetRecords, GetShardIterator  | Kinesis data stream | Read records from a Kinesis Data Streams shard\. | 
 | CreateTable, DescribeTable, GetItem, PutItem, Scan, UpdateItem | Amazon DynamoDB table | If the consumer is developed using the Kinesis Client Library \(KCL\), it needs permissions to a DynamoDB table to track the processing state of the application\. The first consumer started creates the table\.  | 
-| DeleteItem | Amazon DynamoDB table | For when the consumer performs split/merge operations on Kinesis Streams shards\. | 
+| DeleteItem | Amazon DynamoDB table | For when the consumer performs split/merge operations on Kinesis Data Streams shards\. | 
 | PutMetricData | Amazon CloudWatch log | The KCL also uploads metrics to CloudWatch, which are useful for monitoring the application\. | 
 
 For this application, you create a single IAM policy that grants all of the above permissions\. In practice, you might want to consider creating two policies, one for producers and one for consumers\. The policies you set up here are re\-usable in subsequent learning modules in this series\.

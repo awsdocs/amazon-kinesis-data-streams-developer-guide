@@ -21,7 +21,7 @@ splitShardRequest.setStreamName(myStreamName);
 splitShardRequest.setShardToSplit(shard.getShardId());
 ```
 
-Determine the hash key value that is half\-way between the lowest and highest values in the shard\. This is the starting hash key value for the child shard that will contain the upper half of the hash keys from the parent shard\. Specify this value in the `setNewStartingHashKey` method\. You need specify only this value; Kinesis Streams automatically distributes the hash keys below this value to the other child shard that is created by the split\. The last step is to call the `splitShard` method on the Kinesis Streams client\.
+Determine the hash key value that is half\-way between the lowest and highest values in the shard\. This is the starting hash key value for the child shard that will contain the upper half of the hash keys from the parent shard\. Specify this value in the `setNewStartingHashKey` method\. You need specify only this value; Kinesis Data Streams automatically distributes the hash keys below this value to the other child shard that is created by the split\. The last step is to call the `splitShard` method on the Kinesis Data Streams client\.
 
 ```
 BigInteger startingHashKey = new BigInteger(shard.getHashKeyRange().getStartingHashKey());

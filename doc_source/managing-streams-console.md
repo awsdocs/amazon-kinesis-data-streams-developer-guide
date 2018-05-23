@@ -44,7 +44,7 @@ The following procedures show you how to create, delete, and work with an Kinesi
 
    1. Under **Data retention period**, choose **Edit**\.
 
-   1. Specify a period between 24\-168 hours\. Records are stored in the stream for this period of time\. Note that additional charges apply for periods greater than 24 hours\. For more information, see [Amazon Kinesis Streams pricing](https://aws.amazon.com/kinesis/streams/pricing/)\.
+   1. Specify a period between 24\-168 hours\. Records are stored in the stream for this period of time\. Note that additional charges apply for periods greater than 24 hours\. For more information, see [Amazon Kinesis Data Streams pricing](https://aws.amazon.com/kinesis/streams/pricing/)\.
 
    1. Choose **Save**\.
 

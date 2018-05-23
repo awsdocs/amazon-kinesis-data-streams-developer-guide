@@ -1,7 +1,7 @@
-# Troubleshooting Amazon Kinesis Streams Consumers<a name="troubleshooting-consumers"></a>
+# Troubleshooting Amazon Kinesis Data Streams Consumers<a name="troubleshooting-consumers"></a>
 
-
-+ [Some Kinesis Streams Records are Skipped When Using the Kinesis Client Library](#w3ab1c11b9c11b5)
+**Topics**
++ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w3ab1c11b9c11b5)
 + [Records Belonging to the Same Shard are Processed by Different Record Processors at the Same Time](#records-belonging-to-the-same-shard)
 + [Consumer Application is Reading at a Slower Rate Than Expected](#consumer-app-reading-slower)
 + [GetRecords Returns Empty Records Array Even When There is Data in the Stream](#getrecords-returns-empty)
@@ -9,7 +9,7 @@
 + [Consumer Record Processing Falling Behind](#record-processing-falls-behind)
 + [Unauthorized KMS master key permission error](#unauthorized-kms-consumer)
 
-## Some Kinesis Streams Records are Skipped When Using the Kinesis Client Library<a name="w3ab1c11b9c11b5"></a>
+## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w3ab1c11b9c11b5"></a>
 
 The most common cause of skipped records is an unhandled exception thrown from `processRecords`\. The Kinesis Client Library \(KCL\) relies on your `processRecords` code to handle any exceptions that arise from processing the data records\. Any exception thrown from `processRecords` is absorbed by the KCL\. To avoid infinite retries on a recurring failure, the KCL does not resend the batch of records processed at the time of the exception\. The KCL then calls `processRecords` for the next batch of data records without restarting the record processor\. This effectively results in consumer applications observing skipped records\. To prevent skipped records, handle all exceptions within `processRecords` appropriately\.
 
@@ -31,7 +31,7 @@ For more information, see [Handling Duplicate Records](kinesis-record-processor-
 
 The most common reasons for read throughput being slower than expected are as follows:
 
-1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Amazon Kinesis Streams Limits](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis stream\.
+1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Amazon Kinesis Data Streams Limits](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
 
 1. The [limit](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_RequestSyntax) that specifies the maximum number of GetRecords per call may have been configured with a low value\. If you are using the KCL, you may have configured the worker with a low value for the `maxRecords` property\. In general, we recommend using the system defaults for this property\.
 
@@ -59,24 +59,20 @@ If you use the Kinesis Client Library \(KCL\), the above consumption pattern is 
 
 A new shard iterator is returned by every GetRecords request \(as `NextShardIterator`\), which you then use in the next GetRecords request \(as `ShardIterator`\)\. Typically, this shard iterator does not expire before you use it\. However, you may find that shard iterators expire because you have not called GetRecords for more than 5 minutes, or because you've performed a restart of your consumer application\.
 
-If the shard iterator expires immediately, before you can use it, this might indicate that the DynamoDB table used by Kinesis does not have enough capacity to store the lease data\. This situation is more likely to happen if you have a large number of shards\. To solve this problem, increase the write capacity assigned to the shard table\. For more information, see [Tracking Amazon Kinesis Streams Application State](kinesis-record-processor-ddb.md)\.
+If the shard iterator expires immediately, before you can use it, this might indicate that the DynamoDB table used by Kinesis does not have enough capacity to store the lease data\. This situation is more likely to happen if you have a large number of shards\. To solve this problem, increase the write capacity assigned to the shard table\. For more information, see [Tracking Amazon Kinesis Data Streams Application State](kinesis-record-processor-ddb.md)\.
 
 ## Consumer Record Processing Falling Behind<a name="record-processing-falls-behind"></a>
 
 For most use cases, consumer applications are reading the latest data from the stream\. In certain circumstances, consumer reads may fall behind, which may not be desired\. After you identify how far behind your consumers are reading, look at the most common reasons why consumers fall behind\. 
 
-Start with the `GetRecords.IteratorAgeMilliseconds` metric, which tracks the read position across all shards and consumers in the stream\. Note that if an iterator's age passes 50% of the retention period \(by default 24 hours, configurable up to 7 days\), there is risk for data loss due to record expiration\. A quick stopgap solution is to increase the retention period\. This stops the loss of important data while you troubleshoot the issue further\. For more information, see [Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch](monitoring-with-cloudwatch.md)\. Next, identify how far behind your consumer application is reading from each shard using a custom CloudWatch metric emitted by the Kinesis Client Library \(KCL\), `MillisBehindLatest`\. For more information, see [Monitoring the Kinesis Client Library with Amazon CloudWatch](monitoring-with-kcl.md)\.
+Start with the `GetRecords.IteratorAgeMilliseconds` metric, which tracks the read position across all shards and consumers in the stream\. Note that if an iterator's age passes 50% of the retention period \(by default 24 hours, configurable up to 7 days\), there is risk for data loss due to record expiration\. A quick stopgap solution is to increase the retention period\. This stops the loss of important data while you troubleshoot the issue further\. For more information, see [Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch](monitoring-with-cloudwatch.md)\. Next, identify how far behind your consumer application is reading from each shard using a custom CloudWatch metric emitted by the Kinesis Client Library \(KCL\), `MillisBehindLatest`\. For more information, see [Monitoring the Kinesis Client Library with Amazon CloudWatch](monitoring-with-kcl.md)\.
 
 Here are the most common reasons consumers can fall behind:
-
 + Sudden large increases to `GetRecords.IteratorAgeMilliseconds` or `MillisBehindLatest` usually indicate a transient problem, such as API operation failures to a downstream application\. You should investigate these sudden increases if either of the metrics consistently display this behavior\. 
-
 + A gradual increase to these metrics indicates that a consumer is not keeping up with the stream because it is not processing records fast enough\. The most common root causes for this behavior are insufficient physical resources or record processing logic that has not scaled with an increase in stream throughput\. You can verify this behavior by looking at the other custom CloudWatch metrics that the KCL emits associated with the `processTask` operation, including `RecordProcessor.processRecords.Time`, `Success`, and `RecordsProcessed`\.
-
   + If you see an increase in the `processRecords.Time` metric that correlates with increased throughput, you should analyze your record processing logic to identify why it is not scaling with the increased throughput\.
-
   + If you see an increase to the `processRecords.Time` values that are not correlated with increased throughput, check to see if you are making any blocking calls in the critical path, which are often the cause of slowdowns in record processing\. An alternative approach is to increase your parallelism by increasing the number of shards\. Finally, confirm you have an adequate amount of physical resources \(memory, CPU utilization, etc\.\) on the underlying processing nodes during peak demand\.
 
 ## Unauthorized KMS master key permission error<a name="unauthorized-kms-consumer"></a>
 
-This error occurs when a consumer application reads from an encrypted stream without permissions on the KMS master key\. To assign permissions to an application to access a KMS key, see [Using Key Policies in AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) and [Using IAM Policies with AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/iam-policies)\.
+This error occurs when a consumer application reads from an encrypted stream without permissions on the KMS master key\. To assign permissions to an application to access a KMS key, see [Using Key Policies in AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) and [Using IAM Policies with AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html)\.

@@ -9,29 +9,17 @@ Skeleton code has been provided for you, containing a stub implementation for bo
 1. Create a project in your favorite IDE with the source code, adhering to the provided folder structure\.
 
 1. Add the following libraries to the project:
-
    + Amazon Kinesis Client Library \(KCL\)
-
    + AWS SDK
-
    + Apache HttpCore
-
    + Apache HttpClient
-
    + Apache Commons Lang
-
    + Apache Commons Logging
-
    + Guava \(Google Core Libraries For Java\)
-
    + Jackson Annotations
-
    + Jackson Core
-
    + Jackson Databind
-
    + Jackson Dataformat: CBOR
-
    + Joda Time
 
 1. Depending on your IDE, the project might be built automatically\. If not, build the project using the appropriate steps for your IDE\.

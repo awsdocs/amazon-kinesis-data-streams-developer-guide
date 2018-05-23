@@ -29,7 +29,7 @@ shard.getHashKeyRange().getEndingHashKey();
 **Code for the Merge Operation**  
  The following code merges two shards\. The code assumes that `myStreamName` holds the name of your stream and the object variables `shard1` and `shard2` hold the two adjacent shards to merge\.
 
-For the merge operation, begin by instantiating a new `mergeShardsRequest` object\. Specify the stream name with the `setStreamName` method\. Then specify the two shards to merge using the `setShardToMerge` and `setAdjacentShardToMerge` methods\. Finally, call the `mergeShards` method on Kinesis Streams client to carry out the operation\.
+For the merge operation, begin by instantiating a new `mergeShardsRequest` object\. Specify the stream name with the `setStreamName` method\. Then specify the two shards to merge using the `setShardToMerge` and `setAdjacentShardToMerge` methods\. Finally, call the `mergeShards` method on Kinesis Data Streams client to carry out the operation\.
 
 ```
 MergeShardsRequest mergeShardsRequest = new MergeShardsRequest();

@@ -1,20 +1,20 @@
-# Developing Amazon Kinesis Streams Consumers Using the Amazon Kinesis Streams API with the AWS SDK for Java<a name="developing-consumers-with-sdk"></a>
+# Developing Amazon Kinesis Data Streams Consumers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java<a name="developing-consumers-with-sdk"></a>
 
-You can develop consumers using the Amazon Kinesis Streams API with the AWS SDK for Java\. If you are new to Kinesis Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Streams?](introduction.md) and [Getting Started Using Amazon Kinesis Streams](getting-started.md)\.
+You can develop consumers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started Using Amazon Kinesis Data Streams](getting-started.md)\.
 
-These examples discuss the [Kinesis Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer the Kinesis Streams KCL library\. For more information, see [Developing Amazon Kinesis Streams Consumers Using the Kinesis Client Library](developing-consumers-with-kcl.md)\.
+These examples discuss the [Kinesis Data Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer the Kinesis Data Streams KCL library\. For more information, see [Developing Amazon Kinesis Data Streams Consumers Using the Kinesis Client Library](developing-consumers-with-kcl.md)\.
 
-The Java example code in this chapter demonstrates how to perform basic Kinesis Streams API operations, and is divided up logically by operation type\. These examples do not represent production\-ready code, in that they do not check for all possible exceptions, or account for all possible security or performance considerations\. Also, you can call the [Kinesis Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
+The Java example code in this chapter demonstrates how to perform basic Kinesis Data Streams API operations, and is divided up logically by operation type\. These examples do not represent production\-ready code, in that they do not check for all possible exceptions, or account for all possible security or performance considerations\. Also, you can call the [Kinesis Data Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
 
-Each task has prerequisites; for example, you cannot add data to a stream until you have created a stream, which requires you to create a client\. For more information, see [Managing Kinesis Streams Using Java](working-with-streams.md)\.
+Each task has prerequisites; for example, you cannot add data to a stream until you have created a stream, which requires you to create a client\. For more information, see [Managing Kinesis Data Streams Using Java](working-with-streams.md)\.
 
 ## Getting Data from a Stream<a name="kinesis-using-sdk-java-get-data"></a>
 
-The Kinesis Streams API provides the `getShardIterator` and `getRecords` methods to retrieve data from a stream\. This is a pull model, where your code draws data directly from the shards of the stream\.
+The Kinesis Data Streams API provides the `getShardIterator` and `getRecords` methods to retrieve data from a stream\. This is a pull model, where your code draws data directly from the shards of the stream\.
 
-We recommend that you use the record processor support provided by the Kinesis Client Library \(KCL\) to retrieve stream data in consumer applications\. This is a push model, where you implement the code that processes the data\. The KCL retrieves data records from the stream and delivers them to your application code\. In addition, the KCL provides failover, recovery, and load balancing functionality\. For more information, see [Developing Amazon Kinesis Streams Consumers Using the Kinesis Client Library](developing-consumers-with-kcl.md)\.
+We recommend that you use the record processor support provided by the Kinesis Client Library \(KCL\) to retrieve stream data in consumer applications\. This is a push model, where you implement the code that processes the data\. The KCL retrieves data records from the stream and delivers them to your application code\. In addition, the KCL provides failover, recovery, and load balancing functionality\. For more information, see [Developing Amazon Kinesis Data Streams Consumers Using the Kinesis Client Library](developing-consumers-with-kcl.md)\.
 
-However, in some cases you might prefer to use the Kinesis Streams API with the AWS SDK for Java\. For example, to implement custom tools for monitoring or debugging your streams\.
+However, in some cases you might prefer to use the Kinesis Data Streams API with the AWS SDK for Java\. For example, to implement custom tools for monitoring or debugging your streams\.
 
 **Important**  
 [Changing the Data Retention Period](kinesis-extended-retention.md)
@@ -39,15 +39,10 @@ shardIterator = getShardIteratorResult.getShardIterator();
 ```
 
 This sample code specifies `TRIM_HORIZON` as the iterator type when obtaining the initial shard iterator\. This iterator type means that records should be returned beginning with the first record added to the shard — rather than beginning with the most recently added record, also known as the *tip*\. The possible iterator types are the following:
-
 + `AT_SEQUENCE_NUMBER`
-
 + `AFTER_SEQUENCE_NUMBER`
-
 + `AT_TIMESTAMP`
-
 + `TRIM_HORIZON`
-
 + `LATEST`
 
 For more information, see [ShardIteratorType](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)\.

@@ -61,7 +61,7 @@ Your Kinesis stream consumers must have the `kms:Decrypt` permission\.
 }
 ```
 
-Amazon Kinesis Analytics and AWS Lambda use roles to consume Kinesis streams\. Make sure to add the `kms:Decrypt` permission to the roles that these consumers use\.
+Amazon Kinesis Data Analytics and AWS Lambda use roles to consume Kinesis streams\. Make sure to add the `kms:Decrypt` permission to the roles that these consumers use\.
 
 ## Stream Administrator Permissions<a name="stream-administrator-permissions"></a>
 

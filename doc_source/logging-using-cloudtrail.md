@@ -1,58 +1,40 @@
-# Logging Amazon Kinesis Streams API Calls Using AWS CloudTrail<a name="logging-using-cloudtrail"></a>
+# Logging Amazon Kinesis Data Streams API Calls Using AWS CloudTrail<a name="logging-using-cloudtrail"></a>
 
-Amazon Kinesis Streams is integrated with AWS CloudTrail, which captures API calls made by or on behalf of Kinesis Streams and delivers the log files to the Amazon S3 bucket that you specify\. The API calls can be made indirectly by using the Kinesis Streams console or directly by using the Kinesis Streams API\. Using the information collected by CloudTrail, you can determine what request was made to Kinesis Streams, the source IP address from which the request was made, who made the request, when it was made, and so on\. To learn more about CloudTrail, including how to configure and enable it, see the *[AWS CloudTrail User Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/)*\. 
+Amazon Kinesis Data Streams is integrated with AWS CloudTrail, which captures API calls made by or on behalf of Kinesis Data Streams and delivers the log files to the Amazon S3 bucket that you specify\. The API calls can be made indirectly by using the Kinesis Data Streams console or directly by using the Kinesis Data Streams API\. Using the information collected by CloudTrail, you can determine what request was made to Kinesis Data Streams, the source IP address from which the request was made, who made the request, when it was made, and so on\. To learn more about CloudTrail, including how to configure and enable it, see the *[AWS CloudTrail User Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/)*\. 
 
-## Kinesis Streams and CloudTrail<a name="kinesis-info-in-cloudtrail"></a>
+## Kinesis Data Streams and CloudTrail<a name="kinesis-info-in-cloudtrail"></a>
 
-CloudTrail logging is enabled by default\. Calls made to Kinesis Streams actions are tracked in log files\. Records for Kinesis Streams are written in a log file, together with records from any other AWS service enabled for CloudTrail logging\. CloudTrail determines when to create and write to a new file based on the specified time period and file size\.
+CloudTrail logging is enabled by default\. Calls made to Kinesis Data Streams actions are tracked in log files\. Records for Kinesis Data Streams are written in a log file, together with records from any other AWS service enabled for CloudTrail logging\. CloudTrail determines when to create and write to a new file based on the specified time period and file size\.
 
 The following actions are supported:
-
 + [AddTagsToStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_AddTagsToStream.html)
-
 + [CreateStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html)
-
 + [DecreaseStreamRetentionPeriod](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DecreaseStreamRetentionPeriod.html)
-
 + [DeleteStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeleteStream.html)
-
 + [DescribeLimits](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeLimits.html)
-
 + [DescribeStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStream.html)
-
 + [DescribeStreamSummary](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html)
-
 + [DisableEnhancedMonitoring](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DisableEnhancedMonitoring.html)
-
 + [EnableEnhancedMonitoring](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html)
-
 + [IncreaseStreamRetentionPeriod](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_IncreaseStreamRetentionPeriod.html)
-
 + [ListStreams](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html)
-
 + [ListTagsForStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListTagsForStream.html)
-
 + [MergeShards](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_MergeShards.html)
-
 + [RemoveTagsFromStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_RemoveTagsFromStream.html)
-
 + [SplitShard](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_SplitShard.html)
-
 + [StartStreamEncryption](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_StartStreamEncryption.html)
-
 + [StopStreamEncryption](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_StopStreamEncryption.html)
-
 + [UpdateShardCount](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html)
 
 Each log entry contains information about who generated the request\. For example, if a request is made to create a stream \(CreateStream\), the user identity of the person or service that made the request is logged\. The user identity information helps you determine whether the request was made with root or IAM user credentials, with temporary security credentials for a role or federated user, or by another AWS service\. For more information, see the [userIdentity Element](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/event_reference_user_identity.html) in the *AWS CloudTrail User Guide*\.
 
 You can store your log files in your bucket for as long as you need to, but you can also define Amazon S3 lifecycle rules to archive or delete log files automatically\. By default, your log files are encrypted by using Amazon S3 server\-side encryption \(SSE\)\.
 
-You can also aggregate Kinesis Streams log files from multiple AWS regions and multiple AWS accounts into a single Amazon S3 bucket\. For information, see [Aggregating CloudTrail Log Files to a Single Amazon S3 Bucket](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/aggregating_logs_top_level.html) in the *AWS CloudTrail User Guide*\.
+You can also aggregate Kinesis Data Streams log files from multiple AWS regions and multiple AWS accounts into a single Amazon S3 bucket\. For information, see [Aggregating CloudTrail Log Files to a Single Amazon S3 Bucket](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/aggregating_logs_top_level.html) in the *AWS CloudTrail User Guide*\.
 
 You can have CloudTrail publish SNS notifications when new log files are delivered if you want to take quick action upon log file delivery\. For information, see [Configuring Amazon SNS Notifications](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html) in the *AWS CloudTrail User Guide*\.
 
-## Log File Entries for Kinesis Streams<a name="kinesis-log-entries"></a>
+## Log File Entries for Kinesis Data Streams<a name="kinesis-log-entries"></a>
 
 CloudTrail log files can contain one or more log entries, where each entry is made up of multiple JSON\-formatted events\. A log entry represents a single request from any source and includes information about the requested action, any parameters, the date and time of the action, and so on\. The log entries are not guaranteed to be in any particular order\. That is, this is not an ordered stack trace of API calls\.
 

@@ -1,6 +1,6 @@
-# Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch<a name="monitoring-with-cloudwatch"></a>
+# Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch<a name="monitoring-with-cloudwatch"></a>
 
-Amazon Kinesis Streams and Amazon CloudWatch are integrated so that you can collect, view, and analyze CloudWatch metrics for your Kinesis streams\. For example, to keep track of shard usage, you can monitor the `PutRecords.Bytes` and `GetRecords.Bytes` metrics and compare them to the number of shards in the stream\.
+Amazon Kinesis Data Streams and Amazon CloudWatch are integrated so that you can collect, view, and analyze CloudWatch metrics for your Kinesis data streams\. For example, to keep track of shard usage, you can monitor the `PutRecords.Bytes` and `GetRecords.Bytes` metrics and compare them to the number of shards in the stream\.
 
 The metrics that you configure for your streams are automatically collected and pushed to CloudWatch every minute\. Metrics are archived for two weeks; after that period, the data is discarded\.
 
@@ -12,23 +12,23 @@ The following table describes basic stream\-level and enhanced shard\-level moni
 |  Basic \(stream\-level\)  |  Stream\-level data is sent automatically every minute at no charge\.  | 
 |  Enhanced \(shard\-level\)  |  Shard\-level data is sent every minute for an additional cost\. To get this level of data, you must specifically enable it for the stream using the [EnableEnhancedMonitoring](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) operation\.  For information about pricing, see the [Amazon CloudWatch product page](https://aws.amazon.com/cloudwatch)\.  | 
 
-## Amazon Kinesis Streams Dimensions and Metrics<a name="kinesis-metrics"></a>
+## Amazon Kinesis Data Streams Dimensions and Metrics<a name="kinesis-metrics"></a>
 
-Kinesis Streams sends metrics to CloudWatch at two levels; the stream level and, optionally, the shard level\. Stream\-level metrics are for most common monitoring use cases in normal conditions\. Shard\-level metrics are for specific monitoring tasks, usually related to troubleshooting, and are enabled using the [EnableEnhancedMonitoring](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) operation\. 
+Kinesis Data Streams sends metrics to CloudWatch at two levels; the stream level and, optionally, the shard level\. Stream\-level metrics are for most common monitoring use cases in normal conditions\. Shard\-level metrics are for specific monitoring tasks, usually related to troubleshooting, and are enabled using the [EnableEnhancedMonitoring](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) operation\. 
 
 For an explanation of the statistics gathered from CloudWatch metrics, see [CloudWatch Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic) in the *Amazon CloudWatch User Guide*\.
 
-
+**Topics**
 + [Basic Stream\-level Metrics](#kinesis-metrics-stream)
 + [Enhanced Shard\-level Metrics](#kinesis-metrics-shard)
-+ [Dimensions for Amazon Kinesis Streams Metrics](#kinesis-metricdimensions)
-+ [Recommended Amazon Kinesis Streams Metrics](#kinesis-metric-use)
++ [Dimensions for Amazon Kinesis Data Streams Metrics](#kinesis-metricdimensions)
++ [Recommended Amazon Kinesis Data Streams Metrics](#kinesis-metric-use)
 
 ### Basic Stream\-level Metrics<a name="kinesis-metrics-stream"></a>
 
 The `AWS/Kinesis` namespace includes the following stream\-level metrics\.
 
-Kinesis Streams sends these stream\-level metrics to CloudWatch every minute\. These metrics are always available\.
+Kinesis Data Streams sends these stream\-level metrics to CloudWatch every minute\. These metrics are always available\.
 
 
 | Metric | Description | 
@@ -68,9 +68,9 @@ Kinesis sends the following shard\-level metrics to CloudWatch every minute\. Th
 | ReadProvisionedThroughputExceeded |  The number of `GetRecords` calls throttled for the shard over the specified time period\. This exception count covers all dimensions of the following limits: 5 reads per shard per second or 2 MB per second per shard\. The most commonly used statistic for this metric is Average\. When the Minimum statistic has a value of 1, all records were throttled for the shard during the specified time period\.  When the Maximum statistic has a value of 0 \(zero\), no records were throttled for the shard during the specified time period\. Stream\-level metric name: `ReadProvisionedThroughputExceeded` Dimensions: StreamName, ShardId Statistics: Minimum, Maximum, Average, Sum, Samples Units: Count  | 
 | WriteProvisionedThroughputExceeded |  The number of records rejected due to throttling for the shard over the specified time period\. This metric includes throttling from `PutRecord` and `PutRecords` operations and covers all dimensions of the following limits: 1,000 records per second per shard or 1 MB per second per shard\. The most commonly used statistic for this metric is Average\. When the Minimum statistic has a non\-zero value, records were being throttled for the shard during the specified time period\.  When the Maximum statistic has a value of 0 \(zero\), no records were being throttled for the shard during the specified time period\. Stream\-level metric name: `WriteProvisionedThroughputExceeded` Dimensions: StreamName, ShardId Statistics: Minimum, Maximum, Average, Sum, Samples Units: Count  | 
 
-### Dimensions for Amazon Kinesis Streams Metrics<a name="kinesis-metricdimensions"></a>
+### Dimensions for Amazon Kinesis Data Streams Metrics<a name="kinesis-metricdimensions"></a>
 
-You can use the following dimensions to filter the metrics for Amazon Kinesis Streams\.
+You can use the following dimensions to filter the metrics for Amazon Kinesis Data Streams\.
 
 
 | Dimension | Description | 
@@ -78,9 +78,9 @@ You can use the following dimensions to filter the metrics for Amazon Kinesis St
 |  `StreamName`  |  The name of the Kinesis stream\.  | 
 |  `ShardId`  |  The shard ID within the Kinesis stream\.  | 
 
-### Recommended Amazon Kinesis Streams Metrics<a name="kinesis-metric-use"></a>
+### Recommended Amazon Kinesis Data Streams Metrics<a name="kinesis-metric-use"></a>
 
-There are several Amazon Kinesis Streams metrics of particular interest to the majority of Kinesis Streams customers\. The following list provides recommended metrics and their uses\.
+There are several Amazon Kinesis Data Streams metrics of particular interest to the majority of Kinesis Data Streams customers\. The following list provides recommended metrics and their uses\.
 
 
 | Metric | Usage Notes | 
@@ -91,9 +91,9 @@ There are several Amazon Kinesis Streams metrics of particular interest to the m
 | PutRecord\.Success, PutRecords\.Success | We advise the use of CloudWatch alarms on the Average statistic to indicate if records are failing to the stream\. Choose one or both put types depending on what your producer uses\. If using the Kinesis Producer Library \(KPL\), use PutRecords\.Success\. | 
 | GetRecords\.Success | We advise the use of CloudWatch alarms on the Average statistic to indicate if records are failing from the stream\. | 
 
-## Accessing Amazon CloudWatch Metrics for Kinesis Streams<a name="cloudwatch-metrics"></a>
+## Accessing Amazon CloudWatch Metrics for Kinesis Data Streams<a name="cloudwatch-metrics"></a>
 
-You can monitor metrics for Kinesis Streams using the CloudWatch console, the command line, or the CloudWatch API\. The following procedures show you how to access metrics using these different methods\. 
+You can monitor metrics for Kinesis Data Streams using the CloudWatch console, the command line, or the CloudWatch API\. The following procedures show you how to access metrics using these different methods\. 
 
 **To access metrics using the CloudWatch console**
 

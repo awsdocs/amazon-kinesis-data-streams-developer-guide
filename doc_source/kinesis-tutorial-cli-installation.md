@@ -14,7 +14,7 @@ Use the following process to install the AWS CLI for Windows and for Linux, OS X
 
 ### Linux, macOS, or Unix<a name="install-cli-unix"></a>
 
-These steps require Python 2\.6\.3 or higher\. If you have any problems, see the [full installation instructions](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/)\. 
+These steps require Python 2\.6\.5 or higher\. If you have any problems, see the [full installation instructions](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/)\. 
 
 1. Download and run the installation script from the [pip website](https://pip.pypa.io/en/latest/installing.html): 
 
@@ -35,13 +35,13 @@ These steps require Python 2\.6\.3 or higher\. If you have any problems, see the
 aws help
 ```
 
-You will be using the Kinesis Streams service, so you can review the AWS CLI subcommands related to Kinesis Streams using the following command:
+You will be using the Kinesis Data Streams service, so you can review the AWS CLI subcommands related to Kinesis Data Streams using the following command:
 
 ```
 aws kinesis help
 ```
 
-This command results in output that includes the available Kinesis Streams commands:
+This command results in output that includes the available Kinesis Data Streams commands:
 
 ```
 AVAILABLE COMMANDS
@@ -77,7 +77,7 @@ AVAILABLE COMMANDS
        o wait
 ```
 
- This command list corresponds to the Kinesis Streams API documented in the [Amazon Kinesis Service API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/)\. For example, the `create-stream` command corresponds to the `CreateStream` API action\. 
+ This command list corresponds to the Kinesis Data Streams API documented in the [Amazon Kinesis Service API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/)\. For example, the `create-stream` command corresponds to the `CreateStream` API action\. 
 
  The AWS CLI is now successfully installed, but not configured\. This is shown in the next section\. 
 

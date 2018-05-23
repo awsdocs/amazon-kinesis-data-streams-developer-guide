@@ -1,10 +1,10 @@
 # Monitoring the Kinesis Client Library with Amazon CloudWatch<a name="monitoring-with-kcl"></a>
 
-The [Kinesis Client Library](http://docs.aws.amazon.com/kinesis/latest/dev/developing-consumers-with-kcl.html) \(KCL\) for Amazon Kinesis Streams publishes custom Amazon CloudWatch metrics on your behalf, using the name of your KCL application as the namespace\. You can view these metrics by navigating to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/) and choosing **Custom Metrics**\. For more information about custom metrics, see [Publish Custom Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html) in the *Amazon CloudWatch User Guide*\.
+The [Kinesis Client Library](http://docs.aws.amazon.com/kinesis/latest/dev/developing-consumers-with-kcl.html) \(KCL\) for Amazon Kinesis Data Streams publishes custom Amazon CloudWatch metrics on your behalf, using the name of your KCL application as the namespace\. You can view these metrics by navigating to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/) and choosing **Custom Metrics**\. For more information about custom metrics, see [Publish Custom Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html) in the *Amazon CloudWatch User Guide*\.
 
 There is a nominal charge for the metrics uploaded to CloudWatch by the KCL; specifically, *Amazon CloudWatch Custom Metrics* and *Amazon CloudWatch API Requests* charges apply\. For more information, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/)\.
 
-
+**Topics**
 + [Metrics and Namespace](#metrics-namespace)
 + [Metric Levels and Dimensions](#metric-levels)
 + [Metric Configuration](#metrics-config)
@@ -36,7 +36,7 @@ Metric levels can be assigned one of three values: NONE, SUMMARY, or DETAILED\. 
 
 The following tables list the KCL metrics, grouped by scope and operation\.
 
-
+**Topics**
 + [Per\-KCL\-Application Metrics](#kcl-metrics-per-app)
 + [Per\-Worker Metrics](#kcl-metrics-per-worker)
 + [Per\-Shard Metrics](#kcl-metrics-per-shard)
@@ -45,7 +45,7 @@ The following tables list the KCL metrics, grouped by scope and operation\.
 
 These metrics are aggregated across all KCL workers within the scope of the application, as defined by the Amazon CloudWatch namespace\.
 
-
+**Topics**
 + [InitializeTask](#init-task)
 + [ShutdownTask](#shutdown-task)
 + [ShardSyncTask](#shard-sync-task)
@@ -53,7 +53,7 @@ These metrics are aggregated across all KCL workers within the scope of the appl
 
 #### InitializeTask<a name="init-task"></a>
 
-The `InitializeTask` operation is responsible for initializing the record processor for the KCL application\. The logic for this operation includes getting a shard iterator from Kinesis Streams and initializing the record processor\.
+The `InitializeTask` operation is responsible for initializing the record processor for the KCL application\. The logic for this operation includes getting a shard iterator from Kinesis Data Streams and initializing the record processor\.
 
 
 | Metric | Description | 
@@ -81,7 +81,7 @@ The `ShutdownTask` operation initiates the shutdown sequence for shard processin
 
 #### ShardSyncTask<a name="shard-sync-task"></a>
 
-The `ShardSyncTask` operation discovers changes to shard information for the Kinesis stream, so new shards can be processed by the KCL application\.
+The `ShardSyncTask` operation discovers changes to shard information for the Kinesis data stream, so new shards can be processed by the KCL application\.
 
 
 | Metric | Description | 
@@ -103,9 +103,9 @@ If the shard is split or merged with other shards, then new child shards are cre
 
 ### Per\-Worker Metrics<a name="kcl-metrics-per-worker"></a>
 
-These metrics are aggregated across all record processors consuming data from a Kinesis stream, such as an Amazon EC2 instance\.
+These metrics are aggregated across all record processors consuming data from a Kinesis data stream, such as an Amazon EC2 instance\.
 
-
+**Topics**
 + [RenewAllLeases](#renew-leases)
 + [TakeLeases](#take-leases)
 
@@ -154,8 +154,8 @@ The `ProcessTask` operation calls [GetRecords](http://docs.aws.amazon.com/kinesi
 
 | Metric | Description | 
 | --- | --- | 
-| KinesisDataFetcher\.getRecords\.Success |  Number of successful `GetRecords` operations per Kinesis stream shard\.  Metric level: Detailed Units: Count  | 
-| KinesisDataFetcher\.getRecords\.Time |  Time taken per `GetRecords` operation for the Kinesis stream shard\. Metric level: Detailed Units: Milliseconds  | 
+| KinesisDataFetcher\.getRecords\.Success |  Number of successful `GetRecords` operations per Kinesis data stream shard\.  Metric level: Detailed Units: Count  | 
+| KinesisDataFetcher\.getRecords\.Time |  Time taken per `GetRecords` operation for the Kinesis data stream shard\. Metric level: Detailed Units: Milliseconds  | 
 | UpdateLease\.Success |  Number of successful checkpoints made by the record processor for the given shard\. Metric level: Detailed Units: Count  | 
 | UpdateLease\.Time |  Time taken for each checkpoint operation for the given shard\. Metric level: Detailed Units: Milliseconds  | 
 | DataBytesProcessed |  Total size of records processed in bytes on each `ProcessTask` invocation\. Metric level: Summary Units: Byte  | 

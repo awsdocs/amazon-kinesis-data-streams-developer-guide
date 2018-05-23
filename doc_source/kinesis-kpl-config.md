@@ -1,4 +1,4 @@
-# Configuring the KPL<a name="kinesis-kpl-config"></a>
+# Configuring the Kinesis Producer Library<a name="kinesis-kpl-config"></a>
 
 Although the default settings should work well for most use cases, you may want to change some of the default settings to tailor the behavior of the `KinesisProducer` to your needs\. An instance of the `KinesisProducerConfiguration` class can be passed to the `KinesisProducer` constructor to do so, for example:
 

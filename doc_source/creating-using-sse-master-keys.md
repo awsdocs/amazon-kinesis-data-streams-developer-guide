@@ -4,7 +4,7 @@ This section describes how to create and use your own KMS master keys, instead o
 
 ## Creating User\-Generated KMS Master Keys<a name="creating-sse-master-keys"></a>
 
-For instructions on creating your own master keys, see [Creating Keys](http://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*\. After you create keys for your account, the Kinesis Streams service returns these keys in the **KMS master key** list\.
+For instructions on creating your own master keys, see [Creating Keys](http://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*\. After you create keys for your account, the Kinesis Data Streams service returns these keys in the **KMS master key** list\.
 
 ## Using User\-Generated KMS Master Keys<a name="using-sse-master-keys"></a>
 

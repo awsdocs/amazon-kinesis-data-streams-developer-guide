@@ -2,7 +2,7 @@
 
 ## Amazon Web Services Account<a name="learning-kinesis-module-one-begin-aws"></a>
 
-Before you begin, be sure you are familiar with the concepts discussed in [Amazon Kinesis Streams Key Concepts](key-concepts.md) and [Tutorial: Visualizing Web Traffic Using Amazon Kinesis Streams](kinesis-sample-application.md), particularly streams, shards, producers, and consumers\. It is also helpful to have completed [Tutorial: Visualizing Web Traffic Using Amazon Kinesis Streams](kinesis-sample-application.md) and [Tutorial: Getting Started With Amazon Kinesis Streams Using AWS CLI](kinesis-tutorial-cli.md)\.
+Before you begin, be sure you are familiar with the concepts discussed in [Amazon Kinesis Data Streams Key Concepts](key-concepts.md) and [Tutorial: Visualizing Web Traffic Using Amazon Kinesis Data Streams](kinesis-sample-application.md), particularly streams, shards, producers, and consumers\. It is also helpful to have completed [Tutorial: Visualizing Web Traffic Using Amazon Kinesis Data Streams](kinesis-sample-application.md) and [Tutorial: Getting Started With Amazon Kinesis Data Streams Using AWS CLI](kinesis-tutorial-cli.md)\.
 
 You need an AWS account and a web browser to access the AWS Management Console\.
 

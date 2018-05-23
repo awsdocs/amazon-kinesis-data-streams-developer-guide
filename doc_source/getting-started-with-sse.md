@@ -6,7 +6,7 @@ The following procedure demonstrates how to enable server\-side encryption for a
 
 **To enable server\-side encryption for a Kinesis stream**
 
-1. Sign in to the AWS Management Console and open the [Amazon Kinesis Streams console](http://console.aws.amazon.com/kinesis/home?region=us-east-1#/streams/list)\.
+1. Sign in to the AWS Management Console and open the [Amazon Kinesis Data Streams console](http://console.aws.amazon.com/kinesis/home?region=us-east-1#/streams/list)\.
 
 1. Create or select a Kinesis stream in the AWS Management Console\.
 

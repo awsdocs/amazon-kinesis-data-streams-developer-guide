@@ -1,6 +1,6 @@
 # Developing a Kinesis Client Library Consumer in Java<a name="kinesis-record-processor-implementation-app-java"></a>
 
-You can use the Kinesis Client Library \(KCL\) to build applications that process data from your Kinesis streams\. The Kinesis Client Library is available in multiple languages\. This topic discusses Java\. To view the javadoc reference, go to [the AWS javadoc topic for Class AmazonKinesisClient](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesisClient.html)\.
+You can use the Kinesis Client Library \(KCL\) to build applications that process data from your Kinesis data streams\. The Kinesis Client Library is available in multiple languages\. This topic discusses Java\. To view the javadoc reference, go to [the AWS javadoc topic for Class AmazonKinesisClient](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesisClient.html)\.
 
 To download the Java KCL from GitHub, go to [Kinesis Client Library \(Java\)](https://github.com/awslabs/amazon-kinesis-client)\. To locate the Java KCL on Maven, go to the [KCL search results](https://search.maven.org/#search|ga|1|amazon-kinesis-client) page\. To download sample code for a Java KCL consumer application from GitHub, go to the [KCL for Java sample project](https://github.com/aws/aws-sdk-java/tree/master/src/samples/AmazonKinesis) page on GitHub\. 
 
@@ -8,7 +8,7 @@ The sample application uses [Apache Commons Logging](http://commons.apache.org/p
 
 You must complete the following tasks when implementing a KCL consumer application in Java:
 
-
+**Topics**
 + [Implement the IRecordProcessor Methods](#kinesis-record-processor-implementation-interface-java)
 + [Implement a Class Factory for the IRecordProcessor Interface](#kinesis-record-processor-implementation-factory-java)
 + [Create a Worker](#kcl-java-worker)
@@ -19,7 +19,7 @@ You must complete the following tasks when implementing a KCL consumer applicati
 
 The KCL currently supports two versions of the `IRecordProcessor` interface — the original interface available with the first version of the KCL, and version 2 available starting with KCL version 1\.5\.0\. Both interfaces are fully supported; your choice depends on your specific scenario requirements\. Refer to your locally\-built Javadocs or the source code to see all the differences\. The following sections outline the minimal implementation for getting started\.
 
-
+**Topics**
 + [Original Interface \(Version 1\)](#kcl-java-interface-original)
 + [Updated Interface \(Version 2\)](#kcl-java-interface-v2)
 
@@ -34,7 +34,7 @@ public void shutdown(IRecordProcessorCheckpointer checkpointer, ShutdownReason r
 ```
 
 **initialize**  
-The KCL calls the `initialize` method when the record processor is instantiated, passing a specific shard ID as a parameter\. This record processor processes only this shard and typically, the reverse is also true \(this shard is processed only by this record processor\)\. However, your consumer should account for the possibility that a data record might be processed more than one time\. Kinesis Streams has "at least once" semantics, meaning that every data record from a shard is processed at least one time by a worker in your consumer\. For more information about cases in which a particular shard may be processed by more than one worker, see [Resharding, Scaling, and Parallel Processing](kinesis-record-processor-scaling.md)\.
+The KCL calls the `initialize` method when the record processor is instantiated, passing a specific shard ID as a parameter\. This record processor processes only this shard and typically, the reverse is also true \(this shard is processed only by this record processor\)\. However, your consumer should account for the possibility that a data record might be processed more than one time\. Kinesis Data Streams has "at least once" semantics, meaning that every data record from a shard is processed at least one time by a worker in your consumer\. For more information about cases in which a particular shard may be processed by more than one worker, see [Resharding, Scaling, and Parallel Processing](kinesis-record-processor-scaling.md)\.
 
 ```
 public void initialize(String shardId)
@@ -57,7 +57,7 @@ record.getPartitionKey()
 
 In the sample, the private method `processRecordsWithRetries` has code that shows how a worker can access the record's data, sequence number, and partition key\.
 
-Kinesis Streams requires the record processor to keep track of the records that have already been processed in a shard\. The KCL takes care of this tracking for you by passing a checkpointer \(`IRecordProcessorCheckpointer`\) to `processRecords`\. The record processor calls the `checkpoint` method on this interface to inform the KCL of how far it has progressed in processing the records in the shard\. In the event that the worker fails, the KCL uses this information to restart the processing of the shard at the last known processed record\.
+Kinesis Data Streams requires the record processor to keep track of the records that have already been processed in a shard\. The KCL takes care of this tracking for you by passing a checkpointer \(`IRecordProcessorCheckpointer`\) to `processRecords`\. The record processor calls the `checkpoint` method on this interface to inform the KCL of how far it has progressed in processing the records in the shard\. In the event that the worker fails, the KCL uses this information to restart the processing of the shard at the last known processed record\.
 
 In the case of a split or merge operation, the KCL won't start processing the new shards until the processors for the original shards have called `checkpoint` to signal that all processing on the original shards is complete\.
 
@@ -150,10 +150,8 @@ The sample provides default values for configuration properties\. This configura
 ### Application Name<a name="configuration-property-application-name"></a>
 
 The KCL requires an application name that is unique across your applications, and across DynamoDB tables in the same region\. It uses the application name configuration value in the following ways:
-
 + All workers associated with this application name are assumed to be working together on the same stream\. These workers may be distributed on multiple instances\. If you run an additional instance of the same application code, but with a different application name, the KCL treats the second instance as an entirely separate application that is also operating on the same stream\.
-
-+ The KCL creates a DynamoDB table with the application name and uses the table to maintain state information \(such as checkpoints and worker\-shard mapping\) for the application\. Each application has its own DynamoDB table\. For more information, see [Tracking Amazon Kinesis Streams Application State](kinesis-record-processor-ddb.md)\.
++ The KCL creates a DynamoDB table with the application name and uses the table to maintain state information \(such as checkpoints and worker\-shard mapping\) for the application\. Each application has its own DynamoDB table\. For more information, see [Tracking Amazon Kinesis Data Streams Application State](kinesis-record-processor-ddb.md)\.
 
 ### Set Up Credentials<a name="kinesis-record-processor-cred-java"></a>
 
