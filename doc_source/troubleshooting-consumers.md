@@ -1,7 +1,7 @@
 # Troubleshooting Amazon Kinesis Data Streams Consumers<a name="troubleshooting-consumers"></a>
 
 **Topics**
-+ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w3ab1c11b9c11b5)
++ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w3ab1c14c20b5)
 + [Records Belonging to the Same Shard are Processed by Different Record Processors at the Same Time](#records-belonging-to-the-same-shard)
 + [Consumer Application is Reading at a Slower Rate Than Expected](#consumer-app-reading-slower)
 + [GetRecords Returns Empty Records Array Even When There is Data in the Stream](#getrecords-returns-empty)
@@ -9,7 +9,7 @@
 + [Consumer Record Processing Falling Behind](#record-processing-falls-behind)
 + [Unauthorized KMS master key permission error](#unauthorized-kms-consumer)
 
-## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w3ab1c11b9c11b5"></a>
+## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w3ab1c14c20b5"></a>
 
 The most common cause of skipped records is an unhandled exception thrown from `processRecords`\. The Kinesis Client Library \(KCL\) relies on your `processRecords` code to handle any exceptions that arise from processing the data records\. Any exception thrown from `processRecords` is absorbed by the KCL\. To avoid infinite retries on a recurring failure, the KCL does not resend the batch of records processed at the time of the exception\. The KCL then calls `processRecords` for the next batch of data records without restarting the record processor\. This effectively results in consumer applications observing skipped records\. To prevent skipped records, handle all exceptions within `processRecords` appropriately\.
 
@@ -31,7 +31,7 @@ For more information, see [Handling Duplicate Records](kinesis-record-processor-
 
 The most common reasons for read throughput being slower than expected are as follows:
 
-1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Amazon Kinesis Data Streams Limits](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
+1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Kinesis Data Streams Limits](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
 
 1. The [limit](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_RequestSyntax) that specifies the maximum number of GetRecords per call may have been configured with a low value\. If you are using the KCL, you may have configured the worker with a low value for the `maxRecords` property\. In general, we recommend using the system defaults for this property\.
 

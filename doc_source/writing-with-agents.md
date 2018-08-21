@@ -136,7 +136,7 @@ The following are the flow configuration settings\.
 
 ## Monitor Multiple File Directories and Write to Multiple Streams<a name="sim-writes"></a>
 
-By specifying multiple flow configuration settings, you can configure the agent to monitor multiple file directories and send data to multiple streams\. In the following configuration example, the agent monitors two file directories and sends data to an Kinesis stream and a Kinesis Firehose delivery stream respectively\. Note that you can specify different endpoints for Kinesis Data Streams and Kinesis Firehose so that your Kinesis stream and Kinesis Firehose delivery stream don’t need to be in the same region\.
+By specifying multiple flow configuration settings, you can configure the agent to monitor multiple file directories and send data to multiple streams\. In the following configuration example, the agent monitors two file directories and sends data to an Kinesis stream and a Kinesis Data Firehose delivery stream respectively\. Note that you can specify different endpoints for Kinesis Data Streams and Kinesis Data Firehose so that your Kinesis stream and Kinesis Data Firehose delivery stream don’t need to be in the same region\.
 
 ```
 {
@@ -156,7 +156,7 @@ By specifying multiple flow configuration settings, you can configure the agent 
 }
 ```
 
-For more detailed information about using the agent with Kinesis Firehose, see [Writing to Amazon Kinesis Data Firehose with Kinesis Agent](http://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)\.
+For more detailed information about using the agent with Kinesis Data Firehose, see [Writing to Amazon Kinesis Data Firehose with Kinesis Agent](http://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)\.
 
 ## Use the Agent to Pre\-process Data<a name="pre-processing"></a>
 

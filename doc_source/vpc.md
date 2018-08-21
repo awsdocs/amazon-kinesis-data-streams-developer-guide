@@ -12,10 +12,19 @@ The Kinesis Producer Library \(KPL\) and Kinesis Consumer Library \(KCL\) call A
 
 ## Availability<a name="availability"></a>
 
-Interface VPC endpoints are currently supported within the following regions:
-+ US East \(Ohio\)
-+ US East \(N\. Virginia\)
+Interface VPC endpoints are currently supported within the following Regions:
 + US West \(Oregon\)
-+ Asia Pacific \(Tokyo\)
-+ EU \(Ireland\)
 + EU \(Paris\)
++ US East \(N\. Virginia\)
++ EU \(Ireland\)
++ Asia Pacific \(Mumbai\)
++ US East \(Ohio\)
++ EU \(Frankfurt\)
++ South America \(São Paulo\)
++ Asia Pacific \(Seoul\)
++ EU \(London\)
++ Asia Pacific \(Tokyo\)
++ US West \(N\. California\)
++ Asia Pacific \(Singapore\)
++ Asia Pacific \(Sydney\)
++ Canada \(Central\)

@@ -1,23 +1,23 @@
-# Amazon Kinesis Data Streams Limits<a name="service-sizes-and-limits"></a>
+# Kinesis Data Streams Limits<a name="service-sizes-and-limits"></a>
 
-Kinesis Data Streams has following limits\.
-+ The default shard limit is 500 shards for the following regions: US East \(N\. Virginia\), US West \(Oregon\), and EU \(Ireland\)\. For all other regions, the default shard limit is 200 shards\. There is no upper limit to the number of shards in a stream or account\. To view your limits and the number of shards in use, use the [DescribeLimits](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeLimits.html) API or the [describe\-limits](http://docs.aws.amazon.com/cli/latest/reference/kinesis/describe-limits.html) command\. To request an increase in your shard limit, use the [Kinesis Data Streams Limits form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis)\.
-+ [Changing the Data Retention Period](kinesis-extended-retention.md)
-+ The maximum size of a data blob \(the data payload before base64\-encoding\) is up to 1 MB\.
-+ [AddTagsToStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_AddTagsToStream.html), [ListTagsForStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListTagsForStream.html), and [RemoveTagsFromStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_RemoveTagsFromStream.html) can provide up to 5 transactions per second per account\.
-+ [CreateStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html), [DeleteStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeleteStream.html), and [ListStreams](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html) can provide up to 5 transactions per second\.
-+ [DescribeStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStream.html) can provide up to 10 transactions per second\.
-+ [DescribeStreamSummary](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html) can provide up to 20 transactions per second\.
-+ [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) can retrieve 10 MB of data\.
-+ [DescribeLimits](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeLimits.html) can provide up to 1 transaction per second\.
-+ [GetShardIterator](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html) can provide up to 5 transactions per second per open shard\.
-+ [ListShards](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListShards.html) has a limit of 100 transactions per second per data stream\.
-+  [MergeShards](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_MergeShards.html) and [SplitShard](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_SplitShard.html) can provide up to 5 transactions per second\. 
-+ [UpdateShardCount](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) provides up to 2 calls per rolling 24\-hour period per stream\. By default, the API can scale up to either your shard limit or 500 shards, whichever is lower\. To request an increase in the call rate limit, the shard limit for this API, or your overall shard limit, use the [Kinesis Data Streams Limits form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis)\.
-+ Each shard can support up to 5 transactions per second for reads, up to a maximum total data read rate of 2 MB per second\.
-+ Each shard can support up to 1,000 records per second for writes, up to a maximum total data write rate of 1 MB per second \(including partition keys\)\. This write limit applies to operations such as [PutRecord](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html) and [PutRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html)\.
-+ A shard iterator returned by [GetShardIterator](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html) times out after 5 minutes if you haven't used it\.
+Amazon Kinesis Data Streams has the following stream and shard limits\.
++ There is no upper limit on the number of shards you can have in a stream or account\. It is common for a workload to have thousands of shards in a single stream\.
++ There is no upper limit on the number of streams you can have in an account\.
++ A single shard can ingest up to 1 MiB of data per second \(including partition keys\) or 1,000 records per second for writes\. Similarly, if you scale your stream to 5,000 shards, the stream can ingest up to 5 GiB per second or 5 million records per second\. If you need more ingest capacity, you can easily scale up the number of shards in the stream using the AWS Management Console or the [UpdateShardCount](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\.
++ The default shard limit is 500 shards for the following AWS Regions: US East \(N\. Virginia\), US West \(Oregon\), and EU \(Ireland\)\. For all other Regions, the default shard limit is 200 shards\.
++ The maximum size of the data payload of a record before base64\-encoding is up to 1 MiB\.
++ [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) can retrieve up to 10 MiB of data per call from a single shard, and up to 10,000 records per call\. Each call to `GetRecords` is counted as one read transaction\.
++ Each shard can support up to five read transactions per second\. Each read transaction can provide up to 10,000 records with an upper limit of 10 MiB per transaction\.
++ Each shard can support up to a maximum total data read rate of 2 MiB per second via [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. If a call to `GetRecords` returns 10 MiB, subsequent calls made within the next 5 seconds throw an exception\.
 
-Read limits are based on the number of open shards\. For more information about shard states, see [Data Routing, Data Persistence, and Shard State after a Reshard](kinesis-using-sdk-java-after-resharding.md#kinesis-using-sdk-java-resharding-data-routing)\.
+## API limits<a name="kds-api-limits"></a>
 
-Many of these limits are directly related to API operations\. For more information, see the [Amazon Kinesis API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/)\.
+Like most AWS APIs, Kinesis Data Streams API operations are rate\-limited\. For information about API call rate limits, see the [Amazon Kinesis API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/)\. If you encounter API throttling, we encourage you to request a limit increase\.
+
+## Increasing Limits<a name="increasing-kds-limits"></a>
+
+**To increase your shard limit or API call rate limit**
+
+1. Sign in to the AWS Management Console at [https://console.aws.amazon.com/](https://console.aws.amazon.com/)\.
+
+1. Use the [Kinesis Data Streams limits form](https://console.aws.amazon.com/support/v1#/case/create%3FissueType=service-limit-increase%26limitType=service-code-kinesis) to request a limit increase\.

@@ -17,7 +17,7 @@ For information about provisioned throughput in DynamoDB, see [Provisioned Throu
 
 ## Application State Data<a name="kinesis-record-processor-ddb-table-contents"></a>
 
-Each row in the DynamoDB table represents a shard that is being processed by your application\. The hash key for the table is the shard ID\.
+Each row in the DynamoDB table represents a shard that is being processed by your application\. The hash key for the table is **leaseKey**, which is the shard ID\.
 
 In addition to the shard ID, each row also includes the following data:
 + **checkpoint:** The most recent checkpoint sequence number for the shard\. This value is unique across all shards in the stream\.

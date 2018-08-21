@@ -12,7 +12,7 @@
 
 ### Service Limits Exceeded<a name="service-limits-exceeded"></a>
 
-To find out if service limits are being exceeded, check to see if your producer is throwing throughput exceptions from the service, and validate what API operations are being throttled\. Keep in mind that there are different limits based on the call, see [Amazon Kinesis Data Streams Limits](service-sizes-and-limits.md)\. For example, in addition to the shard\-level limits for writes and reads that are most commonly known, there are the following stream\-level limits:
+To find out if service limits are being exceeded, check to see if your producer is throwing throughput exceptions from the service, and validate what API operations are being throttled\. Keep in mind that there are different limits based on the call, see [Kinesis Data Streams Limits](service-sizes-and-limits.md)\. For example, in addition to the shard\-level limits for writes and reads that are most commonly known, there are the following stream\-level limits:
 + [CreateStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html)
 + [DeleteStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeleteStream.html)
 + [ListStreams](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html)
@@ -23,7 +23,7 @@ To find out if service limits are being exceeded, check to see if your producer 
 
 The operations `CreateStream`, `DeleteStream`, `ListStreams`, `GetShardIterator`, and `MergeShards` are limited to 5 calls per second\. The `DescribeStream` operation is limited to 10 calls per second\. The `DescribeStreamSummary` operation is limited to 20 calls per second\.
 
-If these calls aren't the issue, make sure you've selected a partition key that allows you to distribute *put* operations evenly across all shards, and that you don't have a particular partition key that's bumping into the service limits when the rest are not\. This requires that you measure peak throughput and take into account the number of shards in your stream\. For more information about managing streams, see [Managing Kinesis Data Streams Using Java](working-with-streams.md)\.
+If these calls aren't the issue, make sure you've selected a partition key that allows you to distribute *put* operations evenly across all shards, and that you don't have a particular partition key that's bumping into the service limits when the rest are not\. This requires that you measure peak throughput and take into account the number of shards in your stream\. For more information about managing streams, see [Creating and Managing Streams](working-with-streams.md)\.
 
 **Tip**  
 Remember to round up to the nearest kilobyte for throughput throttling calculations when using the single\-record operation [PutRecord](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html), while the multi\-record operation [PutRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html) rounds on the cumulative sum of the records in each call\. For example, a `PutRecords` request with 600 records that are 1\.1 KB in size will not get throttled\. 

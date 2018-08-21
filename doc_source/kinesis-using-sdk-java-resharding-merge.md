@@ -3,9 +3,9 @@
  A shard merge operation takes two specified shards and combines them into a single shard\. After the merge, the single child shard receives data for all hash key values covered by the two parent shards\. 
 
 **Shard Adjacency**  
-In order to merge two shards, the shards must be *adjacent*\. Two shards are considered adjacent if the union of the hash key ranges for the two shards form a contiguous set with no gaps\. For example, if you have two shards, one with a hash key range of 276\.\.\.381 and the other with a hash key range of 382\.\.\.454, then you could merge these two shards into a single shard that would have a hash key range of 276\.\.\.454\. 
+To merge two shards, the shards must be *adjacent*\. Two shards are considered adjacent if the union of the hash key ranges for the two shards forms a contiguous set with no gaps\. For example, suppose that you have two shards, one with a hash key range of 276\.\.\.381 and the other with a hash key range of 382\.\.\.454\. You could merge these two shards into a single shard that would have a hash key range of 276\.\.\.454\. 
 
-To take another example, if you have two shards, one with a hash key range of 276\.\.381 and the other with a hash key range of 455\.\.\.560, then you could not merge these two shards because there would be one or more shards between these two that cover the range 382\.\.454\. 
+To take another example, suppose that you have two shards, one with a hash key range of 276\.\.381 and the other with a hash key range of 455\.\.\.560\. You could not merge these two shards because there would be one or more shards between these two that cover the range 382\.\.454\. 
 
 The set of all `OPEN` shards in a stream—as a group—always spans the entire range of MD5 hash key values\. For more information about shard states—such as `CLOSED`—see [Data Routing, Data Persistence, and Shard State after a Reshard](kinesis-using-sdk-java-after-resharding.md#kinesis-using-sdk-java-resharding-data-routing)\. 
 
@@ -29,7 +29,7 @@ shard.getHashKeyRange().getEndingHashKey();
 **Code for the Merge Operation**  
  The following code merges two shards\. The code assumes that `myStreamName` holds the name of your stream and the object variables `shard1` and `shard2` hold the two adjacent shards to merge\.
 
-For the merge operation, begin by instantiating a new `mergeShardsRequest` object\. Specify the stream name with the `setStreamName` method\. Then specify the two shards to merge using the `setShardToMerge` and `setAdjacentShardToMerge` methods\. Finally, call the `mergeShards` method on Kinesis Data Streams client to carry out the operation\.
+For the merge operation, begin by instantiating a new `mergeShardsRequest` object\. Specify the stream name with the `setStreamName` method\. Then specify the two shards to merge using the `setShardToMerge` and `setAdjacentShardToMerge` methods\. Finally, call the `mergeShards` method on the Kinesis Data Streams client to carry out the operation\.
 
 ```
 MergeShardsRequest mergeShardsRequest = new MergeShardsRequest();

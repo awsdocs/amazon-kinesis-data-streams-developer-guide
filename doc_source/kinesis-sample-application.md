@@ -145,5 +145,5 @@ The status changes to `DELETE_IN_PROGRESS` while AWS CloudFormation cleans up th
 
 ## Step 4: Next Steps<a name="kinesis-gs-next-steps"></a>
 + You can explore the source code for the [Data Visualization Sample Application](https://github.com/awslabs/amazon-kinesis-data-visualization-sample) on GitHub\.
-+ You can find more advanced material about using the Kinesis Data Streams API in the [Developing Amazon Kinesis Data Streams Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md), [Developing Amazon Kinesis Data Streams Consumers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-consumers-with-sdk.md), and [Managing Kinesis Data Streams Using Java](working-with-streams.md)\.
++ You can find more advanced material about using the Kinesis Data Streams API in the [Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md), [Developing Consumers Using the Kinesis Data Streams API with the AWS SDK for Java](developing-consumers-with-sdk.md), and [Creating and Managing Streams](working-with-streams.md)\.
 + You can find sample application in the [AWS SDK for Java](https://aws.amazon.com/developers/getting-started/java/) that uses the SDK to put and get data from Kinesis Data Streams\.

@@ -1,4 +1,4 @@
-# Advanced Topics for Amazon Kinesis Data Streams Producers<a name="advanced-producers"></a>
+# Advanced Topics for Kinesis Data Streams Producers<a name="advanced-producers"></a>
 
 This section discusses how to optimize your Amazon Kinesis Data Streams producers\.
 

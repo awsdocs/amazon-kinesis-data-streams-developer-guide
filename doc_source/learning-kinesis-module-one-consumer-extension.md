@@ -1,8 +1,8 @@
 # Step 6: \(Optional\) Extending the Consumer<a name="learning-kinesis-module-one-consumer-extension"></a>
 
-The application shown here may already be sufficient for your purposes\. This optional section shows how you might want to extend the consumer code for a slightly more elaborate scenario\.
+The application in the [Tutorial: Analyzing Real\-Time Stock Data Using Kinesis Data Streams[Tutorial: Analyzing Real\-Time Stock Data Using Kinesis Data Streams](learning-kinesis-module-one.md)](learning-kinesis-module-one.md) might already be sufficient for your purposes\. This optional section shows how you can extend the consumer code for a slightly more elaborate scenario\.
 
-If you want to know about the biggest sell orders each minute, this is a matter of modifying the `StockStats` class in three places to accommodate this new priority\.
+If you want to know about the biggest sell orders each minute, you can modify the `StockStats` class in three places to accommodate this new priority\.
 
 **To extend the consumer**
 
@@ -49,3 +49,7 @@ If you run the consumer now \(remember to run the producer also\), you should se
   Largest sell order: 996 shares of BUD.
   ****************************************************************
 ```
+
+## Next Steps<a name="learning-kinesis-module-one-consumer-extension-next"></a>
+
+[Step 7: Finishing Up](learning-kinesis-module-one-finish.md)

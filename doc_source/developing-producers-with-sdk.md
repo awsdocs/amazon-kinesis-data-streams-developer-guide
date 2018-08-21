@@ -1,12 +1,12 @@
-# Developing Amazon Kinesis Data Streams Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java<a name="developing-producers-with-sdk"></a>
+# Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java<a name="developing-producers-with-sdk"></a>
 
 You can develop producers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started Using Amazon Kinesis Data Streams](getting-started.md)\.
 
-These examples discuss the [Kinesis Data Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to add \(put\) data to a stream\. However, for most use cases, you should prefer the Kinesis Data Streams KPL library\. For more information, see [Developing Amazon Kinesis Data Streams Producers Using the Kinesis Producer Library](developing-producers-with-kpl.md)\.
+These examples discuss the [Kinesis Data Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to add \(put\) data to a stream\. However, for most use cases, you should prefer the Kinesis Data Streams KPL library\. For more information, see [Developing Producers Using the Amazon Kinesis Producer Library](developing-producers-with-kpl.md)\.
 
 The Java example code in this chapter demonstrates how to perform basic Kinesis Data Streams API operations, and is divided up logically by operation type\. These examples do not represent production\-ready code, in that they do not check for all possible exceptions, or account for all possible security or performance considerations\. Also, you can call the [Kinesis Data Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) using other programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
 
-Each task has prerequisites; for example, you cannot add data to a stream until you have created a stream, which requires you to create a client \. For more information, see [Managing Kinesis Data Streams Using Java](working-with-streams.md)\.
+Each task has prerequisites; for example, you cannot add data to a stream until you have created a stream, which requires you to create a client \. For more information, see [Creating and Managing Streams](working-with-streams.md)\.
 
 ## Adding Data to a Stream<a name="kinesis-using-sdk-java-add-data-to-stream"></a>
 
@@ -64,7 +64,7 @@ The following code creates 100 data records with sequential partition keys and p
 
 The `PutRecords` response includes an array of response `Records`\. Each record in the response array directly correlates with a record in the request array using natural ordering, from the top to the bottom of the request and response\. The response `Records` array always includes the same number of records as the request array\.
 
-#### Handling failures when using PutRecords<a name="kinesis-using-sdk-java-putrecords-handling-failures"></a>
+#### Handling Failures When Using PutRecords<a name="kinesis-using-sdk-java-putrecords-handling-failures"></a>
 
 By default, failure of individual records within a request does not stop the processing of subsequent records in a `PutRecords` request\. This means that a response `Records` array includes both successfully and unsuccessfully processed records\. You must detect unsuccessfully processed records and include them in a subsequent call\. 
 

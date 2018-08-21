@@ -12,19 +12,19 @@ There is a nominal charge for the metrics uploaded to CloudWatch by the KCL; spe
 
 ## Metrics and Namespace<a name="metrics-namespace"></a>
 
-The namespace used to upload metrics will be the application name specified when you launch the KCL\.
+The namespace that is used to upload metrics is the application name that you specify when you launch the KCL\.
 
 ## Metric Levels and Dimensions<a name="metric-levels"></a>
 
 There are two options to control which metrics are uploaded to CloudWatch:
 
 metric levels  
-Every metric is assigned an individual level\. When you set a metrics reporting level, metrics with an individual level below the reporting level are not sent to CloudWatch\. The levels are: `NONE`, `SUMMARY`, and `DETAILED`\. The default setting is `DETAILED`; that is, all metrics are sent to CloudWatch\. A reporting level of `NONE` means no metrics are sent at all\. For information about which levels are assigned to what metrics, see [List of Metrics](#kcl-metrics-list)\.
+Every metric is assigned an individual level\. When you set a metrics reporting level, metrics with an individual level below the reporting level are not sent to CloudWatch\. The levels are: `NONE`, `SUMMARY`, and `DETAILED`\. The default setting is `DETAILED`; that is, all metrics are sent to CloudWatch\. A reporting level of `NONE` means that no metrics are sent at all\. For information about which levels are assigned to what metrics, see [List of Metrics](#kcl-metrics-list)\.
 
 enabled dimensions  
 Every KCL metric has associated dimensions that also get sent to CloudWatch\. `Operation` dimension is always uploaded and cannot be disabled\. By default, the `WorkerIdentifier` dimension is disabled, and only the `Operation` and `ShardId` dimensions are uploaded\.  
-For more information about CloudWatch metric dimensions, see the [Dimensions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Dimension) section in the CloudWatch Concepts topic, in the Amazon CloudWatch User Guide\.  
-Note that when the `WorkerIdentifier` dimension is enabled, if a different value is used for the worker ID property every time a particular KCL worker restarts, new sets of metrics with new `WorkerIdentifier` dimension values are sent to CloudWatch\. If you need the `WorkerIdentifier` dimension value to be the same across specific KCL worker restarts, you must explicitly specify the same worker ID value during initialization for each worker\. Note that the worker ID value for each active KCL worker must be unique across all KCL workers\.
+For more information about CloudWatch metric dimensions, see the [Dimensions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Dimension) section in the Amazon CloudWatch Concepts topic, in the *Amazon CloudWatch User Guide*\.  
+When the `WorkerIdentifier` dimension is enabled, if a different value is used for the worker ID property every time a particular KCL worker restarts, new sets of metrics with new `WorkerIdentifier` dimension values are sent to CloudWatch\. If you need the `WorkerIdentifier` dimension value to be the same across specific KCL worker restarts, you must explicitly specify the same worker ID value during initialization for each worker\. Note that the worker ID value for each active KCL worker must be unique across all KCL workers\.
 
 ## Metric Configuration<a name="metrics-config"></a>
 
@@ -66,7 +66,7 @@ The `InitializeTask` operation is responsible for initializing the record proces
 
 #### ShutdownTask<a name="shutdown-task"></a>
 
-The `ShutdownTask` operation initiates the shutdown sequence for shard processing\. This can occur because a shard is split or merged, or when the shard lease is lost from the worker\. In both cases, the record processor `shutdown()` function is invoked\. New shards are also discovered in the case where a shard was split or merged, resulting in creation of one or two new shards\.
+The `ShutdownTask` operation initiates the shutdown sequence for shard processing\. This can occur because a shard is split or merged, or when the shard lease is lost from the worker\. In both cases, the record processor `shutdown()` function is invoked\. New shards are also discovered in the case where a shard was split or merged, resulting in the creation of one or two new shards\.
 
 
 | Metric | Description | 
@@ -98,7 +98,7 @@ If the shard is split or merged with other shards, then new child shards are cre
 
 | Metric | Description | 
 | --- | --- | 
-| Success |  Number of successful checks for parent shard completion \. Metric level: Summary Units: Count  | 
+| Success |  Number of successful checks for parent shard completion\. Metric level: Summary Units: Count  | 
 | Time |  Time taken for parent shards completion\. Metric level: Summary Unit: Milliseconds  | 
 
 ### Per\-Worker Metrics<a name="kcl-metrics-per-worker"></a>
@@ -161,7 +161,7 @@ The `ProcessTask` operation calls [GetRecords](http://docs.aws.amazon.com/kinesi
 | DataBytesProcessed |  Total size of records processed in bytes on each `ProcessTask` invocation\. Metric level: Summary Units: Byte  | 
 | RecordsProcessed |  Number of records processed on each `ProcessTask` invocation\. Metric level: Summary Units: Count  | 
 | ExpiredIterator |  Number of ExpiredIteratorException received when calling `GetRecords`\. Metric level: Summary Units: Count  | 
-| MillisBehindLatest | Time that the current iterator is behind from the latest record \(tip\) in the shard\. This value is less than or equal to the difference in time between the latest record in a response and the current time\. This is a more accurate reflection of how far a shard is from the tip than comparing timestamps in the last response record\. Note that this value applies to the latest batch of records, not an average of all timestamps in each record\.Metric level: SummaryUnits: Milliseconds | 
+| MillisBehindLatest | Time that the current iterator is behind from the latest record \(tip\) in the shard\. This value is less than or equal to the difference in time between the latest record in a response and the current time\. This is a more accurate reflection of how far a shard is from the tip than comparing time stamps in the last response record\. This value applies to the latest batch of records, not an average of all time stamps in each record\.Metric level: SummaryUnits: Milliseconds | 
 | RecordProcessor\.processRecords\.Time |  Time taken by the record processor’s `processRecords` method\. Metric level: Summary Units: Milliseconds  | 
 | Success |  Number of successful process task operations\. Metric level: Summary Units: Count  | 
 | Time |  Time taken for the process task operation\. Metric level: Summary Units: Milliseconds  | 

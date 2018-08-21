@@ -6,3 +6,4 @@ This documentation helps you get started using Amazon Kinesis Data Streams\. If 
 + [Setting Up for Amazon Kinesis Data Streams](before-you-begin.md)
 + [Tutorial: Visualizing Web Traffic Using Amazon Kinesis Data Streams](kinesis-sample-application.md)
 + [Tutorial: Getting Started With Amazon Kinesis Data Streams Using AWS CLI](kinesis-tutorial-cli.md)
++ [Tutorial: Analyzing Real\-Time Stock Data Using Kinesis Data Streams](learning-kinesis-module-one.md)

@@ -1,6 +1,6 @@
-# Step 2: Create IAM Policy and User<a name="learning-kinesis-module-one-iam"></a>
+# Step 2: Create an IAM Policy and User<a name="learning-kinesis-module-one-iam"></a>
 
-Security best practices for AWS dictate the use of fine\-grained permissions to control access to different resources\. AWS Identity and Access Management allows you to manage users and user permissions in AWS\. An [IAM policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html) explicitly lists actions which are allowed and the resources on which the actions are applicable\.
+Security best practices for AWS dictate the use of fine\-grained permissions to control access to different resources\. AWS Identity and Access Management \(IAM\) allows you to manage users and user permissions in AWS\. An [IAM policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html) explicitly lists actions that are allowed and the resources on which the actions are applicable\.
 
 The following are the minimum permissions generally required for a Kinesis Data Streams producer and consumer\.
 
@@ -23,7 +23,7 @@ The following are the minimum permissions generally required for a Kinesis Data 
 | DeleteItem | Amazon DynamoDB table | For when the consumer performs split/merge operations on Kinesis Data Streams shards\. | 
 | PutMetricData | Amazon CloudWatch log | The KCL also uploads metrics to CloudWatch, which are useful for monitoring the application\. | 
 
-For this application, you create a single IAM policy that grants all of the above permissions\. In practice, you might want to consider creating two policies, one for producers and one for consumers\. The policies you set up here are re\-usable in subsequent learning modules in this series\.
+For this application, you create a single IAM policy that grants all of the preceding permissions\. In practice, you might want to consider creating two policies, one for producers and one for consumers\.
 
 **To create an IAM policy**
 
@@ -37,7 +37,7 @@ The Region code; for example, `us-west-2`\. For more information, see [Region an
 *account*  
 The AWS account ID, as shown in [Account Settings](https://console.aws.amazon.com/billing/home?#/account)\.  
 *name*  
-The name of the stream from [Step 1: Create a Stream](learning-kinesis-module-one-create-stream.md), which is `StockTradeStream`\.
+The name of the stream from [Step 1: Create a Data Stream](learning-kinesis-module-one-create-stream.md), which is `StockTradeStream`\.
 
 1. Determine the ARN for the DynamoDB table to be used by the consumer \(and created by the first consumer instance\)\. It must be in the following format:
 
@@ -55,7 +55,7 @@ The name of the stream from [Step 1: Create a Stream](learning-kinesis-module-on
 
 1. Select `DescribeStream`, `GetShardIterator`, `GetRecords`, `PutRecord`, and `PutRecords` as the allowed actions\.
 
-1. Type the ARN that you created in Step 1\.
+1. Enter the ARN that you created in Step 1\.
 
 1. Use **Add Statement** for each of the following:    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/streams/latest/dev/learning-kinesis-module-one-iam.html)
@@ -143,3 +143,7 @@ The resulting policy document should look something like the following:
 1. Choose `StockTradeStreamPolicy` and **Attach**\.
 
 1. Choose `StockTradeStreamUser` and **Attach Policy**\.
+
+## Next Steps<a name="learning-kinesis-module-one-iam-next"></a>
+
+[Step 3: Download and Build the Implementation Code](learning-kinesis-module-one-download.md)

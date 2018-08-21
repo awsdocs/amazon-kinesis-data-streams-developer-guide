@@ -10,7 +10,7 @@ AWS Identity and Access Management \(IAM\) enables you to do the following:
 
 By using IAM with Kinesis Data Streams, you can control whether users in your organization can perform a task using specific Kinesis Data Streams API actions and whether they can use specific AWS resources\.
 
-If you are developing an application using the Kinesis Client Library \(KCL\), your policy must include permissions for Amazon DynamoDB and Amazon CloudWatch; the KCL uses DynamoDB to track state information for the application, and CloudWatch to send KCL metrics to CloudWatch on your behalf\. For more information about the KCL, see [Developing Amazon Kinesis Data Streams Consumers Using the Kinesis Client Library](developing-consumers-with-kcl.md)\.
+If you are developing an application using the Kinesis Client Library \(KCL\), your policy must include permissions for Amazon DynamoDB and Amazon CloudWatch; the KCL uses DynamoDB to track state information for the application, and CloudWatch to send KCL metrics to CloudWatch on your behalf\. For more information about the KCL, see [Developing Consumers Using the Kinesis Client Library 1\.x](developing-consumers-with-kcl.md)\.
 
 For more information about IAM, see the following:
 + [AWS Identity and Access Management \(IAM\)](https://aws.amazon.com/iam/)

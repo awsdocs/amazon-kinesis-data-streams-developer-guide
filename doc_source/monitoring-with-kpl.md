@@ -14,7 +14,7 @@ There is a nominal charge for the metrics uploaded to CloudWatch by the KPL; spe
 
 You can specify an application name when launching the KPL, which is then used as part of the namespace when uploading metrics\. This is optional; the KPL provides a default value if an application name is not set\.
 
-You can also configure the KPL to add arbitrary additional dimensions to the metrics\. This is useful if you want finer\-grained data in your CloudWatch metrics\. For example, you can add the host name as a dimension, which will then allow you to identify uneven load distributions across your fleet\. All KPL configuration settings are immutable, so these additional dimensions cannot be changed after the KPL instance is initialized\.
+You can also configure the KPL to add arbitrary additional dimensions to the metrics\. This is useful if you want finer\-grained data in your CloudWatch metrics\. For example, you can add the hostname as a dimension, which then allows you to identify uneven load distributions across your fleet\. All KPL configuration settings are immutable, so you can't change these additional dimensions after the KPL instance is initialized\.
 
 ## Metric Level and Granularity<a name="kpl-metrics-granularity"></a>
 
@@ -25,7 +25,7 @@ This is a rough gauge of how important a metric is\. Every metric is assigned a 
 
 *granularity*  
 This controls whether the same metric is emitted at additional levels of granularity\. The levels are `GLOBAL`, `STREAM`, and `SHARD`\. The default setting is `SHARD`, which contains the most granular metrics\.  
-When `SHARD` is chosen, metrics are emitted with the stream name and shard ID as dimensions\. In addition, the same metric is also emitted with only the stream name dimension, and the metric without the stream name\. This means that, for a particular metric, two streams with two shards each will produce seven CloudWatch metrics: one for each shard, one for each stream, and one overall; all describing the same statistics but at different levels of granularity\. For an illustration, see the diagram below\.  
+When `SHARD` is chosen, metrics are emitted with the stream name and shard ID as dimensions\. In addition, the same metric is also emitted with only the stream name dimension, and the metric without the stream name\. This means that, for a particular metric, two streams with two shards each will produce seven CloudWatch metrics: one for each shard, one for each stream, and one overall; all describing the same statistics but at different levels of granularity\. For an illustration, see the following diagram\.  
 The different granularity levels form a hierarchy, and all the metrics in the system form trees, rooted at the metric names:  
 
 ```
@@ -39,8 +39,8 @@ StreamName (STREAM):    Stream A        Stream B      Stream A   Stream B
                         |      |        |       |
 ShardID (SHARD):     Shard 0 Shard 1  Shard 0 Shard 1
 ```
-Not all metrics are available at the shard level; some are stream level or global by nature\. These will not be produced at shard level even if you have enabled shard\-level metrics \(`Metric Y` in the diagram above\)\.  
-When you specify an additional dimension, you need to provide values for `tuple:<DimensionName, DimensionValue, Granularity>`\. The granularity is used to determine where the custom dimension is inserted in the hierarchy: `GLOBAL` means the additional dimension is inserted after the metric name, `STREAM` means it's inserted after the stream name, and `SHARD` means it's inserted after the shard ID\. If multiple additional dimensions are given per granularity level, they are inserted in the order given\.
+Not all metrics are available at the shard level; some are stream level or global by nature\. These are not produced at the shard level, even if you have enabled shard\-level metrics \(`Metric Y` in the preceding diagram\)\.  
+When you specify an additional dimension, you need to provide values for `tuple:<DimensionName, DimensionValue, Granularity>`\. The granularity is used to determine where the custom dimension is inserted in the hierarchy: `GLOBAL` means that the additional dimension is inserted after the metric name, `STREAM` means it's inserted after the stream name, and `SHARD` means it's inserted after the shard ID\. If multiple additional dimensions are given per granularity level, they are inserted in the order given\.
 
 ## Local Access and Amazon CloudWatch Upload<a name="kpl-metrics-local-upload"></a>
 

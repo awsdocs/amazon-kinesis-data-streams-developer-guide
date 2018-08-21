@@ -1,4 +1,4 @@
-# Developing Amazon Kinesis Data Streams Producers Using the Kinesis Producer Library<a name="developing-producers-with-kpl"></a>
+# Developing Producers Using the Amazon Kinesis Producer Library<a name="developing-producers-with-kpl"></a>
 
 An Amazon Kinesis Data Streams producer is any application that puts user data records into a Kinesis data stream \(also called *data ingestion*\)\. The Kinesis Producer Library \(KPL\) simplifies producer application development, allowing developers to achieve high write throughput to a Kinesis data stream\. 
 
@@ -49,4 +49,4 @@ Because the KPL may buffer records before sending them to Kinesis Data Streams, 
 
 ## When Not to Use the KPL<a name="developing-producers-with-kpl-when"></a>
 
-The KPL can incur an additional processing delay of up to `RecordMaxBufferedTime` within the library \(user\-configurable\)\. Larger values of `RecordMaxBufferedTime` results in higher packing efficiencies and better performance\. Applications that cannot tolerate this additional delay may need to use the AWS SDK directly\. For more information about using the AWS SDK with Kinesis Data Streams, see [Developing Amazon Kinesis Data Streams Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md)\. For more information about `RecordMaxBufferedTime` and other user\-configurable properties of the KPL, see [Configuring the Kinesis Producer Library](kinesis-kpl-config.md)\.
+The KPL can incur an additional processing delay of up to `RecordMaxBufferedTime` within the library \(user\-configurable\)\. Larger values of `RecordMaxBufferedTime` results in higher packing efficiencies and better performance\. Applications that cannot tolerate this additional delay may need to use the AWS SDK directly\. For more information about using the AWS SDK with Kinesis Data Streams, see [Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md)\. For more information about `RecordMaxBufferedTime` and other user\-configurable properties of the KPL, see [Configuring the Kinesis Producer Library](kinesis-kpl-config.md)\.

@@ -1,11 +1,11 @@
 # Step 4: Implement the Producer<a name="learning-kinesis-module-one-producer"></a>
 
-This application uses the real\-world scenario of stock market trade monitoring\. The following principles briefly explain how this scenario maps to the producer and supporting code structure\.
+The application in the [Tutorial: Analyzing Real\-Time Stock Data Using Kinesis Data Streams[Tutorial: Analyzing Real\-Time Stock Data Using Kinesis Data Streams](learning-kinesis-module-one.md)](learning-kinesis-module-one.md) uses the real\-world scenario of stock market trade monitoring\. The following principles briefly explain how this scenario maps to the producer and supporting code structure\.
 
 Refer to the source code and review the following information\.
 
 **StockTrade class**  
-An individual stock trade is represented by an instance of the `StockTrade` class, which contains attributes such as the ticker symbol, price, number of shares, the type of the trade \(buy or sell\), and an ID uniquely identifying the trade\. This class is implemented for you\.
+An individual stock trade is represented by an instance of the `StockTrade` class\. This instance contains attributes such as the ticker symbol, price, number of shares, the type of the trade \(buy or sell\), and an ID uniquely identifying the trade\. This class is implemented for you\.
 
 **Stream record**  
 A stream is a sequence of records\. A record is a serialization of a `StockTrade` instance in JSON format\. For example:   
@@ -115,7 +115,7 @@ Refer to the following code breakdown:
   ```
   LOG.info("Putting trade: " + trade.toString());
   ```
-The producer shown here uses the Kinesis Data Streams API single record functionality, `PutRecord`\. In practice, if an individual producer is generating a lot of records, it is often more efficient to use the multiple records functionality of `PutRecords` and send batches of records at a time\. For more information, see [Adding Data to a Stream](developing-producers-with-sdk.md#kinesis-using-sdk-java-add-data-to-stream)\.
+The producer shown here uses the Kinesis Data Streams API single record functionality, `PutRecord`\. In practice, if an individual producer generates many records, it is often more efficient to use the multiple records functionality of `PutRecords` and send batches of records at a time\. For more information, see [Adding Data to a Stream](developing-producers-with-sdk.md#kinesis-using-sdk-java-add-data-to-stream)\.
 
 **To run the producer**
 
@@ -144,3 +144,7 @@ INFO: Putting trade: ID 10: BUY 322 shares of WMT for $90.08
 ```
 
 Your stock trade stream is now being ingested by Kinesis Data Streams\.
+
+## Next Steps<a name="learning-kinesis-module-one-producer-next"></a>
+
+[Step 5: Implement the Consumer](learning-kinesis-module-one-consumer.md)
