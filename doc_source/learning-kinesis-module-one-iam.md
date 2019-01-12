@@ -81,10 +81,24 @@ The resulting policy document should look something like the following:
         "kinesis:PutRecord",
         "kinesis:PutRecords",
         "kinesis:GetShardIterator",
-        "kinesis:GetRecords"
+        "kinesis:GetRecords",
+        "kinesis:ListShards",
+        "kinesis:DescribeStreamSummary",
+        "kinesis:RegisterStreamConsumer"
       ],
       "Resource": [
         "arn:aws:kinesis:us-west-2:123:stream/StockTradeStream"
+      ]
+    },
+    {
+      "Sid": "Stmt234",
+      "Effect": "Allow",
+      "Action": [
+        "kinesis:SubscribeToShard",
+        "kinesis:DescribeStreamConsumer"
+      ],
+      "Resource": [
+        "arn:aws:kinesis:us-west-2:123:stream/StockTradeStream/*"
       ]
     },
     {
