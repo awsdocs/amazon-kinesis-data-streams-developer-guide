@@ -23,7 +23,7 @@ Processing a large amount of data in near\-real time doesn’t require writing a
 Here are some potential enhancements for this application\.
 
 **Aggregate across all shards**  
-Currently, you get stats resulting from aggregation of the data records received by a single worker from a single shard\. \(A shard cannot be processed by more than one worker in a single application at the same time\.\) Of course, when you scale and have more than one shard, you might want to aggregate across all shards\. TYou can do this by having a pipeline architecture where the output of each worker is fed into another stream with a single shard, which is processed by a worker that aggregates the outputs of the first stage\. Because the data from the first stage is limited \(one sample per minute per shard\), it would easily be handled by one shard\.
+Currently, you get stats resulting from aggregation of the data records received by a single worker from a single shard\. \(A shard cannot be processed by more than one worker in a single application at the same time\.\) Of course, when you scale and have more than one shard, you might want to aggregate across all shards\. You can do this by having a pipeline architecture where the output of each worker is fed into another stream with a single shard, which is processed by a worker that aggregates the outputs of the first stage\. Because the data from the first stage is limited \(one sample per minute per shard\), it would easily be handled by one shard\.
 
 **Scale processing**  
 When the stream scales up to have many shards \(because many producers are sending data\), the way to scale the processing is to add more workers\. You can run the workers in Amazon EC2 instances and use Auto Scaling groups\.
