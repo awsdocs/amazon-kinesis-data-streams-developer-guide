@@ -28,7 +28,8 @@ The simplest possible consumer using the KCL for Node\.js must implement a `reco
 
 ```
 function recordProcessor() {
-  // return an object that implements initialize, processRecords and shutdown functions.}
+  // return an object that implements initialize, processRecords and shutdown functions.
+}
 ```
 
 **initialize**  
@@ -42,7 +43,7 @@ initialize: function(initializeInput, completeCallback)
  The KCL calls this function with input that contains a list of data records from the shard specified to the `initialize` function\. The record processor that you implement processes the data in these records according to the semantics of your consumer\. For example, the worker might perform a transformation on the data and then store the result in an Amazon Simple Storage Service \(Amazon S3\) bucket\. 
 
 ```
-processRecords : function (processRecordsInput, completeCallback)
+processRecords: function(processRecordsInput, completeCallback)
 ```
 
 In addition to the data itself, the record also contains a sequence number and partition key, which the worker can use when processing the data\. For example, the worker could choose the S3 bucket in which to store the data based on the value of the partition key\. The `record` dictionary exposes the following key\-value pairs to access the record's data, sequence number, and partition key:
@@ -95,8 +96,7 @@ You must make your AWS credentials available to one of the credential providers 
 The following example configures KCL to process a Kinesis data stream named `kclnodejssample` using the record processor supplied in `sample_kcl_app.js`:
 
 ```
-# The Node.js executable
-script
+# The Node.js executable script
 executableName = node sample_kcl_app.js
 # The name of an Amazon Kinesis stream to process
 streamName = kclnodejssample
@@ -105,5 +105,5 @@ applicationName = kclnodejssample
 # Use default AWS credentials provider chain
 AWSCredentialsProvider = DefaultAWSCredentialsProviderChain
 # Read from the beginning of the stream
-initialPositionInStream =  TRIM_HORIZON
+initialPositionInStream = TRIM_HORIZON
 ```
