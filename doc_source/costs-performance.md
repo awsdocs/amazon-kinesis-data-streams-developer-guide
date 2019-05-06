@@ -25,7 +25,7 @@ Server\-side encryption of Kinesis streams is available in the following regions
 | US East \(N\. Virginia\) | us\-east\-1 | 
 | US West \(Oregon\) | us\-west\-2 | 
 | US West \(N\. California\) | us\-west\-1 | 
-| AWS GovCloud \(US\) | us\-gov\-west\-1 | 
+| AWS GovCloud \(US\-West\) | us\-gov\-west\-1 | 
 | Canada \(Central\) | ca\-central\-1 | 
 | EU \(Ireland\) | eu\-west\-1 | 
 | EU \(London\) | eu\-west\-2 | 

@@ -20,7 +20,7 @@ A *data record* is the unit of data stored in a [Kinesis data stream](#stream)\.
 
 ### Retention Period<a name="retention"></a>
 
-The *retention period* is the length of time that data records are accessible after they are added to the stream\. A stream’s retention period is set to a default of 24 hours after creation\. You can increase the retention period up to 168 hours \(7 days\) using the [IncreaseStreamRetentionPeriod](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_IncreaseStreamRetentionPeriod.html) operation, and decrease the retention period down to a minimum of 24 hours using the [DecreaseStreamRetentionPeriod](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DecreaseStreamRetentionPeriod.html) operation\. Additional charges apply for streams with a retention period set to more than 24 hours\. For more information, see [Amazon Kinesis Data Streams Pricing](https://aws.amazon.com/kinesis/pricing/)\.
+The *retention period* is the length of time that data records are accessible after they are added to the stream\. A stream’s retention period is set to a default of 24 hours after creation\. You can increase the retention period up to 168 hours \(7 days\) using the [IncreaseStreamRetentionPeriod](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_IncreaseStreamRetentionPeriod.html) operation, and decrease the retention period down to a minimum of 24 hours using the [DecreaseStreamRetentionPeriod](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DecreaseStreamRetentionPeriod.html) operation\. Additional charges apply for streams with a retention period set to more than 24 hours\. For more information, see [Amazon Kinesis Data Streams Pricing](https://aws.amazon.com/kinesis/pricing/)\.
 
 ### Producer<a name="producers"></a>
 
@@ -67,7 +67,7 @@ The name of an Amazon Kinesis Data Streams application identifies the applicatio
 
 ### Server\-Side Encryption<a name="server-side-encryption-concept"></a>
 
-Amazon Kinesis Data Streams can automatically encrypt sensitive data as a producer enters it into a stream\. Kinesis Data Streams uses [AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/) master keys for encryption\. For more information, see [Using Server\-Side Encryption](server-side-encryption.md)\.
+Amazon Kinesis Data Streams can automatically encrypt sensitive data as a producer enters it into a stream\. Kinesis Data Streams uses [AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/) master keys for encryption\. For more information, see [Using Server\-Side Encryption](server-side-encryption.md)\.
 
 **Note**  
 To read from or write to an encrypted stream, producer and consumer applications must have permission to access the master key\. For information about granting permissions to producer and consumer applications, see [Permissions to Use User\-Generated KMS Master Keys](permissions-user-key-KMS.md)\.

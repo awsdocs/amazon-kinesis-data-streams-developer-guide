@@ -1,0 +1,3 @@
+# Developing Consumers Using Amazon Kinesis Data Analytics<a name="kda-consumer"></a>
+
+You can use an Amazon Kinesis Data Analytics application to process and analyze data in an Kinesis stream using SQL or Java\. Kinesis Data Analytics applications can enrich data using reference sources, aggregate data over time, or use machine learning to find data anomalies\. Then you can write the analysis results to another Kinesis stream, a Kinesis Data Firehose delivery stream, or a Lambda function\. For more information, see the [Kinesis Data Analytics Developer Guide for SQL Applications](/kinesisanalytics/latest/dev/what-is.html) or the [Kinesis Data Analytics Developer Guide for Java Applications](/kinesisanalytics/latest/java/what-is.html)\.

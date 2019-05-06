@@ -1,4 +1,4 @@
-# What Is Server\-Side Encryption for Kinesis Streams?<a name="what-is-sse"></a>
+# What Is Server\-Side Encryption for Kinesis Data Streams?<a name="what-is-sse"></a>
 
 Server\-side encryption is a feature in Amazon Kinesis Data Streams that automatically encrypts data before it's at rest by using an AWS KMS customer master key \(CMK\) you specify\. Data is encrypted before it's written to the Kinesis stream storage layer, and decrypted after it’s retrieved from storage\. As a result, your data is encrypted at rest within the Kinesis Data Streams service\. This allows you to meet strict regulatory requirements and enhance the security of your data\.
 

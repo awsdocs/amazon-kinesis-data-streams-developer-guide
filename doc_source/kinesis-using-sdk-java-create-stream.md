@@ -16,7 +16,7 @@ clientBuilder.setClientConfiguration(config);
 AmazonKinesis client = clientBuilder.build();
 ```
 
-For more information, see [Kinesis Data Streams Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#ak_region) in the *AWS General Reference*\.
+For more information, see [Kinesis Data Streams Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ak_region) in the *AWS General Reference*\.
 
 ## Create the Stream<a name="kinesis-using-sdk-java-create-the-stream"></a>
 

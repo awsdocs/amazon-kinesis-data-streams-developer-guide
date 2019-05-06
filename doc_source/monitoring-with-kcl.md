@@ -1,6 +1,6 @@
 # Monitoring the Kinesis Client Library with Amazon CloudWatch<a name="monitoring-with-kcl"></a>
 
-The [Kinesis Client Library](http://docs.aws.amazon.com/kinesis/latest/dev/developing-consumers-with-kcl.html) \(KCL\) for Amazon Kinesis Data Streams publishes custom Amazon CloudWatch metrics on your behalf, using the name of your KCL application as the namespace\. You can view these metrics by navigating to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/) and choosing **Custom Metrics**\. For more information about custom metrics, see [Publish Custom Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html) in the *Amazon CloudWatch User Guide*\.
+The [Kinesis Client Library](https://docs.aws.amazon.com/kinesis/latest/dev/developing-consumers-with-kcl.html) \(KCL\) for Amazon Kinesis Data Streams publishes custom Amazon CloudWatch metrics on your behalf, using the name of your KCL application as the namespace\. You can view these metrics by navigating to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/) and choosing **Custom Metrics**\. For more information about custom metrics, see [Publish Custom Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html) in the *Amazon CloudWatch User Guide*\.
 
 There is a nominal charge for the metrics uploaded to CloudWatch by the KCL; specifically, *Amazon CloudWatch Custom Metrics* and *Amazon CloudWatch API Requests* charges apply\. For more information, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/)\.
 
@@ -23,7 +23,7 @@ Every metric is assigned an individual level\. When you set a metrics reporting 
 
 enabled dimensions  
 Every KCL metric has associated dimensions that also get sent to CloudWatch\. `Operation` dimension is always uploaded and cannot be disabled\. By default, the `WorkerIdentifier` dimension is disabled, and only the `Operation` and `ShardId` dimensions are uploaded\.  
-For more information about CloudWatch metric dimensions, see the [Dimensions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Dimension) section in the Amazon CloudWatch Concepts topic, in the *Amazon CloudWatch User Guide*\.  
+For more information about CloudWatch metric dimensions, see the [Dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Dimension) section in the Amazon CloudWatch Concepts topic, in the *Amazon CloudWatch User Guide*\.  
 When the `WorkerIdentifier` dimension is enabled, if a different value is used for the worker ID property every time a particular KCL worker restarts, new sets of metrics with new `WorkerIdentifier` dimension values are sent to CloudWatch\. If you need the `WorkerIdentifier` dimension value to be the same across specific KCL worker restarts, you must explicitly specify the same worker ID value during initialization for each worker\. Note that the worker ID value for each active KCL worker must be unique across all KCL workers\.
 
 ## Metric Configuration<a name="metrics-config"></a>
@@ -149,7 +149,7 @@ These metrics are aggregated across a single record processor\.
 
 #### ProcessTask<a name="process-task"></a>
 
-The `ProcessTask` operation calls [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) with the current iterator position to retrieve records from the stream and invokes the record processor `processRecords` function\.
+The `ProcessTask` operation calls [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) with the current iterator position to retrieve records from the stream and invokes the record processor `processRecords` function\.
 
 
 | Metric | Description | 

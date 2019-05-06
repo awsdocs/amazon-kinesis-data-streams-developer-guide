@@ -23,11 +23,11 @@ You can install the agent on Linux\-based server environments such as web server
   + Specify AWS credentials when you configure the agent \(see [awsAccessKeyId](#awsAccessKeyId) and [awsSecretAccessKey](#awsSecretAccessKey)\)\.
   + Edit `/etc/sysconfig/aws-kinesis-agent` to specify your region and AWS access keys\.
   + If your EC2 instance is in a different AWS account, create an IAM role to provide access to the Kinesis Data Streams service, and specify that role when you configure the agent \(see [assumeRoleARN](#assumeRoleARN) and [assumeRoleExternalId](#assumeRoleExternalId)\)\. Use one of the previous methods to specify the AWS credentials of a user in the other account who has permission to assume this role\.
-+ The IAM role or AWS credentials that you specify must have permission to perform the Kinesis Data Streams [PutRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html) operation for the agent to send data to your stream\. If you enable CloudWatch monitoring for the agent, permission to perform the CloudWatch [PutMetricData](http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricData.html) operation is also needed\. For more information, see [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](controlling-access.md), [Monitoring Kinesis Data Streams Agent Health with Amazon CloudWatch](agent-health.md), and [CloudWatch Access Control](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/UsingIAM.html)\.
++ The IAM role or AWS credentials that you specify must have permission to perform the Kinesis Data Streams [PutRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html) operation for the agent to send data to your stream\. If you enable CloudWatch monitoring for the agent, permission to perform the CloudWatch [PutMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricData.html) operation is also needed\. For more information, see [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](controlling-access.md), [Monitoring Kinesis Data Streams Agent Health with Amazon CloudWatch](agent-health.md), and [CloudWatch Access Control](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/UsingIAM.html)\.
 
 ## Download and Install the Agent<a name="download-install"></a>
 
-First, connect to your instance\. For more information, see [Connect to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-connect-to-instance-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\. If you have trouble connecting, see [Troubleshooting Connecting to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+First, connect to your instance\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-connect-to-instance-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\. If you have trouble connecting, see [Troubleshooting Connecting to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To set up the agent using the Amazon Linux AMI**  
 Use the following command to download and install the agent:
@@ -108,8 +108,8 @@ The following are the general configuration settings\.
 
 | Configuration Setting | Description | 
 | --- | --- | 
-| <a name="assumeRoleARN"></a>assumeRoleARN |  The ARN of the role to be assumed by the user\. For more information, see [Delegate Access Across AWS Accounts Using IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html) in the *IAM User Guide*\.  | 
-| <a name="assumeRoleExternalId"></a>assumeRoleExternalId |  An optional identifier that determines who can assume the role\. For more information, see [How to Use an External ID](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in the *IAM User Guide*\.  | 
+| <a name="assumeRoleARN"></a>assumeRoleARN |  The ARN of the role to be assumed by the user\. For more information, see [Delegate Access Across AWS Accounts Using IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html) in the *IAM User Guide*\.  | 
+| <a name="assumeRoleExternalId"></a>assumeRoleExternalId |  An optional identifier that determines who can assume the role\. For more information, see [How to Use an External ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in the *IAM User Guide*\.  | 
 | <a name="awsAccessKeyId"></a>awsAccessKeyId |  AWS access key ID that overrides the default credentials\. This setting takes precedence over all other credential providers\.  | 
 | <a name="awsSecretAccessKey"></a>awsSecretAccessKey |  AWS secret key that overrides the default credentials\. This setting takes precedence over all other credential providers\.  | 
 | cloudwatch\.emitMetrics |  Enables the agent to emit metrics to CloudWatch if set \(true\)\. Default: true  | 
@@ -156,7 +156,7 @@ By specifying multiple flow configuration settings, you can configure the agent 
 }
 ```
 
-For more detailed information about using the agent with Kinesis Data Firehose, see [Writing to Amazon Kinesis Data Firehose with Kinesis Agent](http://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)\.
+For more detailed information about using the agent with Kinesis Data Firehose, see [Writing to Amazon Kinesis Data Firehose with Kinesis Agent](https://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)\.
 
 ## Use the Agent to Pre\-process Data<a name="pre-processing"></a>
 

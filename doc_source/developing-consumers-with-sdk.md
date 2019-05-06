@@ -2,9 +2,9 @@
 
 You can develop consumers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started Using Amazon Kinesis Data Streams](getting-started.md)\.
 
-These examples discuss the [Kinesis Data Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer using the Kinesis Client Library \(KCL\) \. For more information, see [Developing Consumers Using the Kinesis Client Library 1\.x](developing-consumers-with-kcl.md)\.
+These examples discuss the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer using the Kinesis Client Library \(KCL\) \. For more information, see [Developing Consumers Using the Kinesis Client Library 1\.x](developing-consumers-with-kcl.md)\.
 
-The Java example code in this section demonstrates how to perform basic Kinesis Data Streams API operations, and is divided up logically by operation type\. These examples don't represent production\-ready code\. They don't check for all possible exceptions or account for all possible security or performance considerations\. Also, you can call the [Kinesis Data Streams API](http://docs.aws.amazon.com/kinesis/latest/APIReference/) using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
+The Java example code in this section demonstrates how to perform basic Kinesis Data Streams API operations, and is divided up logically by operation type\. These examples don't represent production\-ready code\. They don't check for all possible exceptions or account for all possible security or performance considerations\. Also, you can call the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
 
 Each task has prerequisites\. For example, you cannot add data to a stream until you have created a stream, which requires you to create a client\. For more information, see [Creating and Managing Streams](working-with-streams.md)\.
 
@@ -51,7 +51,7 @@ This sample code specifies `TRIM_HORIZON` as the iterator type when obtaining th
 + `TRIM_HORIZON`
 + `LATEST`
 
-For more information, see [ShardIteratorType](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)\.
+For more information, see [ShardIteratorType](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)\.
 
 Some iterator types require that you specify a sequence number in addition to the type; for example:
 

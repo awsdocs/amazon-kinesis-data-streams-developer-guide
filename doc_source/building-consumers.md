@@ -12,11 +12,14 @@ The following table compares default throughput to enhanced fan\-out\. Message p
 | Shard Read Throughput | Fixed at a total of 2 MiB/sec per shard\. If there are multiple consumers reading from the same shard, they all share this throughput\. The sum of the throughputs they receive from the shard doesn't exceed 2 MiB/sec\. | Scales as consumers register to use enhanced fan\-out\. Each consumer registered to use enhanced fan\-out receives its own read throughput per shard, up to 2 MiB/sec, independently of other consumers\. | 
 | Message propagation delay | An average of around 200 ms if you have one consumer reading from the stream\. This average goes up to around 1000 ms if you have five consumers\. | Typically an average of 70 ms whether you have one consumer or five consumers\. | 
 | Cost | N/A | There is a data retrieval cost and a consumer\-shard hour cost\. For more information, see [Amazon Kinesis Data Streams Pricing](https://aws.amazon.com/kinesis/streams/pricing)\. | 
-| Record delivery model | Pull model over HTTP using [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. | Kinesis Data Streams pushes the records to you over HTTP/2 using [SubscribeToShard](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html)\. | 
+| Record delivery model | Pull model over HTTP using [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. | Kinesis Data Streams pushes the records to you over HTTP/2 using [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html)\. | 
 
 **Topics**
 + [Developing Amazon Kinesis Data Streams Consumers](shared-fan-out-consumers.md)
 + [Using Consumers with Enhanced Fan\-Out](introduction-to-enhanced-consumers.md)
 + [Migrating from Kinesis Client Library 1\.x to 2\.x](kcl-migration.md)
++ [Developing Consumers Using Amazon Kinesis Data Analytics](kda-consumer.md)
++ [Developing Consumers Using Amazon Kinesis Data Firehose](kdf-consumer.md)
++ [Developing Consumers Using AWS Lambda](lambda-consumer.md)
 + [Troubleshooting Amazon Kinesis Data Streams Consumers](troubleshooting-consumers.md)
 + [Advanced Topics for Amazon Kinesis Data Streams Consumers](advanced-consumers.md)

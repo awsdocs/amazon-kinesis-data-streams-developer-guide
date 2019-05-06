@@ -51,7 +51,7 @@ Initially, you should see a stack named **KinesisDataVisSample** with the status
 
 A [stream](amazon-kinesis-streams.md) has the ability to ingest data in real\-time from a large number of producers, durably store the data, and provide the data to multiple consumers\. A stream represents an ordered sequence of data records\. When you create a stream, you must specify a stream name and a shard count\. A stream consists of one or more shards; each shard is a group of data records\.
 
-AWS CloudFormation automatically creates the stream for the sample application\. [This section](https://github.com/awslabs/amazon-kinesis-data-visualization-sample/blob/master/src/main/static-content/cloudformation/kinesis-data-vis-sample-app.template#L74-80) of the AWS CloudFormation template shows the parameters used in the [CreateStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html) operation\.<a name="kinesis-gs-viewing-results-stack"></a>
+AWS CloudFormation automatically creates the stream for the sample application\. [This section](https://github.com/awslabs/amazon-kinesis-data-visualization-sample/blob/master/src/main/static-content/cloudformation/kinesis-data-vis-sample-app.template#L74-80) of the AWS CloudFormation template shows the parameters used in the [CreateStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html) operation\.<a name="kinesis-gs-viewing-results-stack"></a>
 
 **To view the stack details**
 
@@ -75,7 +75,7 @@ AWS CloudFormation automatically creates the stream for the sample application\.
 
 ### Data Producer<a name="kinesis-gs-view-data-producer"></a>
 
-A [data producer](amazon-kinesis-producers.md) submits data records to the Kinesis data stream\. To put data into the stream, producers call the [PutRecord](http://docs.aws.amazon.com/kinesis/latest/APIReference//API_PutRecord.html) operation on a stream\. 
+A [data producer](amazon-kinesis-producers.md) submits data records to the Kinesis data stream\. To put data into the stream, producers call the [PutRecord](https://docs.aws.amazon.com/kinesis/latest/APIReference//API_PutRecord.html) operation on a stream\. 
 
 Each `PutRecord` call requires the stream name, partition key, and the data record that the producer is adding to the stream\. The stream name determines the stream in which the record will reside\. The partition key is used to determine the shard in the stream that the data record will be added to\.
 
@@ -97,7 +97,7 @@ A data producer can be anything that puts data to Kinesis Data Streams, such as 
 
 ### Data Consumer<a name="kinesis-gs-view-data-consumer"></a>
 
-[Data consumers](amazon-kinesis-consumers.md) retrieve and process data records from shards in a Kinesis data stream\. Each consumer reads data from a particular shard\. Consumers retrieve data from a shard using the [GetShardIterator](http://docs.aws.amazon.com/kinesis/latest/APIReference//API_GetShardIterator.html) and [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference//API_GetRecords.html) operations\.
+[Data consumers](amazon-kinesis-consumers.md) retrieve and process data records from shards in a Kinesis data stream\. Each consumer reads data from a particular shard\. Consumers retrieve data from a shard using the [GetShardIterator](https://docs.aws.amazon.com/kinesis/latest/APIReference//API_GetShardIterator.html) and [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference//API_GetRecords.html) operations\.
 
 A shard iterator represents the position of the stream and shard from which the consumer will read\. A consumer gets a shard iterator when it starts reading from a stream or changes the position from which it reads records from a stream\. To get a shard iterator, you must provide a stream name, shard ID, and shard iterator type\. The shard iterator type allows the consumer to specify where in the stream it would like to start reading from, such as from the start of the stream where the data is arriving in real\-time\. The stream returns the records in a batch, whose size you can control using the optional limit parameter\.
 

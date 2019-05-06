@@ -26,7 +26,7 @@ You can use tags to categorize your streams\. For example, you can categorize st
 
 ## Tracking Costs Using Tagging<a name="tagging-billing"></a>
 
-You can use tags to categorize and track your AWS costs\. When you apply tags to your AWS resources, including streams, your AWS cost allocation report includes usage and costs aggregated by tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information, see [Use Cost Allocation Tags for Custom Billing Reports](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*\.
+You can use tags to categorize and track your AWS costs\. When you apply tags to your AWS resources, including streams, your AWS cost allocation report includes usage and costs aggregated by tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information, see [Use Cost Allocation Tags for Custom Billing Reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*\.
 
 ## Tag Restrictions<a name="tagging-restrictions"></a>
 
@@ -87,24 +87,24 @@ You can add, list, and remove tags using the Kinesis Data Streams console\.
 
 You can add, list, and remove tags using the AWS CLI\. For examples, see the following documentation\.
 
- [add\-tags\-to\-stream](http://docs.aws.amazon.com/cli/latest/reference/kinesis/add-tags-to-stream.html)   
+ [add\-tags\-to\-stream](https://docs.aws.amazon.com/cli/latest/reference/kinesis/add-tags-to-stream.html)   
 Adds or updates tags for the specified stream\.
 
- [list\-tags\-for\-stream](http://docs.aws.amazon.com/cli/latest/reference/kinesis/list-tags-for-stream.html)  
+ [list\-tags\-for\-stream](https://docs.aws.amazon.com/cli/latest/reference/kinesis/list-tags-for-stream.html)  
 Lists the tags for the specified stream\.
 
- [remove\-tags\-from\-stream](http://docs.aws.amazon.com/cli/latest/reference/kinesis/remove-tags-from-stream.html)  
+ [remove\-tags\-from\-stream](https://docs.aws.amazon.com/cli/latest/reference/kinesis/remove-tags-from-stream.html)  
 Removes tags from the specified stream\.
 
 ## Tagging Streams Using the Kinesis Data Streams API<a name="tagging-api"></a>
 
 You can add, list, and remove tags using the Kinesis Data Streams API\. For examples, see the following documentation:
 
- [AddTagsToStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_AddTagsToStream.html)   
+ [AddTagsToStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_AddTagsToStream.html)   
 Adds or updates tags for the specified stream\.
 
- [ListTagsForStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListTagsForStream.html)  
+ [ListTagsForStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListTagsForStream.html)  
 Lists the tags for the specified stream\.
 
- [RemoveTagsFromStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_RemoveTagsFromStream.html)  
+ [RemoveTagsFromStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_RemoveTagsFromStream.html)  
 Removes tags from the specified stream\.

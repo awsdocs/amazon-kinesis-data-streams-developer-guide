@@ -2,7 +2,7 @@
 
 For each Amazon Kinesis Data Streams application, the KCL uses a unique Amazon DynamoDB table to keep track of the application's state\. Because the KCL uses the name of the Amazon Kinesis Data Streams application to create the name of the table, each application name must be unique\.
 
-You can view the table using the [Amazon DynamoDB console](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ConsoleDynamoDB.html) while the application is running\.
+You can view the table using the [Amazon DynamoDB console](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ConsoleDynamoDB.html) while the application is running\.
 
 If the Amazon DynamoDB table for your Amazon Kinesis Data Streams application does not exist when the application starts up, one of the workers creates the table and calls the `describeStream` method to populate the table\. For more information, see [Application State Data](#kinesis-record-processor-ddb-table-contents)\.
 
@@ -13,7 +13,7 @@ If the Amazon DynamoDB table for your Amazon Kinesis Data Streams application do
 
 If your Amazon Kinesis Data Streams application receives provisioned\-throughput exceptions, you should increase the provisioned throughput for the DynamoDB table\. The KCL creates the table with a provisioned throughput of 10 reads per second and 10 writes per second, but this might not be sufficient for your application\. For example, if your Amazon Kinesis Data Streams application does frequent checkpointing or operates on a stream that is composed of many shards, you might need more throughput\.
 
-For information about provisioned throughput in DynamoDB, see [Provisioned Throughput in Amazon DynamoDB](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide//ProvisionedThroughputIntro.html) and [Working with Tables](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDDTables.html) in the *Amazon DynamoDB Developer Guide*\.
+For information about provisioned throughput in DynamoDB, see [Provisioned Throughput in Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide//ProvisionedThroughputIntro.html) and [Working with Tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDDTables.html) in the *Amazon DynamoDB Developer Guide*\.
 
 ## Application State Data<a name="kinesis-record-processor-ddb-table-contents"></a>
 

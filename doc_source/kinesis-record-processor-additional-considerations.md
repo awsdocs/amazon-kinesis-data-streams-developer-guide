@@ -25,7 +25,7 @@ For more information about the `TRIM_HORIZON` setting, see [Using Shard Iterator
 
 ## Shutting Down an Amazon Kinesis Data Streams Application<a name="developing-consumers-with-kcl-shutdown"></a>
 
-When your Amazon Kinesis Data Streams application has completed its intended task, you should shut it down by terminating the EC2 instances on which it is running\. You can terminate the instances using the [AWS Management Console](https://console.aws.amazon.com//ec2/home) or the [AWS CLI](http://docs.aws.amazon.com/cli/latest/reference/ec2/index.html)\. 
+When your Amazon Kinesis Data Streams application has completed its intended task, you should shut it down by terminating the EC2 instances on which it is running\. You can terminate the instances using the [AWS Management Console](https://console.aws.amazon.com//ec2/home) or the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html)\. 
 
  After shutting down your Amazon Kinesis Data Streams application, you should delete the Amazon DynamoDB table that the KCL used to track the application's state\. 
 

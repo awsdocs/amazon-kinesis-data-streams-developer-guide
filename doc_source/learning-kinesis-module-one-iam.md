@@ -1,6 +1,6 @@
 # Step 2: Create an IAM Policy and User<a name="learning-kinesis-module-one-iam"></a>
 
-Security best practices for AWS dictate the use of fine\-grained permissions to control access to different resources\. AWS Identity and Access Management \(IAM\) allows you to manage users and user permissions in AWS\. An [IAM policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html) explicitly lists actions that are allowed and the resources on which the actions are applicable\.
+Security best practices for AWS dictate the use of fine\-grained permissions to control access to different resources\. AWS Identity and Access Management \(IAM\) allows you to manage users and user permissions in AWS\. An [IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html) explicitly lists actions that are allowed and the resources on which the actions are applicable\.
 
 The following are the minimum permissions generally required for a Kinesis Data Streams producer and consumer\.
 
@@ -33,7 +33,7 @@ For this application, you create a single IAM policy that grants all of the prec
    arn:aws:kinesis:region:account:stream/name
    ```  
 *region*  
-The Region code; for example, `us-west-2`\. For more information, see [Region and Availability Zone Concepts](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions-availability-zones)\.  
+The Region code; for example, `us-west-2`\. For more information, see [Region and Availability Zone Concepts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions-availability-zones)\.  
 *account*  
 The AWS account ID, as shown in [Account Settings](https://console.aws.amazon.com/billing/home?#/account)\.  
 *name*  

@@ -16,6 +16,7 @@ Version 2\.0 of the KCL introduces the following interface changes:
 **Topics**
 + [Migrating the Record Processor](#recrod-processor-migration)
 + [Migrating the Record Processor Factory](#recrod-processor-factory-migration)
++ [Migrating the Worker](#worker-migration)
 + [Configuring the Amazon Kinesis Client](#client-configuration)
 + [Idle Time Removal](#idle-time-removal)
 + [Client Configuration Removals](#client-configuration-removals)
@@ -256,7 +257,7 @@ public class TestRecordProcessorFactory implements IRecordProcessorFactory {
 
    ```
    // public IRecordProcessor createProcessor() {
-   public RecordProcessor shardRecordProcessor() {
+   public ShardRecordProcessor shardRecordProcessor() {
    ```
 
 The following is an example of the record processor factory in 2\.0:
@@ -275,6 +276,66 @@ public class TestRecordProcessorFactory implements ShardRecordProcessorFactory {
 }
 ```
 
+## Migrating the Worker<a name="worker-migration"></a>
+
+In version 2\.0 of the KCL, a new class, called `Scheduler`, replaces the `Worker` class\. The following is an example of a KCL 1\.x worker\.
+
+```
+final KinesisClientLibConfiguration config = new KinesisClientLibConfiguration(...)
+final IRecordProcessorFactory recordProcessorFactory = new RecordProcessorFactory();
+final Worker worker = new Worker.Builder()
+    .recordProcessorFactory(recordProcessorFactory)
+    .config(config)
+    .build();
+```
+
+**To migrate the worker**
+
+1. Change the `import` statement for the `Worker` class to the import statements for the `Scheduler` and `ConfigsBuilder` classes\.
+
+   ```
+   // import com.amazonaws.services.kinesis.clientlibrary.lib.worker.Worker;
+   import software.amazon.kinesis.coordinator.Scheduler;
+   import software.amazon.kinesis.common.ConfigsBuilder;
+   ```
+
+1. Create the `ConfigsBuilder` and a `Scheduler` as shown in the following example\.
+
+   It is recommended that you use `KinesisClientUtil` to create `KinesisAsyncClient` and to configure `maxConcurrency` in `KinesisAsyncClient`\.
+**Important**  
+The Amazon Kinesis Client might see significantly increased latency, unless you configure `KinesisAsyncClient` to have a `maxConcurrency` high enough to allow all leases plus additional usages of `KinesisAsyncClient`\.
+
+   ```
+   import java.util.UUID;
+   
+   import software.amazon.awssdk.regions.Region;
+   import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
+   import software.amazon.awssdk.services.cloudwatch.CloudWatchAsyncClient;
+   import software.amazon.awssdk.services.kinesis.KinesisAsyncClient;
+   import software.amazon.kinesis.common.ConfigsBuilder;
+   import software.amazon.kinesis.common.KinesisClientUtil;
+   import software.amazon.kinesis.coordinator.Scheduler;
+   
+   ...
+   
+   Region region = Region.AP_NORTHEAST_2;
+   KinesisAsyncClient kinesisClient = KinesisClientUtil.createKinesisAsyncClient(KinesisAsyncClient.builder().region(region));
+   DynamoDbAsyncClient dynamoClient = DynamoDbAsyncClient.builder().region(region).build();
+   CloudWatchAsyncClient cloudWatchClient = CloudWatchAsyncClient.builder().region(region).build();
+   
+   ConfigsBuilder configsBuilder = new ConfigsBuilder(streamName, applicationName, kinesisClient, dynamoClient, cloudWatchClient, UUID.randomUUID().toString(), new SampleRecordProcessorFactory());
+   
+   Scheduler scheduler = new Scheduler(
+       configsBuilder.checkpointConfig(),
+       configsBuilder.coordinatorConfig(),
+       configsBuilder.leaseManagementConfig(),
+       configsBuilder.lifecycleConfig(),
+       configsBuilder.metricsConfig(),
+       configsBuilder.processorConfig(),
+       configsBuilder.retrievalConfig()
+       );
+   ```
+
 ## Configuring the Amazon Kinesis Client<a name="client-configuration"></a>
 
 With the 2\.0 release of the Kinesis Client Library, the configuration of the client moved from a single configuration class \(`KinesisClientLibConfiguration`\) to six configuration classes\. The following table describes the migration\.
@@ -289,7 +350,7 @@ With the 2\.0 release of the Kinesis Client Library, the configuration of the cl
 | streamName | ConfigsBuilder | The name of the stream that this application processes records from\. | 
 | kinesisEndpoint | ConfigsBuilder | This option has been removed\. See Client Configuration Removals\. | 
 | dynamoDBEndpoint | ConfigsBuilder | This option has been removed\. See Client Configuration Removals\. | 
-| initialPositionInStream | RetrievalConfig | None | 
+| initialPositionInStreamExtended | RetrievalConfig | The location in the shard from which the KCL begins fetching records, starting with the application's initial run\. | 
 | kinesisCredentialsProvider | ConfigsBuilder | This option has been removed\. See Client Configuration Removals\. | 
 | dynamoDBCredentialsProvider | ConfigsBuilder | This option has been removed\. See Client Configuration Removals\. | 
 | cloudWatchCredentialsProvider | ConfigsBuilder | This option has been removed\. See Client Configuration Removals\. | 

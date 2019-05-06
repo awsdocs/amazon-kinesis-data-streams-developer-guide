@@ -16,6 +16,7 @@ You can monitor the KPL with Amazon CloudWatch\. For more information, see [Moni
 + [Writing to your Kinesis Data Stream Using the KPL](kinesis-kpl-writing.md)
 + [Configuring the Kinesis Producer Library](kinesis-kpl-config.md)
 + [Consumer De\-aggregation](kinesis-kpl-consumer-deaggregation.md)
++ [Using the KPL with Kinesis Data Firehose](kpl-with-firehose.md)
 
 ## Role of the KPL<a name="developing-producers-with-kpl-role"></a>
 
@@ -23,10 +24,10 @@ The KPL is an easy\-to\-use, highly configurable library that helps you write to
 + Writes to one or more Kinesis data streams with an automatic and configurable retry mechanism
 + Collects records and uses `PutRecords` to write multiple records to multiple shards per request
 + Aggregates user records to increase payload size and improve throughput
-+ Integrates seamlessly with the [Kinesis Client Library](http://docs.aws.amazon.com/kinesis/latest/dev/developing-consumers-with-kcl.html) \(KCL\) to de\-aggregate batched records on the consumer
++ Integrates seamlessly with the [Kinesis Client Library](https://docs.aws.amazon.com/kinesis/latest/dev/developing-consumers-with-kcl.html) \(KCL\) to de\-aggregate batched records on the consumer
 + Submits Amazon CloudWatch metrics on your behalf to provide visibility into producer performance
 
-Note that the KPL is different from the Kinesis Data Streams API that is available in the [AWS SDKs](https://aws.amazon.com/tools/)\. The Kinesis Data Streams API helps you manage many aspects of Kinesis Data Streams \(including creating streams, resharding, and putting and getting records\), while the KPL provides a layer of abstraction specifically for ingesting data\. For information about the Kinesis Data Streams API, see the [Amazon Kinesis API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/)\.
+Note that the KPL is different from the Kinesis Data Streams API that is available in the [AWS SDKs](https://aws.amazon.com/tools/)\. The Kinesis Data Streams API helps you manage many aspects of Kinesis Data Streams \(including creating streams, resharding, and putting and getting records\), while the KPL provides a layer of abstraction specifically for ingesting data\. For information about the Kinesis Data Streams API, see the [Amazon Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/)\.
 
 ## Advantages of Using the KPL<a name="developing-producers-with-kpl-advantage"></a>
 

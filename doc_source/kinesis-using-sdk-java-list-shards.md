@@ -1,6 +1,6 @@
 # Listing Shards<a name="kinesis-using-sdk-java-list-shards"></a>
 
-A stream can have one or more shards\. The following example shows how you can get a list of the shards in a stream\. For a full description of the main operation used in this example and all of the parameters you can set for the operation, see [ListShards](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListShards.html)\.
+A stream can have one or more shards\. The following example shows how you can get a list of the shards in a stream\. For a full description of the main operation used in this example and all of the parameters you can set for the operation, see [ListShards](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListShards.html)\.
 
 ```
 import software.amazon.awssdk.services.kinesis.KinesisAsyncClient;

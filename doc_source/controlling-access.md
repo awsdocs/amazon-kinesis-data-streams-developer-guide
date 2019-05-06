@@ -14,12 +14,12 @@ If you are developing an application using the Kinesis Client Library \(KCL\), y
 
 For more information about IAM, see the following:
 + [AWS Identity and Access Management \(IAM\)](https://aws.amazon.com/iam/)
-+ [Getting Started](http://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started.html)
-+ [IAM User Guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/)
++ [Getting Started](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started.html)
++ [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)
 
-For more information about IAM and Amazon DynamoDB, see [Using IAM to Control Access to Amazon DynamoDB Resources](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/UsingIAMWithDDB.html) in the *Amazon DynamoDB Developer Guide*\. 
+For more information about IAM and Amazon DynamoDB, see [Using IAM to Control Access to Amazon DynamoDB Resources](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/UsingIAMWithDDB.html) in the *Amazon DynamoDB Developer Guide*\. 
 
-For more information about IAM and Amazon CloudWatch, see [Controlling User Access to Your AWS Account](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/UsingIAM.html) in the *Amazon CloudWatch User Guide*\.
+For more information about IAM and Amazon CloudWatch, see [Controlling User Access to Your AWS Account](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/UsingIAM.html) in the *Amazon CloudWatch User Guide*\.
 
 **Topics**
 + [Policy Syntax](#policy-syntax)
@@ -53,7 +53,7 @@ There are various elements that make up a statement:
 + **Resource**: The resource that's affected by the action\. To specify a resource in the statement, you need to use its Amazon Resource Name \(ARN\)\.
 + **Condition**: Conditions are optional\. They can be used to control when your policy will be in effect\.
 
-As you create and manage IAM policies, you might want to use the [IAM Policy Generator](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-generator) and the [IAM Policy Simulator](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)\.
+As you create and manage IAM policies, you might want to use the [IAM Policy Generator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-generator) and the [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)\.
 
 ## Actions for Kinesis Data Streams<a name="kinesis-using-iam-actions"></a>
 
@@ -77,7 +77,7 @@ To specify all Kinesis Data Streams operations, use the \* wildcard as follows:
 "Action": "kinesis:*"
 ```
 
-For the complete list of Kinesis Data Streams API actions, see the [Amazon Kinesis API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/)\.
+For the complete list of Kinesis Data Streams API actions, see the [Amazon Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/)\.
 
 ## Amazon Resource Names \(ARNs\) for Kinesis Data Streams<a name="kinesis-using-iam-arn-format"></a>
 

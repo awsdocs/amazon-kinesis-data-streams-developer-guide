@@ -1,7 +1,7 @@
 # Amazon Kinesis Data Streams Developer Guide
 
 -----
-*****Copyright &copy; 2018 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -56,7 +56,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Monitoring the Kinesis Producer Library with Amazon CloudWatch](monitoring-with-kpl.md)
    + [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](controlling-access.md)
    + [Using Server-Side Encryption](server-side-encryption.md)
-      + [What Is Server-Side Encryption for Kinesis Streams?](what-is-sse.md)
+      + [What Is Server-Side Encryption for Kinesis Data Streams?](what-is-sse.md)
       + [Costs, Regions, and Performance Considerations](costs-performance.md)
       + [How Do I Get Started with Server-Side Encryption?](getting-started-with-sse.md)
       + [Creating and Using User-Generated KMS Master Keys](creating-using-sse-master-keys.md)
@@ -74,6 +74,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Writing to your Kinesis Data Stream Using the KPL](kinesis-kpl-writing.md)
       + [Configuring the Kinesis Producer Library](kinesis-kpl-config.md)
       + [Consumer De-aggregation](kinesis-kpl-consumer-deaggregation.md)
+      + [Using the KPL with Kinesis Data Firehose](kpl-with-firehose.md)
    + [Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md)
    + [Writing to Amazon Kinesis Data Streams Using Kinesis Agent](writing-with-agents.md)
    + [Troubleshooting Amazon Kinesis Data Streams Producers](troubleshooting-producers.md)
@@ -88,13 +89,19 @@ Amazon's trademarks and trade dress may not be used in
          + [Developing a Kinesis Client Library Consumer in .NET](kinesis-record-processor-implementation-app-dotnet.md)
          + [Developing a Kinesis Client Library Consumer in Python](kinesis-record-processor-implementation-app-py.md)
          + [Developing a Kinesis Client Library Consumer in Ruby](kinesis-record-processor-implementation-app-ruby.md)
+      + [Developing Consumers Using the Kinesis Client Library 2.0](developing-consumers-with-kcl-v2.md)
+         + [Developing a Kinesis Client Library Consumer in Java](kcl2-standard-consumer-java-example.md)
+         + [Developing a Kinesis Client Library Consumer in Python](kcl2-standard-consumer-python-example.md)
       + [Developing Consumers Using the Kinesis Data Streams API with the AWS SDK for Java](developing-consumers-with-sdk.md)
    + [Using Consumers with Enhanced Fan-Out](introduction-to-enhanced-consumers.md)
-      + [Developing Consumers with Enhanced Fan-Out Using the Kinesis Client Library 2.x](building-enhanced-consumers-kcl.md)
-         + [Developing a Consumer with Enhanced Fan-Out Using the Kinesis Client Library 2.x in Java](building-enhanced-consumers-kcl-java.md)
+      + [Developing Consumers with Enhanced Fan-Out Using the Kinesis Client Library 2.0](building-enhanced-consumers-kcl.md)
+         + [Developing a Consumer Using the Kinesis Client Library 2.x in Java](building-enhanced-consumers-kcl-java.md)
       + [Developing Consumers with Enhanced Fan-Out Using the Kinesis Data Streams API](building-enhanced-consumers-api.md)
       + [Managing Consumers with Enhanced Fan-Out Using the AWS Management Console](building-enhanced-consumers-console.md)
    + [Migrating from Kinesis Client Library 1.x to 2.x](kcl-migration.md)
+   + [Developing Consumers Using Amazon Kinesis Data Analytics](kda-consumer.md)
+   + [Developing Consumers Using Amazon Kinesis Data Firehose](kdf-consumer.md)
+   + [Developing Consumers Using AWS Lambda](lambda-consumer.md)
    + [Troubleshooting Amazon Kinesis Data Streams Consumers](troubleshooting-consumers.md)
    + [Advanced Topics for Amazon Kinesis Data Streams Consumers](advanced-consumers.md)
       + [Tracking Amazon Kinesis Data Streams Application State](kinesis-record-processor-ddb.md)

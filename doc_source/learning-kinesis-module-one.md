@@ -9,7 +9,7 @@ The code does not access actual stock market data, but instead simulates the str
 
 You can work through the steps in this tutorial on your desktop or laptop computer and run both the producer and consumer code on the same machine or any platform that supports the defined requirements, such as Amazon Elastic Compute Cloud \(Amazon EC2\)\.
 
-The examples shown use the US West \(Oregon\) Region, but they work on any of the [AWS Regions that support Kinesis Data Streams](http://docs.aws.amazon.com/general/latest/gr/rande.html#ak_region)\.
+The examples shown use the US West \(Oregon\) Region, but they work on any of the [AWS Regions that support Kinesis Data Streams](https://docs.aws.amazon.com/general/latest/gr/rande.html#ak_region)\.
 
 **Topics**
 + [Prerequisites](learning-kinesis-module-one-begin.md)

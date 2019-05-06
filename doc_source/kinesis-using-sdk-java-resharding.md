@@ -1,7 +1,7 @@
 # Resharding a Stream<a name="kinesis-using-sdk-java-resharding"></a>
 
 **Important**  
-You can reshard your stream using the [UpdateShardCount](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\. Otherwise, you can continue to perform splits and merges as explained here\.
+You can reshard your stream using the [UpdateShardCount](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\. Otherwise, you can continue to perform splits and merges as explained here\.
 
 Amazon Kinesis Data Streams supports *resharding*, which lets you adjust the number of shards in your stream to adapt to changes in the rate of data flow through the stream\. Resharding is considered an advanced operation\. If you are new to Kinesis Data Streams, return to this subject after you are familiar with all the other aspects of Kinesis Data Streams\.
 

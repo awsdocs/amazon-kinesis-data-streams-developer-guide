@@ -1,10 +1,10 @@
 # Developing a Kinesis Client Library Consumer in Java<a name="kinesis-record-processor-implementation-app-java"></a>
 
-You can use the Kinesis Client Library \(KCL\) to build applications that process data from your Kinesis data streams\. The Kinesis Client Library is available in multiple languages\. This topic discusses Java\. To view the Javadoc reference, see the [AWS Javadoc topic for Class AmazonKinesisClient](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesisClient.html)\.
+You can use the Kinesis Client Library \(KCL\) to build applications that process data from your Kinesis data streams\. The Kinesis Client Library is available in multiple languages\. This topic discusses Java\. To view the Javadoc reference, see the [AWS Javadoc topic for Class AmazonKinesisClient](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/kinesis/AmazonKinesisClient.html)\.
 
 To download the Java KCL from GitHub, go to [Kinesis Client Library \(Java\)](https://github.com/awslabs/amazon-kinesis-client)\. To locate the Java KCL on Apache Maven, go to the [KCL search results](https://search.maven.org/#search|ga|1|amazon-kinesis-client) page\. To download sample code for a Java KCL consumer application from GitHub, go to the [KCL for Java sample project](https://github.com/aws/aws-sdk-java/tree/master/src/samples/AmazonKinesis) page on GitHub\. 
 
-The sample application uses [Apache Commons Logging](http://commons.apache.org/proper/commons-logging/guide.html)\. You can change the logging configuration in the static `configure` method defined in the `AmazonKinesisApplicationSample.java` file\. For more information about how to use Apache Commons Logging with Log4j and AWS Java applications, see [Logging with Log4j](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) in the *AWS SDK for Java Developer Guide*\.
+The sample application uses [Apache Commons Logging](http://commons.apache.org/proper/commons-logging/guide.html)\. You can change the logging configuration in the static `configure` method defined in the `AmazonKinesisApplicationSample.java` file\. For more information about how to use Apache Commons Logging with Log4j and AWS Java applications, see [Logging with Log4j](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-logging.html) in the *AWS SDK for Java Developer Guide*\.
 
 You must complete the following tasks when implementing a KCL consumer application in Java:
 
@@ -169,7 +169,7 @@ If the sample application cannot obtain credentials from the instance metadata, 
 credentialsProvider = new ClasspathPropertiesFileCredentialsProvider();
 ```
 
-For more information about instance metadata, see [Instance Metadata](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For more information about instance metadata, see [Instance Metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ### Use Worker ID for Multiple Instances<a name="kinesis-record-processor-workerid-java"></a>
 

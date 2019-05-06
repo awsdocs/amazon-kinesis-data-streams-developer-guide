@@ -10,13 +10,13 @@ The following table describes basic stream\-level and enhanced shard\-level moni
 | Type | Description | 
 | --- | --- | 
 |  Basic \(stream\-level\)  |  Stream\-level data is sent automatically every minute at no charge\.  | 
-|  Enhanced \(shard\-level\)  |  Shard\-level data is sent every minute for an additional cost\. To get this level of data, you must specifically enable it for the stream using the [EnableEnhancedMonitoring](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) operation\.  For information about pricing, see the [Amazon CloudWatch product page](https://aws.amazon.com/cloudwatch)\.  | 
+|  Enhanced \(shard\-level\)  |  Shard\-level data is sent every minute for an additional cost\. To get this level of data, you must specifically enable it for the stream using the [EnableEnhancedMonitoring](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) operation\.  For information about pricing, see the [Amazon CloudWatch product page](https://aws.amazon.com/cloudwatch)\.  | 
 
 ## Amazon Kinesis Data Streams Dimensions and Metrics<a name="kinesis-metrics"></a>
 
-Kinesis Data Streams sends metrics to CloudWatch at two levels: the stream level and, optionally, the shard level\. Stream\-level metrics are for most common monitoring use cases in normal conditions\. Shard\-level metrics are for specific monitoring tasks, usually related to troubleshooting, and are enabled using the [EnableEnhancedMonitoring](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) operation\. 
+Kinesis Data Streams sends metrics to CloudWatch at two levels: the stream level and, optionally, the shard level\. Stream\-level metrics are for most common monitoring use cases in normal conditions\. Shard\-level metrics are for specific monitoring tasks, usually related to troubleshooting, and are enabled using the [EnableEnhancedMonitoring](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) operation\. 
 
-For an explanation of the statistics gathered from CloudWatch metrics, see [CloudWatch Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic) in the *Amazon CloudWatch User Guide*\.
+For an explanation of the statistics gathered from CloudWatch metrics, see [CloudWatch Statistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic) in the *Amazon CloudWatch User Guide*\.
 
 **Topics**
 + [Basic Stream\-level Metrics](#kinesis-metrics-stream)
@@ -118,10 +118,10 @@ You can monitor metrics for Kinesis Data Streams using the CloudWatch console, t
 1. \(Optional\) In the graph pane, select a statistic and a time period, and then create a CloudWatch alarm using these settings\.
 
 **To access metrics using the AWS CLI**  
-Use the [list\-metrics](http://docs.aws.amazon.com/cli/latest/reference/cloudwatch/list-metrics.html) and [get\-metric\-statistics](http://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html) commands\.
+Use the [list\-metrics](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/list-metrics.html) and [get\-metric\-statistics](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html) commands\.
 
 **To access metrics using the CloudWatch CLI**  
-Use the [mon\-list\-metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/cli/cli-mon-list-metrics.html) and [mon\-get\-stats](http://docs.aws.amazon.com/AmazonCloudWatch/latest/cli/cli-mon-get-stats.html) commands\.
+Use the [mon\-list\-metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/cli/cli-mon-list-metrics.html) and [mon\-get\-stats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/cli/cli-mon-get-stats.html) commands\.
 
 **To access metrics using the CloudWatch API**  
-Use the [ListMetrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html) and [GetMetricStatistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) operations\.
+Use the [ListMetrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html) and [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) operations\.

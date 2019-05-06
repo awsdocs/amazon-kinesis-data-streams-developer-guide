@@ -1,7 +1,7 @@
 # Troubleshooting Amazon Kinesis Data Streams Consumers<a name="troubleshooting-consumers"></a>
 
 **Topics**
-+ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w3ab1c14c20b5)
++ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w3aac13c25b5)
 + [Records Belonging to the Same Shard are Processed by Different Record Processors at the Same Time](#records-belonging-to-the-same-shard)
 + [Consumer Application is Reading at a Slower Rate Than Expected](#consumer-app-reading-slower)
 + [GetRecords Returns Empty Records Array Even When There is Data in the Stream](#getrecords-returns-empty)
@@ -9,7 +9,7 @@
 + [Consumer Record Processing Falling Behind](#record-processing-falls-behind)
 + [Unauthorized KMS master key permission error](#unauthorized-kms-consumer)
 
-## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w3ab1c14c20b5"></a>
+## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w3aac13c25b5"></a>
 
 The most common cause of skipped records is an unhandled exception thrown from `processRecords`\. The Kinesis Client Library \(KCL\) relies on your `processRecords` code to handle any exceptions that arise from processing the data records\. Any exception thrown from `processRecords` is absorbed by the KCL\. To avoid infinite retries on a recurring failure, the KCL does not resend the batch of records processed at the time of the exception\. The KCL then calls `processRecords` for the next batch of data records without restarting the record processor\. This effectively results in consumer applications observing skipped records\. To prevent skipped records, handle all exceptions within `processRecords` appropriately\.
 
@@ -33,7 +33,7 @@ The most common reasons for read throughput being slower than expected are as fo
 
 1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Kinesis Data Streams Limits](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
 
-1. The [limit](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_RequestSyntax) that specifies the maximum number of GetRecords per call may have been configured with a low value\. If you are using the KCL, you may have configured the worker with a low value for the `maxRecords` property\. In general, we recommend using the system defaults for this property\.
+1. The [limit](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_RequestSyntax) that specifies the maximum number of GetRecords per call may have been configured with a low value\. If you are using the KCL, you may have configured the worker with a low value for the `maxRecords` property\. In general, we recommend using the system defaults for this property\.
 
 1. The logic inside your `processRecords` call may be taking longer than expected for a number of possible reasons; the logic may be CPU intensive, I/O blocking, or bottlenecked on synchronization\. To test if this is true, test run empty record processors and compare the read throughput\. For information about how to keep up with the incoming data, see [Resharding, Scaling, and Parallel Processing](kinesis-record-processor-scaling.md)\.
 
@@ -41,7 +41,7 @@ If you have only one consumer application, it is always possible to read at leas
 
 ## GetRecords Returns Empty Records Array Even When There is Data in the Stream<a name="getrecords-returns-empty"></a>
 
-Consuming, or getting records is a pull model\. Developers are expected to call [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) in a continuous loop with no back\-offs\. Every call to GetRecords also returns a `ShardIterator` value, which must be used in the next iteration of the loop\. 
+Consuming, or getting records is a pull model\. Developers are expected to call [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) in a continuous loop with no back\-offs\. Every call to GetRecords also returns a `ShardIterator` value, which must be used in the next iteration of the loop\. 
 
 The GetRecords operation does not block\. Instead, it returns immediately; with either relevant data records or with an empty `Records` element\. An empty `Records` element is returned under two conditions: 
 
@@ -75,4 +75,4 @@ Here are the most common reasons consumers can fall behind:
 
 ## Unauthorized KMS master key permission error<a name="unauthorized-kms-consumer"></a>
 
-This error occurs when a consumer application reads from an encrypted stream without permissions on the KMS master key\. To assign permissions to an application to access a KMS key, see [Using Key Policies in AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) and [Using IAM Policies with AWS KMS](http://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html)\.
+This error occurs when a consumer application reads from an encrypted stream without permissions on the KMS master key\. To assign permissions to an application to access a KMS key, see [Using Key Policies in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) and [Using IAM Policies with AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html)\.

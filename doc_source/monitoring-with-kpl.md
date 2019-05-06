@@ -1,6 +1,6 @@
 # Monitoring the Kinesis Producer Library with Amazon CloudWatch<a name="monitoring-with-kpl"></a>
 
-The [Kinesis Producer Library](http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-kpl.html) \(KPL\) for Amazon Kinesis Data Streams publishes custom Amazon CloudWatch metrics on your behalf\. You can view these metrics by navigating to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/) and choosing **Custom Metrics**\. For more information about custom metrics, see [Publish Custom Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html) in the *Amazon CloudWatch User Guide*\.
+The [Kinesis Producer Library](https://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-kpl.html) \(KPL\) for Amazon Kinesis Data Streams publishes custom Amazon CloudWatch metrics on your behalf\. You can view these metrics by navigating to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/) and choosing **Custom Metrics**\. For more information about custom metrics, see [Publish Custom Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/publishingMetrics.html) in the *Amazon CloudWatch User Guide*\.
 
 There is a nominal charge for the metrics uploaded to CloudWatch by the KPL; specifically, Amazon CloudWatch Custom Metrics and Amazon CloudWatch API Requests charges apply\. For more information, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/)\. Local metrics gathering does not incur CloudWatch charges\.
 

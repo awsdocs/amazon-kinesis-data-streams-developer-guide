@@ -20,7 +20,7 @@ To scale up processing in your application, you should test a combination of the
 + Increasing the number of instances up to the maximum number of open shards \(because shards can be processed independently\)
 + Increasing the number of shards \(which increases the level of parallelism\)
 
-Note that you can use Auto Scaling to automatically scale your instances based on appropriate metrics\. For more information, see the [Amazon EC2 Auto Scaling User Guide](http://docs.aws.amazon.com/autoscaling/ec2/userguide/)\.
+Note that you can use Auto Scaling to automatically scale your instances based on appropriate metrics\. For more information, see the [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/)\.
 
 When resharding increases the number of shards in the stream, the corresponding increase in the number of record processors increases the load on the EC2 instances that are hosting them\. If the instances are part of an Auto Scaling group, and the load increases sufficiently, the Auto Scaling group adds more instances to handle the increased load\. You should configure your instances to launch your Amazon Kinesis Data Streams application at startup, so that additional workers and record processors become active on the new instance right away\.
 

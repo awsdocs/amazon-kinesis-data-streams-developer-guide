@@ -2,7 +2,7 @@
 
 You can use Amazon Kinesis Data Streams to collect and process large [streams](https://aws.amazon.com/streaming-data/) of data records in real time\. You can create data\-processing applications, known as *Kinesis Data Streams applications*\. A typical Kinesis Data Streams application reads data from a *data stream* as data records\. These applications can use the Kinesis Client Library, and they can run on Amazon EC2 instances\. You can send the processed records to dashboards, use them to generate alerts, dynamically change pricing and advertising strategies, or send data to a variety of other AWS services\. For information about Kinesis Data Streams features and pricing, see [Amazon Kinesis Data Streams](https://aws.amazon.com/kinesis/streams/)\.
 
-Kinesis Data Streams is part of the Kinesis streaming data platform, along with [Kinesis Data Firehose](http://docs.aws.amazon.com/firehose/latest/dev/), [Kinesis Video Streams](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/), and [Kinesis Data Analytics](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/)\.
+Kinesis Data Streams is part of the Kinesis streaming data platform, along with [Kinesis Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/), [Kinesis Video Streams](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/), and [Kinesis Data Analytics](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/)\.
 
 For more information about AWS big data solutions, see [Big Data on AWS](https://aws.amazon.com/big-data/)\. For more information about AWS streaming data solutions, see [What is Streaming Data?](https://aws.amazon.com/streaming-data/)\.
 
@@ -40,10 +40,10 @@ Although you can use Kinesis Data Streams to solve a variety of streaming data p
 
 Data is put into Kinesis data streams, which ensures durability and elasticity\. The delay between the time a record is put into the stream and the time it can be retrieved \(put\-to\-get delay\) is typically less than 1 second\. In other words, a Kinesis Data Streams application can start consuming the data from the stream almost immediately after the data is added\. The managed service aspect of Kinesis Data Streams relieves you of the operational burden of creating and running a data intake pipeline\. You can create streaming map\-reduce–type applications\. The elasticity of Kinesis Data Streams enables you to scale the stream up or down, so that you never lose data records before they expire\.
 
-Multiple Kinesis Data Streams applications can consume data from a stream, so that multiple actions, like archiving and processing, can take place concurrently and independently\. For example, two applications can read data from the same stream\. The first application calculates running aggregates and updates anAmazon DynamoDB table, and the second application compresses and archives data to a data store like Amazon Simple Storage Service \(Amazon S3\)\. The DynamoDB table with running aggregates is then read by a dashboard for up\-to\-the\-minute reports\.
+Multiple Kinesis Data Streams applications can consume data from a stream, so that multiple actions, like archiving and processing, can take place concurrently and independently\. For example, two applications can read data from the same stream\. The first application calculates running aggregates and updates an Amazon DynamoDB table, and the second application compresses and archives data to a data store like Amazon Simple Storage Service \(Amazon S3\)\. The DynamoDB table with running aggregates is then read by a dashboard for up\-to\-the\-minute reports\.
 
 The Kinesis Client Library enables fault\-tolerant consumption of data from streams and provides scaling support for Kinesis Data Streams applications\.
 
 ## Related Services<a name="related-services"></a>
 
-For information about using Amazon EMR clusters to read and process Kinesis data streams directly, see [Kinesis Connector](http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-kinesis.html)\.
+For information about using Amazon EMR clusters to read and process Kinesis data streams directly, see [Kinesis Connector](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-kinesis.html)\.

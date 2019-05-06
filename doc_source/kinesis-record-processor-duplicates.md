@@ -7,7 +7,7 @@ There are two primary reasons why records may be delivered more than one time to
 Consider a producer that experiences a network\-related timeout after it makes a call to `PutRecord`, but before it can receive an acknowledgement from Amazon Kinesis Data Streams\. The producer cannot be sure if the record was delivered to Kinesis Data Streams\. Assuming that every record is important to the application, the producer would have been written to retry the call with the same data\. If both `PutRecord` calls on that same data were successfully committed to Kinesis Data Streams, then there will be two Kinesis Data Streams records\. Although the two records have identical data, they also have unique sequence numbers\. Applications that need strict guarantees should embed a primary key within the record to remove duplicates later when processing\. Note that the number of duplicates due to producer retries is usually low compared to the number of duplicates due to consumer retries\.
 
 **Note**  
-If you use the AWS SDK `PutRecord`, the default [configuration retries a failed `PutRecord` call up to three times\.](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html)
+If you use the AWS SDK `PutRecord`, the default [configuration retries a failed `PutRecord` call up to three times\.](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html)
 
 ## Consumer Retries<a name="kinesis-record-processor-duplicates-consumer"></a>
 

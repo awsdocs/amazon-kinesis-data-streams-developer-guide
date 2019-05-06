@@ -1,28 +1,8 @@
-# Developing a Consumer Using the Kinesis Client Library 2\.x in Java<a name="building-enhanced-consumers-kcl-java"></a>
+# Developing a Kinesis Client Library Consumer in Java<a name="kcl2-standard-consumer-java-example"></a>
 
-You can use version 2\.0 or later of the Kinesis Client Library \(KCL\) to develop applications in Amazon Kinesis Data Streams to receive data from streams using enhanced fan\-out\. The following code shows an example implementation in Java of `ProcessorFactory` and `RecordProcessor`\.
-
-It is recommended that you use `KinesisClientUtil` to create `KinesisAsyncClient` and to configure `maxConcurrency` in `KinesisAsyncClient`\.
-
-**Important**  
-The Amazon Kinesis Client might see significantly increased latency, unless you configure `KinesisAsyncClient` to have a `maxConcurrency` high enough to allow all leases plus additional usages of `KinesisAsyncClient`\.
+The following code shows an example implementation in Java of `ProcessorFactory` and `RecordProcessor`\. If you want to take advantage of the enhanced fan\-out feature, see [Using Consumers with Enhanced Fan\-Out ](https://docs.aws.amazon.com/streams/latest/dev/introduction-to-enhanced-consumers.html)\.
 
 ```
-/*
- *  Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
- *
- *  Licensed under the Amazon Software License (the "License").
- *  You may not use this file except in compliance with the License.
- *  A copy of the License is located at
- *
- *  http://aws.amazon.com/asl/
- *
- *  or in the "license" file accompanying this file. This file is distributed
- *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- *  express or implied. See the License for the specific language governing
- *  permissions and limitations under the License. 
- */
-
 /*
  * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
@@ -75,6 +55,7 @@ import software.amazon.kinesis.lifecycle.events.ShardEndedInput;
 import software.amazon.kinesis.lifecycle.events.ShutdownRequestedInput;
 import software.amazon.kinesis.processor.ShardRecordProcessor;
 import software.amazon.kinesis.processor.ShardRecordProcessorFactory;
+import software.amazon.kinesis.retrieval.polling.PollingConfig;
 
 public class SampleSingle {
 
@@ -120,7 +101,7 @@ public class SampleSingle {
                 configsBuilder.lifecycleConfig(),
                 configsBuilder.metricsConfig(),
                 configsBuilder.processorConfig(),
-                configsBuilder.retrievalConfig()
+                configsBuilder.retrievalConfig().retrievalSpecificConfig(new PollingConfig(streamName, kinesisClient))
         );
 
         Thread schedulerThread = new Thread(scheduler);
@@ -135,7 +116,7 @@ public class SampleSingle {
             log.error("Caught exception while waiting for confirm. Shutting down.", ioex);
         }
 
-        log.info("Cancelling producer, and shutting down excecutor.");
+        log.info("Cancelling producer and shutting down excecutor.");
         producerFuture.cancel(true);
         producerExecutor.shutdownNow();
 
@@ -148,7 +129,7 @@ public class SampleSingle {
         } catch (ExecutionException e) {
             log.error("Exception while executing graceful shutdown.", e);
         } catch (TimeoutException e) {
-            log.error("Timeout while waiting for shutdown. Scheduler may not have exited.");
+            log.error("Timeout while waiting for shutdown.  Scheduler may not have exited.");
         }
         log.info("Completed, shutting down now.");
     }

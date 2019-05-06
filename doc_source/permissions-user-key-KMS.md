@@ -1,6 +1,6 @@
 # Permissions to Use User\-Generated KMS Master Keys<a name="permissions-user-key-KMS"></a>
 
-Before you can use server\-side encryption with a user\-generated KMS master key, you must configure AWS KMS key policies to allow encryption of streams and encryption and decryption of stream records\. For examples and more information about AWS KMS permissions, see [AWS KMS API Permissions: Actions and Resources Reference](http://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)\. 
+Before you can use server\-side encryption with a user\-generated KMS master key, you must configure AWS KMS key policies to allow encryption of streams and encryption and decryption of stream records\. For examples and more information about AWS KMS permissions, see [AWS KMS API Permissions: Actions and Resources Reference](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)\. 
 
 **Note**  
 The use of the default service key for encryption does not require application of custom IAM permissions\.

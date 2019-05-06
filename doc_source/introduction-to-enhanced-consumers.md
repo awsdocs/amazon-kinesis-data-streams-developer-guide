@@ -10,10 +10,10 @@ The following diagram shows the enhanced fan\-out architecture\. If you use vers
 
 The diagram shows the following: 
 + A stream with two shards\.
-+ Two consumers that are using enhanced fan\-out to receive data from the stream: Consumer X and Consumer Y\. Each of the two consumers is subscribed to all of the shards of the stream\. If you use version 2\.0 or later of the KCL to build a consumer, the KCL automatically subscribes that consumer to all the shards of the stream\. On the other hand, if you use the API to build a consumer, you can subscribe to individual shards\. 
++ Two consumers that are using enhanced fan\-out to receive data from the stream: Consumer X and Consumer Y\. Each of the two consumers is subscribed to all of the shards and all of the records of the stream\. If you use version 2\.0 or later of the KCL to build a consumer, the KCL automatically subscribes that consumer to all the shards of the stream\. On the other hand, if you use the API to build a consumer, you can subscribe to individual shards\. 
 + Arrows representing the enhanced fan\-out pipes that the consumers use to receive data from the stream\. An enhanced fan\-out pipe provides up to 2 MiB/sec of data per shard, independently of any other pipes or of the total number of consumers\.
 
 **Topics**
-+ [Developing Consumers with Enhanced Fan\-Out Using the Kinesis Client Library 2\.x](building-enhanced-consumers-kcl.md)
++ [Developing Consumers with Enhanced Fan\-Out Using the Kinesis Client Library 2\.0](building-enhanced-consumers-kcl.md)
 + [Developing Consumers with Enhanced Fan\-Out Using the Kinesis Data Streams API](building-enhanced-consumers-api.md)
 + [Managing Consumers with Enhanced Fan\-Out Using the AWS Management Console](building-enhanced-consumers-console.md)
