@@ -116,7 +116,7 @@ public class SampleSingle {
             log.error("Caught exception while waiting for confirm. Shutting down.", ioex);
         }
 
-        log.info("Cancelling producer and shutting down excecutor.");
+        log.info("Cancelling producer and shutting down executor.");
         producerFuture.cancel(true);
         producerExecutor.shutdownNow();
 
