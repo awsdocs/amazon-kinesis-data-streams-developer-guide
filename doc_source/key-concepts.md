@@ -1,6 +1,10 @@
-# Kinesis Data Streams Key Concepts<a name="key-concepts"></a>
+# Amazon Kinesis Data Streams Terminology and Concepts<a name="key-concepts"></a>
 
 As you get started with Amazon Kinesis Data Streams, you can benefit from understanding its architecture and terminology\.
+
+**Topics**
++ [Kinesis Data Streams High\-Level Architecture](#high-level-architecture)
++ [Kinesis Data Streams Terminology](#terminology)
 
 ## Kinesis Data Streams High\-Level Architecture<a name="high-level-architecture"></a>
 

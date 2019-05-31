@@ -39,7 +39,7 @@ for (int i = 0; i < 100; i++) {
 // Wait for puts to finish and check the results 
 for (Future<UserRecordResult> f : putFutures) {
     UserRecordResult result = f.get(); // this does block     
-    if (result.isSuccess()) {         
+    if (result.isSuccessful()) {         
         System.out.println("Put record into shard " + 
                             result.getShardId());     
     } else {

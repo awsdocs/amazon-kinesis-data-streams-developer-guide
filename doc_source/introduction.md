@@ -10,7 +10,6 @@ For more information about AWS big data solutions, see [Big Data on AWS](https:/
 + [What Can I Do with Kinesis Data Streams?](#use-service-for-what)
 + [Benefits of Using Kinesis Data Streams](#using-the-service)
 + [Related Services](#related-services)
-+ [Kinesis Data Streams Key Concepts](key-concepts.md)
 + [Creating and Updating Data Streams](amazon-kinesis-streams.md)
 + [Kinesis Data Streams Producers](amazon-kinesis-producers.md)
 + [Kinesis Data Streams Consumers](amazon-kinesis-consumers.md)

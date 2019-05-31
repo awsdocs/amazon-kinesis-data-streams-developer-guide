@@ -8,7 +8,7 @@ You can use an interface VPC endpoint to keep traffic between your Amazon VPC an
 
 To get started you do not need to change the settings for your streams, producers, or consumers\. Simply create an interface VPC endpoint in order for your Kinesis Data Streams traffic from and to your Amazon VPC resources to start flowing through the interface VPC endpoint\. 
 
-The Kinesis Producer Library \(KPL\) and Kinesis Consumer Library \(KCL\) call AWS services like Amazon CloudWatch and Amazon DynamoDB using either public endpoints or private interface VPC endpoints, whichever are in use\. For example, if your KPL application is running in a VPC with DynamoDB interface VPC endpoints enabled, calls between DynamoDB and your KCL application flow through the interface VPC endpoint\.
+The Kinesis Producer Library \(KPL\) and Kinesis Consumer Library \(KCL\) call AWS services like Amazon CloudWatch and Amazon DynamoDB\. These services are reached using either public service endpoints or private VPC endpoints, depending on the configuration of the VPC containing your application\. For example, if your KPL application is running in a VPC with a DynamoDB gateway VPC endpoint configured, calls between your KPL / KCL application and DynamoDB would flow through the gateway VPC endpoint\. Similarly, if your VPC is configured to use an AWS CloudWatch interface VPC endpoint, calls between your KPL / KCL application and AWS Cloudwatch would flow through this interface VPC endpoint\. 
 
 ## Availability<a name="availability"></a>
 

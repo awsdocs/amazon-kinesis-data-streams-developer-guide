@@ -1,6 +1,6 @@
 # Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java<a name="developing-producers-with-sdk"></a>
 
-You can develop producers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started Using Amazon Kinesis Data Streams](getting-started.md)\.
+You can develop producers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started with Amazon Kinesis Data Streams](getting-started.md)\.
 
 These examples discuss the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to add \(put\) data to a stream\. However, for most use cases, you should prefer the Kinesis Data Streams KPL library\. For more information, see [Developing Producers Using the Amazon Kinesis Producer Library](developing-producers-with-kpl.md)\.
 

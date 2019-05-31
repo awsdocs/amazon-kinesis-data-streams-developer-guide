@@ -1,6 +1,6 @@
 # Developing Consumers Using the Kinesis Data Streams API with the AWS SDK for Java<a name="developing-consumers-with-sdk"></a>
 
-You can develop consumers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started Using Amazon Kinesis Data Streams](getting-started.md)\.
+You can develop consumers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started with Amazon Kinesis Data Streams](getting-started.md)\.
 
 These examples discuss the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer using the Kinesis Client Library \(KCL\) \. For more information, see [Developing Consumers Using the Kinesis Client Library 1\.x](developing-consumers-with-kcl.md)\.
 

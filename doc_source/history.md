@@ -23,7 +23,6 @@ The following table describes the important changes to the Amazon Kinesis Data S
 | Support for tagging | Added [Tagging Your Streams in Amazon Kinesis Data Streams](tagging.md)\. | September 11, 2014 | 
 | New CloudWatch metric | Added the metric GetRecords\.IteratorAgeMilliseconds to [Amazon Kinesis Data Streams Dimensions and Metrics](monitoring-with-cloudwatch.md#kinesis-metrics)\. | September 3, 2014 | 
 | New monitoring chapter | Added [Monitoring Streams in Amazon Kinesis Data Streams](monitoring.md) and [Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch](monitoring-with-cloudwatch.md)\. | July 30, 2014 | 
-| New sample application | Added [Tutorial: Visualizing Web Traffic Using Amazon Kinesis Data Streams](kinesis-sample-application.md)\. | June 27, 2014 | 
 | Default shard limit | Updated the [Kinesis Data Streams Limits](service-sizes-and-limits.md): the default shard limit has been raised from 5 to 10\. | February 25, 2014 | 
 | Default shard limit | Updated the [Kinesis Data Streams Limits](service-sizes-and-limits.md): the default shard limit has been raised from 2 to 5\. | January 28, 2014 | 
 | API version updates | Updates for version 2013\-12\-02 of the Kinesis Data Streams API\. | December 12, 2013 | 

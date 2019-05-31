@@ -15,11 +15,11 @@ The following table compares default throughput to enhanced fan\-out\. Message p
 | Record delivery model | Pull model over HTTP using [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. | Kinesis Data Streams pushes the records to you over HTTP/2 using [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html)\. | 
 
 **Topics**
-+ [Developing Amazon Kinesis Data Streams Consumers](shared-fan-out-consumers.md)
-+ [Using Consumers with Enhanced Fan\-Out](introduction-to-enhanced-consumers.md)
-+ [Migrating from Kinesis Client Library 1\.x to 2\.x](kcl-migration.md)
 + [Developing Consumers Using Amazon Kinesis Data Analytics](kda-consumer.md)
 + [Developing Consumers Using Amazon Kinesis Data Firehose](kdf-consumer.md)
 + [Developing Consumers Using AWS Lambda](lambda-consumer.md)
++ [Developing Amazon Kinesis Data Streams Consumers](shared-fan-out-consumers.md)
++ [Using Consumers with Enhanced Fan\-Out](introduction-to-enhanced-consumers.md)
++ [Migrating from Kinesis Client Library 1\.x to 2\.x](kcl-migration.md)
 + [Troubleshooting Amazon Kinesis Data Streams Consumers](troubleshooting-consumers.md)
 + [Advanced Topics for Amazon Kinesis Data Streams Consumers](advanced-consumers.md)
