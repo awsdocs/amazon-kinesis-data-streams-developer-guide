@@ -54,7 +54,7 @@ A *partition key* is used to group data by shard within a stream\. Kinesis Data 
 
 ### Sequence Number<a name="sequence-number"></a>
 
-Each data record has a *sequence number* that is unique within its shard\. Kinesis Data Streams assigns the sequence number after you write to the stream with `client.putRecords` or `client.putRecord`\. Sequence numbers for the same partition key generally increase over time\. The longer the time period between write requests, the larger the sequence numbers become\.
+Each data record has a *sequence number* that is unique per partition\-key within its shard\. Kinesis Data Streams assigns the sequence number after you write to the stream with `client.putRecords` or `client.putRecord`\. Sequence numbers for the same partition key generally increase over time\. The longer the time period between write requests, the larger the sequence numbers become\.
 
 **Note**  
 Sequence numbers cannot be used as indexes to sets of data within the same stream\. To logically separate sets of data, use partition keys or create a separate stream for each dataset\.

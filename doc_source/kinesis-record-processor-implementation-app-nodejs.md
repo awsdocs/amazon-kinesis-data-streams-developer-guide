@@ -28,8 +28,7 @@ The simplest possible consumer using the KCL for Node\.js must implement a `reco
 
 ```
 function recordProcessor() {
-  // return an object that implements initialize, processRecords and shutdown functions.
-}
+  // return an object that implements initialize, processRecords and shutdown functions.}
 ```
 
 **initialize**  
