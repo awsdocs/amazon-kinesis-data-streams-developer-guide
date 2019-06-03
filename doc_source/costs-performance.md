@@ -39,4 +39,4 @@ Server\-side encryption of Kinesis streams is available in the following regions
 
 ## Performance Considerations<a name="performance-considerations"></a>
 
-Due to the service overhead of applying encryption, applying server\-side encryption will increase the typical latency of `PutRecord`, `PutRecords`, and `GetRecords` by less than 100μs\.
+Due to the service overhead of applying encryption, applying server\-side encryption increases the typical latency of `PutRecord`, `PutRecords`, and `GetRecords` by less than 100μs\.

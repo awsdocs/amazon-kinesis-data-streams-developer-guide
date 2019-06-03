@@ -1,4 +1,4 @@
-# Using Server\-Side Encryption<a name="server-side-encryption"></a>
+# Data Protection in Amazon Kinesis Data Streams<a name="server-side-encryption"></a>
 
 Server\-side encryption using AWS Key Management Service \(AWS KMS\) keys makes it easy for you to meet strict data management requirements by encrypting your data at rest within Amazon Kinesis Data Streams\.
 
@@ -9,3 +9,4 @@ Server\-side encryption using AWS Key Management Service \(AWS KMS\) keys makes 
 + [Creating and Using User\-Generated KMS Master Keys](creating-using-sse-master-keys.md)
 + [Permissions to Use User\-Generated KMS Master Keys](permissions-user-key-KMS.md)
 + [Verifying and Troubleshooting KMS Key Permissions](sse-troubleshooting.md)
++ [Internetwork Traffic Privacy in Amazon Kinesis Data Streams](vpc.md)

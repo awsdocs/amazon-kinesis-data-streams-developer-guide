@@ -71,7 +71,7 @@ The name of an Amazon Kinesis Data Streams application identifies the applicatio
 
 ### Server\-Side Encryption<a name="server-side-encryption-concept"></a>
 
-Amazon Kinesis Data Streams can automatically encrypt sensitive data as a producer enters it into a stream\. Kinesis Data Streams uses [AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/) master keys for encryption\. For more information, see [Using Server\-Side Encryption](server-side-encryption.md)\.
+Amazon Kinesis Data Streams can automatically encrypt sensitive data as a producer enters it into a stream\. Kinesis Data Streams uses [AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/) master keys for encryption\. For more information, see [Data Protection in Amazon Kinesis Data Streams](server-side-encryption.md)\.
 
 **Note**  
 To read from or write to an encrypted stream, producer and consumer applications must have permission to access the master key\. For information about granting permissions to producer and consumer applications, see [Permissions to Use User\-Generated KMS Master Keys](permissions-user-key-KMS.md)\.

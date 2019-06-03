@@ -13,8 +13,4 @@ The Java example code in this chapter demonstrates how to perform basic Kinesis 
 + [Resharding a Stream](kinesis-using-sdk-java-resharding.md)
 + [Changing the Data Retention Period](kinesis-extended-retention.md)
 + [Tagging Your Streams in Amazon Kinesis Data Streams](tagging.md)
-+ [Monitoring Streams in Amazon Kinesis Data Streams](monitoring.md)
-+ [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](controlling-access.md)
-+ [Using Server\-Side Encryption](server-side-encryption.md)
-+ [Using Amazon Kinesis Data Streams with Interface VPC Endpoints](vpc.md)
 + [Managing Kinesis Data Streams Using the Console](managing-streams-console.md)

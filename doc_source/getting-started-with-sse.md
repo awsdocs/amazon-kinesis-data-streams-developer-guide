@@ -20,6 +20,6 @@ The following procedure demonstrates how to enable server\-side encryption for a
 The default Kinesis service master key is free, however, the API calls made by Kinesis to the AWS KMS service are subject to KMS usage costs\.   
 ![\[Enabling server-side encryption\]](http://docs.aws.amazon.com/streams/latest/dev/images/sse-enable1.png)
 
-1. The stream transitions through a “pending” state\. Once the stream returns to an “active” state with encryption enabled, all incoming data written to the stream is encrypted using the KMS master key you selected\.
+1. The stream transitions through a **pending** state\. After the stream returns to an **active** state with encryption enabled, all incoming data written to the stream is encrypted using the KMS master key you selected\.
 
 1. To disable server\-side encryption, choose **Disabled** in **Server\-side encryption** in the AWS Management Console, and then choose **Save**\.

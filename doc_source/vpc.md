@@ -1,6 +1,4 @@
-# Using Amazon Kinesis Data Streams with Interface VPC Endpoints<a name="vpc"></a>
-
-## Interface VPC endpoints for Kinesis Data Streams<a name="interface-vpc-endpoints"></a>
+# Internetwork Traffic Privacy in Amazon Kinesis Data Streams<a name="vpc"></a>
 
 You can use an interface VPC endpoint to keep traffic between your Amazon VPC and Kinesis Data Streams from leaving the Amazon network\. Interface VPC endpoints don't require an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection\. Interface VPC endpoints are powered by AWS PrivateLink, an AWS technology that enables private communication between AWS services using an elastic network interface with private IPs in your Amazon VPC\. For more information, see [Amazon Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)\. 
 

@@ -8,6 +8,6 @@ For instructions on creating your own master keys, see [Creating Keys](https://d
 
 ## Using User\-Generated KMS Master Keys<a name="using-sse-master-keys"></a>
 
-Once the correct permissions are applied to your consumers, producers, and administrators, you can use custom KMS master keys in your own AWS account or another AWS account\. All KMS master keys in your account appear in the **KMS Master Key** list within the AWS Management Console\.
+After the correct permissions are applied to your consumers, producers, and administrators, you can use custom KMS master keys in your own AWS account or another AWS account\. All KMS master keys in your account appear in the **KMS Master Key** list within the AWS Management Console\.
 
 To use custom KMS master keys located in another account, you need permissions to use those keys\. You must also specify the ARN of the KMS master key in the ARN input box in the AWS Management Console\.
