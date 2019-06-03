@@ -17,7 +17,8 @@ The following are the minimum permissions generally required for a Kinesis Data 
 
 | **Actions** | **Resource** | **Purpose** | 
 | --- | --- | --- | 
-| DescribeStream | Kinesis data stream | Before attempting to read records, the consumer checks if the stream exists and is active, and if the shards are contained in the stream\. | 
+| DescribeStream, DescribeStreamSummary, DescribeStreamConsumer | Kinesis data stream | Before attempting to read records, the consumer checks if the stream exists and is active, and if the shards are contained in the stream\. |
+| SubscribeToShard, RegisterStreamConsumer | Kinesis data stream | Subscribes and register a consumers to a Kinesis Data Stream shard\. |
 | GetRecords, GetShardIterator  | Kinesis data stream | Read records from a Kinesis Data Streams shard\. | 
 | CreateTable, DescribeTable, GetItem, PutItem, Scan, UpdateItem | Amazon DynamoDB table | If the consumer is developed using the Kinesis Client Library \(KCL\), it needs permissions to a DynamoDB table to track the processing state of the application\. The first consumer started creates the table\.  | 
 | DeleteItem | Amazon DynamoDB table | For when the consumer performs split/merge operations on Kinesis Data Streams shards\. | 
@@ -80,10 +81,24 @@ The resulting policy document should look something like the following:
         "kinesis:PutRecord",
         "kinesis:PutRecords",
         "kinesis:GetShardIterator",
-        "kinesis:GetRecords"
+        "kinesis:GetRecords",
+        "kinesis:ListShards",
+        "kinesis:DescribeStreamSummary",
+        "kinesis:RegisterStreamConsumer"
       ],
       "Resource": [
         "arn:aws:kinesis:us-west-2:123:stream/StockTradeStream"
+      ]
+    },
+    {
+      "Sid": "Stmt234",
+      "Effect": "Allow",
+      "Action": [
+        "kinesis:SubscribeToShard",
+        "kinesis:DescribeStreamConsumer"
+      ],
+      "Resource": [
+        "arn:aws:kinesis:us-west-2:123:stream/StockTradeStream/*"
       ]
     },
     {
