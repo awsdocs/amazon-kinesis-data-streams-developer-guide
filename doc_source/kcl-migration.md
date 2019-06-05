@@ -240,7 +240,7 @@ public class TestRecordProcessorFactory implements IRecordProcessorFactory {
 
 **To migrate the record processor factory**
 
-1. Change the implemented interface from `com.amazonaws.services.kinesis.clientlibrary.interfaces.v2.IRecordProcessorFactory` to `software.amazon.kinesis.processor.RecordProcessorFactory`, as follows\.
+1. Change the implemented interface from `com.amazonaws.services.kinesis.clientlibrary.interfaces.v2.IRecordProcessorFactory` to `software.amazon.kinesis.processor.ShardRecordProcessorFactory`, as follows\.
 
    ```
    // import com.amazonaws.services.kinesis.clientlibrary.interfaces.v2.IRecordProcessor;

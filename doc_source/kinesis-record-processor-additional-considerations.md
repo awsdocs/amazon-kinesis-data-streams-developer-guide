@@ -9,7 +9,7 @@ Here are some additional considerations to incorporate into the design of your A
 
 ## Starting Up Data Producers and Data Consumers<a name="kinesis-record-processor-producer-consumer-coordination"></a>
 
-By default, the KCL begins reading records from the tip of the stream;, which is the most recently added record\. In this configuration, if a data\-producing application adds records to the stream before any receiving record processors are running, the records are not read by the record processors after they start up\. 
+By default, the KCL begins reading records from the tip of the stream, which is the most recently added record\. In this configuration, if a data\-producing application adds records to the stream before any receiving record processors are running, the records are not read by the record processors after they start up\. 
 
 To change the behavior of the record processors so that it always reads data from the beginning of the stream, set the following value in the properties file for your Amazon Kinesis Data Streams application: 
 
