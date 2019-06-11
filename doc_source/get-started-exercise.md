@@ -108,6 +108,9 @@ Your Java application requires the following components:
 + A [Project Object Model \(pom\.xml\)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) file\. This file contains information about the application's configuration and dependencies, including the Kinesis Data Analytics for Java Applications libraries\.
 + A `main` method that contains the application's logic\.
 
+**Note**  
+**In order to use the Kinesis connector for the following application, you need to download the source code for the connector and build it as described in the [Apache Flink documentation](https://ci.apache.org/projects/flink/flink-docs-release-1.6/dev/connectors/kinesis.html)\.**
+
 **To create and compile the application code**
 
 1. Create a Java/Maven application in your development environment\. For information about creating an application, see the documentation for your development environment:
