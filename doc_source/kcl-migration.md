@@ -377,7 +377,7 @@ With the 2\.0 release of the Kinesis Client Library, the configuration of the cl
 | maxLeasesToStealAtOneTime | LeaseManagementConfig | The maximum number of leases an application should attempt to steal at one time\. | 
 | initialLeaseTableReadCapacity | LeaseManagementConfig | The DynamoDB read IOPs that is used if the Kinesis Client Library needs to create a new DynamoDB lease table\. | 
 | initialLeaseTableWriteCapacity | LeaseManagementConfig | The DynamoDB read IOPs that is used if the Kinesis Client Library needs to create a new DynamoDB lease table\. | 
-| initialPositionInStreamExtended | ConfigsBuilder | The initial position in the stream that the application should start at\. This is only used during initial lease creation\. | 
+| initialPositionInStreamExtended | LeaseManagementConfig | The initial position in the stream that the application should start at\. This is only used during initial lease creation\. | 
 | skipShardSyncAtWorkerInitializationIfLeasesExist | CoordinatorConfig | Disable synchronizing shard data if the lease table contains existing leases\. TODO: KinesisEco\-438 | 
 | shardPrioritization | CoordinatorConfig | Which shard prioritization to use\. | 
 | shutdownGraceMillis | N/A | This option has been removed\. See MultiLang Removals\. | 
