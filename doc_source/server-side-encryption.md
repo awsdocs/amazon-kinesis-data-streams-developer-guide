@@ -9,4 +9,4 @@ Server\-side encryption using AWS Key Management Service \(AWS KMS\) keys makes 
 + [Creating and Using User\-Generated KMS Master Keys](creating-using-sse-master-keys.md)
 + [Permissions to Use User\-Generated KMS Master Keys](permissions-user-key-KMS.md)
 + [Verifying and Troubleshooting KMS Key Permissions](sse-troubleshooting.md)
-+ [Internetwork Traffic Privacy in Amazon Kinesis Data Streams](vpc.md)
++ [Using Amazon Kinesis Data Streams with Interface VPC Endpoints](vpc.md)

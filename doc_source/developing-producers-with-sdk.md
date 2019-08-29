@@ -186,4 +186,4 @@ for (int j = 0; j < 10; j++)
 
 The preceding code sample uses `setSequenceNumberForOrdering` to guarantee strictly increasing ordering within each partition key\. To use this parameter effectively, set the `SequenceNumberForOrdering` of the current record \(record *n*\) to the sequence number of the preceding record \(record *n\-1*\)\. To get the sequence number of a record that has been added to the stream, call `getSequenceNumber` on the result of `putRecord`\.
 
-The `SequenceNumberForOrdering` parameter ensures strictly increasing sequence numbers for the same partition key, when the same client calls `PutRecord`\. `SequenceNumberForOrdering` does not provide ordering guarantees across records that are added from multiple concurrent applications, or across multiple partition keys\. 
+The `SequenceNumberForOrdering` parameter ensures strictly increasing sequence numbers for the same partition key\. `SequenceNumberForOrdering` does not provide ordering of records across multiple partition keys\. 

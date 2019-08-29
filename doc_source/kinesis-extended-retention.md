@@ -16,4 +16,4 @@ Kinesis Data Streams almost immediately makes records older than the new retenti
 
 Set your data retention period to ensure that your consumers are able to read data before it expires, if problems occur\. You should carefully consider all possibilities, such as an issue with your record processing logic or a downstream dependency being down for a long period of time\. Think of the retention period as a safety net to allow more time for your data consumers to recover\. The retention period API operations allow you to set this up proactively or to respond to operational events reactively\.
 
-Additional charges apply for streams with a retention period set above 24 hours\. For more information, see [Amazon Kinesis Data Streams Pricing](https://aws.amazon.com/kinesis/pricing/)\.
+ Additional charges apply for streams with a retention period set above 24 hours\. For more information, see [Amazon Kinesis Data Streams Pricing](https://aws.amazon.com/kinesis/data-streams/pricing/)\.

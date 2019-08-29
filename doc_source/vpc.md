@@ -1,20 +1,80 @@
-# Internetwork Traffic Privacy in Amazon Kinesis Data Streams<a name="vpc"></a>
+# Using Amazon Kinesis Data Streams with Interface VPC Endpoints<a name="vpc"></a>
 
-You can use an interface VPC endpoint to keep traffic between your Amazon VPC and Kinesis Data Streams from leaving the Amazon network\. Interface VPC endpoints don't require an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection\. Interface VPC endpoints are powered by AWS PrivateLink, an AWS technology that enables private communication between AWS services using an elastic network interface with private IPs in your Amazon VPC\. For more information, see [Amazon Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)\. 
+You can use an interface VPC endpoint to keep traffic between your Amazon VPC and Kinesis Data Streams from leaving the Amazon network\. Interface VPC endpoints don't require an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection\. Interface VPC endpoints are powered by AWS PrivateLink, an AWS technology that enables private communication between AWS services using an elastic network interface with private IPs in your Amazon VPC\. For more information, see [Amazon Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html) and [Interface VPC Endpoints \(AWS PrivateLink\)](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint)\. 
 
-## Using interface VPC endpoints for Kinesis Data Streams<a name="using-interface-vpc-endpoints"></a>
+**Topics**
++ [Using Interface VPC Endpoints for Kinesis Data Streams](#using-interface-vpc-endpoints)
++ [Controlling Access to VPCE Endpoints for Kinesis Data Streams](#interface-vpc-endpoints-policies)
++ [Availability of VPC Endpoint Policies for Kinesis Data Streams](#availability)
 
-To get started you do not need to change the settings for your streams, producers, or consumers\. Simply create an interface VPC endpoint in order for your Kinesis Data Streams traffic from and to your Amazon VPC resources to start flowing through the interface VPC endpoint\. 
+## Using Interface VPC Endpoints for Kinesis Data Streams<a name="using-interface-vpc-endpoints"></a>
 
-The Kinesis Producer Library \(KPL\) and Kinesis Consumer Library \(KCL\) call AWS services like Amazon CloudWatch and Amazon DynamoDB\. These services are reached using either public service endpoints or private VPC endpoints, depending on the configuration of the VPC containing your application\. For example, if your KPL application is running in a VPC with a DynamoDB gateway VPC endpoint configured, calls between your KPL / KCL application and DynamoDB would flow through the gateway VPC endpoint\. Similarly, if your VPC is configured to use an AWS CloudWatch interface VPC endpoint, calls between your KPL / KCL application and AWS Cloudwatch would flow through this interface VPC endpoint\. 
+To get started you do not need to change the settings for your streams, producers, or consumers\. Simply create an interface VPC endpoint in order for your Kinesis Data Streams traffic from and to your Amazon VPC resources to start flowing through the interface VPC endpoint\. For more information, see [Creating an Interface Endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint)\.
 
-## Availability<a name="availability"></a>
+The Kinesis Producer Library \(KPL\) and Kinesis Consumer Library \(KCL\) call AWS services like Amazon CloudWatch and Amazon DynamoDB using either public endpoints or private interface VPC endpoints, whichever are in use\. For example, if your KPL application is running in a VPC with DynamoDB interface VPC endpoints enabled, calls between DynamoDB and your KCL application flow through the interface VPC endpoint\.
 
-Interface VPC endpoints are currently supported within the following Regions:
+## Controlling Access to VPCE Endpoints for Kinesis Data Streams<a name="interface-vpc-endpoints-policies"></a>
+
+VPC endpoint policies enable you to control access by either attaching a policy to a VPC endpoint or by using additional fields in a policy that is attached to an IAM user, group, or role to restrict access to only occur via the specified VPC endpoint\. These policies can be used to restrict access to specific streams to a specified VPC endpoint when used in conjunction with the IAM policies to only grant access to Kinesis data stream actions via the specified VPC endpoint\.
+
+The following are example endpoint policies for accessing Kinesis data streams\.
++ **VPC policy example: read\-only access** \- this sample policy can be attached to a VPC endpoint\. \(For more information, see [Controlling Access to Amazon VPC Resources](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_IAM.html)\)\. It restricts actions to only listing and describing a Kinesis data stream through the VPC endpoint to which it is attached\.
+
+  ```
+  {
+    "Statement": [
+      {
+        "Sid": "ReadOnly",
+        "Principal": "*",
+        "Action": [
+          "kinesis:List*",
+          "kinesis:Describe*"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      }
+    ]
+  }
+  ```
++ **VPC policy example: restrict access to a specific Kinesis data stream** \- this sample policy can be attached to a VPC endpoint\. It restricts access to a specific data stream through the VPC endpoint to which it is attached\.
+
+  ```
+  {
+    "Statement": [
+      {
+        "Sid": "AccessToSpecificDataStream",
+        "Principal": "*",
+        "Action": "kinesis:*",
+        "Effect": "Allow",
+        "Resource": "arn:aws:kinesis:us-east-1:123456789012:stream/MyStream"
+      }
+    ]
+  }
+  ```
++ **IAM policy example: restrict access to a specific Stream from a specific VPC endpoint only** \- this sample policy can be attached to an IAM user, role, or group\. It restricts access to a specified Kinesis data stream to occur only from a specified VPC endpoint\.
+
+  ```
+  {
+     "Version": "2012-10-17",
+     "Statement": [
+        {
+           "Sid": "AccessFromSpecificEndpoint",
+           "Action": "kinesis:*",
+           "Effect": "Deny",
+           "Resource": "arn:aws:kinesis:us-east-1:123456789012:stream/MyStream",
+           "Condition": { "StringNotEquals" : { "aws:sourceVpce": "vpce-11aa22bb" } }
+        }
+     ]
+  }
+  ```
+
+## Availability of VPC Endpoint Policies for Kinesis Data Streams<a name="availability"></a>
+
+Kinesis Data Streams interface VPC endpoints with policies are supported in the following regions: 
 + US West \(Oregon\)
 + EU \(Paris\)
 + US East \(N\. Virginia\)
-+ EU \(Ireland\)
++ EU \(Stockholm\)
 + Asia Pacific \(Mumbai\)
 + US East \(Ohio\)
 + EU \(Frankfurt\)

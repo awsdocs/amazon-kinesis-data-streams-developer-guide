@@ -32,7 +32,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Creating and Using User-Generated KMS Master Keys](creating-using-sse-master-keys.md)
       + [Permissions to Use User-Generated KMS Master Keys](permissions-user-key-KMS.md)
       + [Verifying and Troubleshooting KMS Key Permissions](sse-troubleshooting.md)
-      + [Internetwork Traffic Privacy in Amazon Kinesis Data Streams](vpc.md)
+      + [Using Amazon Kinesis Data Streams with Interface VPC Endpoints](vpc.md)
    + [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](controlling-access.md)
    + [Monitoring Streams in Amazon Kinesis Data Streams](monitoring.md)
       + [Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch](monitoring-with-cloudwatch.md)
