@@ -1,6 +1,6 @@
 # Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch<a name="monitoring-with-cloudwatch"></a>
 
-Amazon Kinesis Data Streams and Amazon CloudWatch are integrated so that you can collect, view, and analyze CloudWatch metrics for your Kinesis data streams\. For example, to track shard usage, you can monitor the `PutRecords.Bytes` and `GetRecords.Bytes` metrics and compare them to the number of shards in the stream\.
+Amazon Kinesis Data Streams and Amazon CloudWatch are integrated so that you can collect, view, and analyze CloudWatch metrics for your Kinesis data streams\. For example, to track shard usage, you can monitor the `IncomingBytes` and `OutgoingBytes` metrics and compare them to the number of shards in the stream\.
 
 The metrics that you configure for your streams are automatically collected and pushed to CloudWatch every minute\. Metrics are archived for two weeks; after that period, the data is discarded\.
 
