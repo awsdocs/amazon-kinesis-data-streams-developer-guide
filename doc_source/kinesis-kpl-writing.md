@@ -70,6 +70,6 @@ for (int i = 0; i < 100; ++i) {
     ByteBuffer data = ByteBuffer.wrap("myData".getBytes("UTF-8"));      
     ListenableFuture<UserRecordResult> f = kinesis.addUserRecord("myStream", "myPartitionKey", data);     
     // If the Future is complete by the time we call addCallback, the callback will be invoked immediately.
-    Futures.addCallback(f, myCallback); 
+    Futures.addCallback(f, myCallback, MoreExecutors.directExecutor()); 
 }
 ```
