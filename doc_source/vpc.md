@@ -73,6 +73,7 @@ The following are example endpoint policies for accessing Kinesis data streams\.
 Kinesis Data Streams interface VPC endpoints with policies are supported in the following regions: 
 + US West \(Oregon\)
 + EU \(Paris\)
++ EU \(Ireland\)
 + US East \(N\. Virginia\)
 + EU \(Stockholm\)
 + Asia Pacific \(Mumbai\)
@@ -86,3 +87,7 @@ Kinesis Data Streams interface VPC endpoints with policies are supported in the 
 + Asia Pacific \(Singapore\)
 + Asia Pacific \(Sydney\)
 + Canada \(Central\)
++ China \(Beijing\)
++ China \(Ningxia\)
++ Asia Pacific \(Hong Kong\)
++ Middle East \(Bahrain\)
