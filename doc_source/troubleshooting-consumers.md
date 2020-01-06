@@ -31,7 +31,7 @@ For more information, see [Handling Duplicate Records](kinesis-record-processor-
 
 The most common reasons for read throughput being slower than expected are as follows:
 
-1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Kinesis Data Streams Limits](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
+1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Kinesis Data Streams Quotas](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
 
 1. The [limit](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_RequestSyntax) that specifies the maximum number of GetRecords per call may have been configured with a low value\. If you are using the KCL, you may have configured the worker with a low value for the `maxRecords` property\. In general, we recommend using the system defaults for this property\.
 

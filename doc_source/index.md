@@ -1,7 +1,7 @@
 # Amazon Kinesis Data Streams Developer Guide
 
 -----
-*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -18,7 +18,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Creating and Updating Data Streams](amazon-kinesis-streams.md)
    + [Kinesis Data Streams Producers](amazon-kinesis-producers.md)
    + [Kinesis Data Streams Consumers](amazon-kinesis-consumers.md)
-   + [Kinesis Data Streams Limits](service-sizes-and-limits.md)
+   + [Kinesis Data Streams Quotas](service-sizes-and-limits.md)
 + [Amazon Kinesis Data Streams Terminology and Concepts](key-concepts.md)
 + [Setting Up for Amazon Kinesis Data Streams](before-you-begin.md)
 + [Getting Started with Amazon Kinesis Data Streams](getting-started.md)

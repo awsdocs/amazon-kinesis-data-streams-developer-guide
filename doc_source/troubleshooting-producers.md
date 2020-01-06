@@ -12,7 +12,7 @@
 
 ### Service Limits Exceeded<a name="service-limits-exceeded"></a>
 
-To find out if service limits are being exceeded, check to see if your producer is throwing throughput exceptions from the service, and validate what API operations are being throttled\. Keep in mind that there are different limits based on the call, see [Kinesis Data Streams Limits](service-sizes-and-limits.md)\. For example, in addition to the shard\-level limits for writes and reads that are most commonly known, there are the following stream\-level limits:
+To find out if service limits are being exceeded, check to see if your producer is throwing throughput exceptions from the service, and validate what API operations are being throttled\. Keep in mind that there are different limits based on the call, see [Kinesis Data Streams Quotas](service-sizes-and-limits.md)\. For example, in addition to the shard\-level limits for writes and reads that are most commonly known, there are the following stream\-level limits:
 + [CreateStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html)
 + [DeleteStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeleteStream.html)
 + [ListStreams](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html)

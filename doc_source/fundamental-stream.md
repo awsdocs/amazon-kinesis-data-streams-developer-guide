@@ -1,6 +1,6 @@
 # Perform Basic Kinesis Data Stream Operations Using the AWS CLI<a name="fundamental-stream"></a>
 
-This section describes basic use of an Kinesis data stream from the command line using the AWS CLI\. Be sure you are familiar with the concepts discussed in [Amazon Kinesis Data Streams Terminology and Concepts](key-concepts.md)\.
+This section describes basic use of a Kinesis data stream from the command line using the AWS CLI\. Be sure you are familiar with the concepts discussed in [Amazon Kinesis Data Streams Terminology and Concepts](key-concepts.md)\.
 
 **Note**  
 After you create a stream, your account incurs nominal charges for Kinesis Data Streams usage because Kinesis Data Streams is not eligible for the AWS free tier\. When you are finished with this tutorial, delete your AWS resources to stop incurring charges\. For more information, see [Step 4: Clean Up](#clean-up)\.
