@@ -35,9 +35,10 @@ To obtain the initial shard iterator, instantiate `GetShardIteratorRequest` and 
 
 ```
 String shardIterator;
+String streamName = "EXAMPLE_STREAM_NAME";
 GetShardIteratorRequest getShardIteratorRequest = new GetShardIteratorRequest();
-getShardIteratorRequest.setStreamName(myStreamName);
-getShardIteratorRequest.setShardId(shard.getShardId());
+getShardIteratorRequest.setStreamName(streamName);
+getShardIteratorRequest.setShardId(getShardIteratorRequest.getShardId());
 getShardIteratorRequest.setShardIteratorType("TRIM_HORIZON");
 
 GetShardIteratorResult getShardIteratorResult = client.getShardIterator(getShardIteratorRequest);
