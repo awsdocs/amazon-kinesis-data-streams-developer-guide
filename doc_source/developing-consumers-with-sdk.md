@@ -33,15 +33,19 @@ Obtain the initial shard iterator using the `getShardIterator` method\. Obtain s
 
 To obtain the initial shard iterator, instantiate `GetShardIteratorRequest` and pass it to the `getShardIterator` method\. To configure the request, specify the stream and the shard ID\. For information about how to obtain the streams in your AWS account, see [Listing StreamsListing Shards](kinesis-using-sdk-java-list-streams.md)\. For information about how to obtain the shards in a stream, see [Retrieving Shards from a Stream](kinesis-using-sdk-java-retrieve-shards.md)\.
 
-```
-String shardIterator;
+```java
+AmazonKinesis kClient = AmazonKinesisClientBuilder.defaultClient();
+String streamName = "my_stream_name";
+final ListShardsRequest listShardsRequest = new ListShardsRequest().withStreamName(streamName).withMaxResults(1);
+
+Shard shard = kClient.listShards(listShardsRequest).getShards().get(0);
 GetShardIteratorRequest getShardIteratorRequest = new GetShardIteratorRequest();
-getShardIteratorRequest.setStreamName(myStreamName);
+getShardIteratorRequest.setStreamName(streamName);
 getShardIteratorRequest.setShardId(shard.getShardId());
 getShardIteratorRequest.setShardIteratorType("TRIM_HORIZON");
 
-GetShardIteratorResult getShardIteratorResult = client.getShardIterator(getShardIteratorRequest);
-shardIterator = getShardIteratorResult.getShardIterator();
+final GetShardIteratorResult getShardIteratorResult = kClient.getShardIterator(getShardIteratorRequest);
+String shardIterator = getShardIteratorResult.getShardIterator();
 ```
 
 This sample code specifies `TRIM_HORIZON` as the iterator type when obtaining the initial shard iterator\. This iterator type means that records should be returned beginning with the first record added to the shard—rather than beginning with the most recently added record, also known as the *tip*\. The following are possible iterator types:
