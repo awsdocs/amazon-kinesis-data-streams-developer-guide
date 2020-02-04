@@ -50,7 +50,7 @@ If your data rate increases, you can increase or decrease the number of shards a
 
 ### Partition Key<a name="partition-key"></a>
 
-A *partition key* is used to group data by shard within a stream\. Kinesis Data Streams segregates the data records belonging to a stream into multiple shards\. It uses the partition key that is associated with each data record to determine which shard a given data record belongs to\. Partition keys are Unicode strings with a maximum length limit of 256 bytes\. An MD5 hash function is used to map partition keys to 128\-bit integer values and to map associated data records to shards\. When an application puts data into a stream, it must specify a partition key\. 
+A *partition key* is used to group data by shard within a stream\. Kinesis Data Streams segregates the data records belonging to a stream into multiple shards\. It uses the partition key that is associated with each data record to determine which shard a given data record belongs to\. Partition keys are Unicode strings, with a maximum length limit of 256 characters for each key\. An MD5 hash function is used to map partition keys to 128\-bit integer values and to map associated data records to shards using the hash key ranges of the shards\. When an application puts data into a stream, it must specify a partition key\. 
 
 ### Sequence Number<a name="sequence-number"></a>
 

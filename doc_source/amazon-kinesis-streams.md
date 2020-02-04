@@ -11,11 +11,11 @@ A [producer](amazon-kinesis-producers.md) puts data records into shards and a [c
 Before you create a stream, you need to determine an initial size for the stream\. After you create the stream, you can dynamically scale your shard capacity up or down using the AWS Management Console or the [UpdateShardCount](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\. You can make updates while there is a Kinesis Data Streams application consuming data from the stream\.
 
 To determine the initial size of a stream, you need the following input values:
-+ The average size of the data record written to the stream in kibibytes \(KiB\), rounded up to the nearest 1 KiB, the data size \(`average_data_size_in_KiB`\)\.
++ The average size of the data record written to the stream in kilobytes \(KB\), rounded up to the nearest 1 KB, the data size \(`average_data_size_in_KB`\)\.
 + The number of data records written to and read from the stream per second \(`records_per_second`\)\.
 + The number of Kinesis Data Streams applications that consume data concurrently and independently from the stream, that is, the consumers \(`number_of_consumers`\)\.
-+ The incoming write bandwidth in KiB \(`incoming_write_bandwidth_in_KiB`\), which is equal to the `average_data_size_in_KiB` multiplied by the `records_per_second`\.
-+ The outgoing read bandwidth in KiB \(`outgoing_read_bandwidth_in_KiB`\), which is equal to the `incoming_write_bandwidth_in_KiB` multiplied by the `number_of_consumers`\.
++ The incoming write bandwidth in KB \(`incoming_write_bandwidth_in_KB`\), which is equal to the `average_data_size_in_KB` multiplied by the `records_per_second`\.
++ The outgoing read bandwidth in KB \(`outgoing_read_bandwidth_in_KB`\), which is equal to the `incoming_write_bandwidth_in_KB` multiplied by the `number_of_consumers`\.
 
 You can calculate the initial number of shards \(`number_of_shards`\) that your stream needs by using the input values in the following formula:
 

@@ -87,7 +87,7 @@ The Java application code for this examples is available from GitHub\. To downlo
 1. Clone the remote repository with the following command:
 
    ```
-   git clone git@github.com:aws-samples/amazon-kinesis-data-analytics-java-examples.git
+   git clone https://github.com/aws-samples/amazon-kinesis-data-analytics-java-examples.git
    ```
 
 1. Navigate to the `GettingStarted` directory\.
