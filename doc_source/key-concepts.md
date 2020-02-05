@@ -46,7 +46,7 @@ The output of a Kinesis Data Streams application can be input for another stream
 
 A *shard* is a uniquely identified sequence of data records in a stream\. A stream is composed of one or more shards, each of which provides a fixed unit of capacity\. Each shard can support up to 5 transactions per second for reads, up to a maximum total data read rate of 2 MB per second and up to 1,000 records per second for writes, up to a maximum total data write rate of 1 MB per second \(including partition keys\)\. The data capacity of your stream is a function of the number of shards that you specify for the stream\. The total capacity of the stream is the sum of the capacities of its shards\.
 
-If your data rate increases, you can increase or decrease the number of shards allocated to your stream\.
+If your data rate increases, you can increase or decrease the number of shards allocated to your stream\. For more information, see [Resharding a Stream](kinesis-using-sdk-java-resharding.md)\.
 
 ### Partition Key<a name="partition-key"></a>
 
