@@ -5,4 +5,4 @@ After enabling encryption on a Kinesis stream, we recommend that you monitor the
 + `PutRecords.Success`
 + `GetRecords.Success`
 
-For more information, see [Monitoring Streams in Amazon Kinesis Data Streams](monitoring.md)
+For more information, see [Monitoring Amazon Kinesis Data Streams](monitoring.md)

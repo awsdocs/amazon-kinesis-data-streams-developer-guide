@@ -6,6 +6,9 @@ The Java package runs without the need to install any additional libraries on th
 + Linux distributions with kernel 2\.6\.18 \(September 2006\) and later
 + Apple OS X 10\.9 and later
 + Windows Server 2008 and later
+**Important**  
+Windows Server 2008 and later is supported for all KPL versions up to version 0\.14\.0\.   
+The Windows platform is NOT supported starting with KPL version 0\.14\.0 or higher\.
 
 Note that the KPL is 64\-bit only\.
 

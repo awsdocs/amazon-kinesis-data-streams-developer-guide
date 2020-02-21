@@ -11,7 +11,6 @@ This documentation helps you understand how to apply the shared responsibility m
 **Topics**
 + [Data Protection in Amazon Kinesis Data Streams](server-side-encryption.md)
 + [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](controlling-access.md)
-+ [Monitoring Streams in Amazon Kinesis Data Streams](monitoring.md)
 + [Compliance Validation for Amazon Kinesis Data Streams](akda-java-compliance.md)
 + [Resilience in Amazon Kinesis Data Streams](disaster-recovery-resiliency.md)
 + [Infrastructure Security in Kinesis Data Streams](infrastructure-security.md)

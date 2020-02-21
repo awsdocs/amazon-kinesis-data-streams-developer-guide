@@ -13,7 +13,7 @@ If the Amazon DynamoDB table for your Amazon Kinesis Data Streams application do
 
 If your Amazon Kinesis Data Streams application receives provisioned\-throughput exceptions, you should increase the provisioned throughput for the DynamoDB table\. The KCL creates the table with a provisioned throughput of 10 reads per second and 10 writes per second, but this might not be sufficient for your application\. For example, if your Amazon Kinesis Data Streams application does frequent checkpointing or operates on a stream that is composed of many shards, you might need more throughput\.
 
-For information about provisioned throughput in DynamoDB, see [Provisioned Throughput in Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide//ProvisionedThroughputIntro.html) and [Working with Tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDDTables.html) in the *Amazon DynamoDB Developer Guide*\.
+For information about provisioned throughput in DynamoDB, see [Read/Write Capacity Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html) and [Working with Tables and Data](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDDTables.html) in the *Amazon DynamoDB Developer Guide*\.
 
 ## Application State Data<a name="kinesis-record-processor-ddb-table-contents"></a>
 

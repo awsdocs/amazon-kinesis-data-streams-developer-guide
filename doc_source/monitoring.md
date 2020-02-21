@@ -1,4 +1,4 @@
-# Monitoring Streams in Amazon Kinesis Data Streams<a name="monitoring"></a>
+# Monitoring Amazon Kinesis Data Streams<a name="monitoring"></a>
 
 You can monitor your data streams in Amazon Kinesis Data Streams using the following features:
 + [CloudWatch metrics](monitoring-with-cloudwatch.md)— Kinesis Data Streams sends Amazon CloudWatch custom metrics with detailed monitoring for each stream\.

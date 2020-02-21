@@ -16,8 +16,6 @@ Like most AWS APIs, Kinesis Data Streams API operations are rate\-limited\. For 
 
 ## Increasing Quotas<a name="increasing-kds-limits"></a>
 
-**To increase your shard quota or API call rate quota**
+You can use Service Quotas to request an increase for a quota, if the quota is adjustable\. Some requests are automatically resolved, while others are submitted to AWS Support\. You can track the status of a quota increase request that is submitted to AWS Support\. Requests to increase service quotas do not receive priority support\. If you have an urgent request, contact AWS Support\. For more information, see [What Is Service Quotas?](https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html)
 
-1. Sign in to the AWS Management Console at [https://console.aws.amazon.com/](https://console.aws.amazon.com/)\.
-
-1. Use the [Kinesis Data Streams limits form](https://console.aws.amazon.com/support/v1#/case/create%3FissueType=service-quota-increase%26limitType=service-code-kinesis) to request a quota increase\.
+To request a service quota increase, follow the procedure outlined in [Requesting a Quota Increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\.

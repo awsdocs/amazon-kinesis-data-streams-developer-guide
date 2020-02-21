@@ -76,6 +76,11 @@ Kinesis sends the following shard\-level metrics to CloudWatch every minute\. Th
 
 ### Dimensions for Amazon Kinesis Data Streams Metrics<a name="kinesis-metricdimensions"></a>
 
+
+|  Dimension  |  Description  | 
+| --- | --- | 
+|  StreamName  |  The name of the Kinesis stream\. All available statistics are filtered by `StreamName`\.   | 
+
 ### Recommended Amazon Kinesis Data Streams Metrics<a name="kinesis-metric-use"></a>
 
 Several Amazon Kinesis Data Streams metrics might be of particular interest to Kinesis Data Streams customers\. The following list provides recommended metrics and their uses\.
