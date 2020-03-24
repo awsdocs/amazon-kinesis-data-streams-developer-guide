@@ -1,6 +1,10 @@
 # Tutorial: Analyze Real\-Time Stock Data Using Kinesis Data Analytics for Java Applications<a name="tutorial-stock-data"></a>
 
-The scenario for this tutorial involves ingesting stock trades into a data stream and writing a simple Amazon Kinesis Data Analytics application that performs calculations on the stream\. You will learn how to send a stream of records to Kinesis Data Streams and implement an application that consumes and processes the records in near\-real time\.
+The scenario for this tutorial involves ingesting stock trades into a data stream and writing a simple [Amazon Kinesis Data Analytics](https://docs.aws.amazon.com/kinesisanalytics/latest/java/what-is.html) application that performs calculations on the stream\. You will learn how to send a stream of records to Kinesis Data Streams and implement an application that consumes and processes the records in near\-real time\.
+
+With Amazon Kinesis Data Analytics for Java Applications, you can use Java to process and analyze streaming data\. The service enables you to author and run Java code against streaming sources to perform time\-series analytics, feed real\-time dashboards, and create real\-time metrics\.
+
+You can build Java applications in Kinesis Data Analytics using open\-source libraries based on [Apache Flink](https://flink.apache.org/)\. Apache Flink is a popular framework and engine for processing data streams\. 
 
 **Important**  
 After you create two data streams and an application, your account incurs nominal charges for Kinesis Data Streams and Kinesis Data Analytics usage because they are not eligible for the AWS Free Tier\. When you are finished with this application, delete your AWS resources to stop incurring charges\. 

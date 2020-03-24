@@ -1,6 +1,6 @@
 # Prerequisites<a name="tutorial-stock-data-kplkcl-begin"></a>
 
-The following are requirements for completing the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL[Tutorial: Process Real\-Time Stock Data Using KPL and KCL](tutorial-stock-data-kplkcl.md)](tutorial-stock-data-kplkcl.md)\.
+The following are requirements for completing the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x[Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x](tutorial-stock-data-kplkcl.md)](tutorial-stock-data-kplkcl.md)\.
 
 ## Amazon Web Services Account<a name="tutorial-stock-data-kplkcl-begin-aws"></a>
 

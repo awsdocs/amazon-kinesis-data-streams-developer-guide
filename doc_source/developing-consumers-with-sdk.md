@@ -1,8 +1,8 @@
-# Developing Consumers Using the Kinesis Data Streams API with the AWS SDK for Java<a name="developing-consumers-with-sdk"></a>
+# Developing Custom Consumers with Shared Throughput Using the AWS SDK for Java<a name="developing-consumers-with-sdk"></a>
 
 You can develop consumers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started with Amazon Kinesis Data Streams](getting-started.md)\.
 
-These examples discuss the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer using the Kinesis Client Library \(KCL\) \. For more information, see [Developing Consumers Using the Kinesis Client Library 1\.x](developing-consumers-with-kcl.md)\.
+These examples discuss the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer using the Kinesis Client Library \(KCL\) \. For more information, see [Developing KCL 1\.x Consumers](developing-consumers-with-kcl.md)\.
 
 The Java example code in this section demonstrates how to perform basic Kinesis Data Streams API operations, and is divided up logically by operation type\. These examples don't represent production\-ready code\. They don't check for all possible exceptions or account for all possible security or performance considerations\. Also, you can call the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
 
@@ -18,7 +18,7 @@ Each task has prerequisites\. For example, you cannot add data to a stream until
 
 The Kinesis Data Streams API provides the `getShardIterator` and `getRecords` methods to retrieve data from a stream\. This is a pull model, where your code draws data directly from the shards of the stream\.
 
-We recommend that you use the record processor support provided by the Kinesis Client Library \(KCL\) to retrieve stream data in consumer applications\. This is a push model, where you implement the code that processes the data\. The KCL retrieves data records from the stream and delivers them to your application code\. In addition, the KCL provides failover, recovery, and load balancing functionality\. For more information, see [Developing Consumers Using the Kinesis Client Library 1\.x](developing-consumers-with-kcl.md)\.
+We recommend that you use the record processor support provided by the Kinesis Client Library \(KCL\) to retrieve stream data in consumer applications\. This is a push model, where you implement the code that processes the data\. The KCL retrieves data records from the stream and delivers them to your application code\. In addition, the KCL provides failover, recovery, and load balancing functionality\. For more information, see [Developing KCL 1\.x Consumers](developing-consumers-with-kcl.md)\.
 
 However, in some cases you might prefer to use the Kinesis Data Streams API with the AWS SDK for Java\. For example, to implement custom tools for monitoring or debugging your streams\.
 

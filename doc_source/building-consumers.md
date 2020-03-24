@@ -1,8 +1,8 @@
 # Reading Data from Amazon Kinesis Data Streams<a name="building-consumers"></a>
 
-A *consumer* is an application that processes all data from a Kinesis data stream\. When a consumer uses *enhanced fan\-out*, it gets its own 2 MB/sec allotment of read throughput, allowing multiple consumers to read data from the same stream in parallel, without contending for read throughput with other consumers\. To use the enhanced fan\-out capability of shards, see [Using Consumers with Enhanced Fan\-Out ](introduction-to-enhanced-consumers.md)\.
+A *consumer* is an application that processes all data from a Kinesis data stream\. When a consumer uses *enhanced fan\-out*, it gets its own 2 MB/sec allotment of read throughput, allowing multiple consumers to read data from the same stream in parallel, without contending for read throughput with other consumers\. To use the enhanced fan\-out capability of shards, see [Developing Custom Consumers with Dedicated Throughput \(Enhanced Fan\-Out\)](enhanced-consumers.md)\.
 
- By default, shards in a stream provide 2 MB/sec of read throughput per shard\. This throughput gets shared across all the consumers that are reading from a given shard\. In other words, the default 2 MB/sec of throughput per shard is fixed, even if there are multiple consumers that are reading from the shard\. To use this default throughput of shards see, [Developing Amazon Kinesis Data Streams Consumers](shared-fan-out-consumers.md)\. 
+ By default, shards in a stream provide 2 MB/sec of read throughput per shard\. This throughput gets shared across all the consumers that are reading from a given shard\. In other words, the default 2 MB/sec of throughput per shard is fixed, even if there are multiple consumers that are reading from the shard\. To use this default throughput of shards see, [Developing Custom Consumers with Shared Throughput](shared-throughput-consumers.md)\. 
 
 The following table compares default throughput to enhanced fan\-out\. Message propagation delay is defined as the time taken in milliseconds for a payload sent using the payload\-dispatching APIs \(like PutRecord and PutRecords\) to reach the consumer application through the payload\-consuming APIs \(like GetRecords and SubscribeToShard\)\. 
 
@@ -15,11 +15,11 @@ The following table compares default throughput to enhanced fan\-out\. Message p
 | Record delivery model | Pull model over HTTP using [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. | Kinesis Data Streams pushes the records to you over HTTP/2 using [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html)\. | 
 
 **Topics**
++ [Developing Consumers Using AWS Lambda](lambda-consumer.md)
 + [Developing Consumers Using Amazon Kinesis Data Analytics](kda-consumer.md)
 + [Developing Consumers Using Amazon Kinesis Data Firehose](kdf-consumer.md)
-+ [Developing Consumers Using AWS Lambda](lambda-consumer.md)
-+ [Developing Amazon Kinesis Data Streams Consumers](shared-fan-out-consumers.md)
-+ [Using Consumers with Enhanced Fan\-Out](introduction-to-enhanced-consumers.md)
-+ [Migrating from Kinesis Client Library 1\.x to 2\.x](kcl-migration.md)
-+ [Troubleshooting Amazon Kinesis Data Streams Consumers](troubleshooting-consumers.md)
++ [Developing Custom Consumers with Shared Throughput](shared-throughput-consumers.md)
++ [Developing Custom Consumers with Dedicated Throughput \(Enhanced Fan\-Out\)](enhanced-consumers.md)
++ [Migrating Consumers from KCL 1\.x to KCL 2\.x](kcl-migration.md)
++ [Troubleshooting Kinesis Data Streams Consumers](troubleshooting-consumers.md)
 + [Advanced Topics for Amazon Kinesis Data Streams Consumers](advanced-consumers.md)

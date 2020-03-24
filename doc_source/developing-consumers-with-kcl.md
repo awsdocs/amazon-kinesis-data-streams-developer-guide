@@ -1,4 +1,4 @@
-# Developing Consumers Using the Kinesis Client Library 1\.x<a name="developing-consumers-with-kcl"></a>
+# Developing KCL 1\.x Consumers<a name="developing-consumers-with-kcl"></a>
 
 You can develop a consumer application for Amazon Kinesis Data Streams using the Kinesis Client Library \(KCL\)\. Although you can use the Kinesis Data Streams API to get data from a Kinesis data stream, we recommend that you use the design patterns and code for consumer applications provided by the KCL\.
 

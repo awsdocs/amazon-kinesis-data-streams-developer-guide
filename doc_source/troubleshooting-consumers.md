@@ -1,7 +1,7 @@
-# Troubleshooting Amazon Kinesis Data Streams Consumers<a name="troubleshooting-consumers"></a>
+# Troubleshooting Kinesis Data Streams Consumers<a name="troubleshooting-consumers"></a>
 
 **Topics**
-+ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w5aac19c25b5)
++ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w7aac19c25b5)
 + [Records Belonging to the Same Shard are Processed by Different Record Processors at the Same Time](#records-belonging-to-the-same-shard)
 + [Consumer Application is Reading at a Slower Rate Than Expected](#consumer-app-reading-slower)
 + [GetRecords Returns Empty Records Array Even When There is Data in the Stream](#getrecords-returns-empty)
@@ -9,7 +9,7 @@
 + [Consumer Record Processing Falling Behind](#record-processing-falls-behind)
 + [Unauthorized KMS master key permission error](#unauthorized-kms-consumer)
 
-## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w5aac19c25b5"></a>
+## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w7aac19c25b5"></a>
 
 The most common cause of skipped records is an unhandled exception thrown from `processRecords`\. The Kinesis Client Library \(KCL\) relies on your `processRecords` code to handle any exceptions that arise from processing the data records\. Any exception thrown from `processRecords` is absorbed by the KCL\. To avoid infinite retries on a recurring failure, the KCL does not resend the batch of records processed at the time of the exception\. The KCL then calls `processRecords` for the next batch of data records without restarting the record processor\. This effectively results in consumer applications observing skipped records\. To prevent skipped records, handle all exceptions within `processRecords` appropriately\.
 

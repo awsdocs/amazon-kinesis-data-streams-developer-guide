@@ -1,6 +1,6 @@
 # Step 1: Create a Data Stream<a name="tutorial-stock-data-kplkcl-create-stream"></a>
 
-In the first step of the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL[Tutorial: Process Real\-Time Stock Data Using KPL and KCL](tutorial-stock-data-kplkcl.md)](tutorial-stock-data-kplkcl.md), you create the stream that you will use in subsequent steps\.
+In the first step of the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x[Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x](tutorial-stock-data-kplkcl.md)](tutorial-stock-data-kplkcl.md), you create the stream that you will use in subsequent steps\.
 
 **To create a stream**
 

@@ -1,6 +1,6 @@
 # Step 6: \(Optional\) Extending the Consumer<a name="tutorial-stock-data-kplkcl-consumer-extension"></a>
 
-The application in the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL[Tutorial: Process Real\-Time Stock Data Using KPL and KCL](tutorial-stock-data-kplkcl.md)](tutorial-stock-data-kplkcl.md) might already be sufficient for your purposes\. This optional section shows how you can extend the consumer code for a slightly more elaborate scenario\.
+The application in the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x[Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x](tutorial-stock-data-kplkcl.md)](tutorial-stock-data-kplkcl.md) might already be sufficient for your purposes\. This optional section shows how you can extend the consumer code for a slightly more elaborate scenario\.
 
 If you want to know about the biggest sell orders each minute, you can modify the `StockStats` class in three places to accommodate this new priority\.
 

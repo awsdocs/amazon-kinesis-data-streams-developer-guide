@@ -1,4 +1,4 @@
-# Developing a Consumer Using the Kinesis Client Library 2\.x in Java<a name="building-enhanced-consumers-kcl-java"></a>
+# Developing Enhanced Fan\-Out Consumers Using KCL 2\.x in Java<a name="building-enhanced-consumers-kcl-java"></a>
 
 You can use version 2\.0 or later of the Kinesis Client Library \(KCL\) to develop applications in Amazon Kinesis Data Streams to receive data from streams using enhanced fan\-out\. The following code shows an example implementation in Java of `ProcessorFactory` and `RecordProcessor`\.
 

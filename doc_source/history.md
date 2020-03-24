@@ -6,7 +6,7 @@ The following table describes the important changes to the Amazon Kinesis Data S
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
 | Added information about controlling access to VPCE endpoints for Kinesis Data Streams\. | For information, see [Controlling Access to VPCE Endpoints for Kinesis Data Streams](vpc.md#interface-vpc-endpoints-policies)\. | August 23, 2019 | 
-| New documentation for consumers that use enhanced fan\-out\. | For information, see [Using Consumers with Enhanced Fan\-Out ](introduction-to-enhanced-consumers.md)\. | August 2, 2018 | 
+| New documentation for consumers that use enhanced fan\-out\. | For information, see [Developing Custom Consumers with Dedicated Throughput \(Enhanced Fan\-Out\)](enhanced-consumers.md)\. | August 2, 2018 | 
 | Updated summary of service limits\. | Added [Kinesis Data Streams Quotas](service-sizes-and-limits.md)\. | June 6, 2018 | 
 | New content for server\-side encryption\. | Added [Data Protection in Amazon Kinesis Data Streams](server-side-encryption.md)\. | July 7, 2017 | 
 | New content for enhanced CloudWatch metrics\. | Updated [Monitoring Amazon Kinesis Data Streams](monitoring.md)\. | April 19, 2016 | 

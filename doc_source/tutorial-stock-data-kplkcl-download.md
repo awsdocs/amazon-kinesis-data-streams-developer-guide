@@ -1,6 +1,6 @@
 # Step 3: Download and Build the Implementation Code<a name="tutorial-stock-data-kplkcl-download"></a>
 
-Skeleton code is provided for the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL](tutorial-stock-data-kplkcl.md)\. It contains a stub implementation for both the stock trade stream ingestion \(*producer*\) and the processing of the data \(*consumer*\)\. The following procedure shows how to complete the implementations\. 
+Skeleton code is provided for the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x](tutorial-stock-data-kplkcl.md)\. It contains a stub implementation for both the stock trade stream ingestion \(*producer*\) and the processing of the data \(*consumer*\)\. The following procedure shows how to complete the implementations\. 
 
 **To download and build the implementation code**
 

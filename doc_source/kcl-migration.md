@@ -1,4 +1,4 @@
-# Migrating from Kinesis Client Library 1\.x to 2\.x<a name="kcl-migration"></a>
+# Migrating Consumers from KCL 1\.x to KCL 2\.x<a name="kcl-migration"></a>
 
 This topic explains the differences between versions 1\.x and 2\.x of the Kinesis Client Library \(KCL\)\. It also shows you how to migrate your consumer from version 1\.x to version 2\.x of the KCL\. After you migrate your client, it will start processing records from the last checkpointed location\.
 
