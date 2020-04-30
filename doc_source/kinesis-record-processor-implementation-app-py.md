@@ -17,9 +17,9 @@ You must complete the following tasks when implementing a KCL consumer applicati
 The `RecordProcess` class must extend the `RecordProcessorBase` to implement the following methods\. The sample provides implementations that you can use as a starting point \(see `sample_kclpy_app.py`\)\.
 
 ```
-def initialize(self, shard_id)
-def process_records(self, records, checkpointer)
-def shutdown(self, checkpointer, reason)
+def initialize(self, shard_id): ...
+def process_records(self, records, checkpointer): ...
+def shutdown(self, checkpointer, reason): ...
 ```
 
 **initialize**  
