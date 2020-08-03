@@ -12,7 +12,7 @@ The following are the minimum permissions generally required for a Kinesis Data 
 | DescribeStream, DescribeStreamSummary, DescribeStreamConsumer | Kinesis data stream | Before attempting to read records, the consumer checks if the stream exists and is active, and if the shards are contained in the stream\. | 
 | SubscribeToShard, RegisterStreamConsumer | Kinesis data stream | Subscribes and register a consumers to a Kinesis Data Stream shard\. | 
 | PutRecord, PutRecords | Kinesis data stream | Write records to Kinesis Data Streams\. | 
-
+| ListShards | Kinesis data stream | Support discover of new shards in the stream after it has scaled up or down\. | 
 
 **Consumer**  
 
