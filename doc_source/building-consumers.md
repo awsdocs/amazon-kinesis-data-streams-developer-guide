@@ -18,6 +18,7 @@ The following table compares default throughput to enhanced fan\-out\. Message p
 + [Developing Consumers Using AWS Lambda](lambda-consumer.md)
 + [Developing Consumers Using Amazon Kinesis Data Analytics](kda-consumer.md)
 + [Developing Consumers Using Amazon Kinesis Data Firehose](kdf-consumer.md)
++ [Using the Kinesis Client Library](shared-throughput-kcl-consumers.md)
 + [Developing Custom Consumers with Shared Throughput](shared-throughput-consumers.md)
 + [Developing Custom Consumers with Dedicated Throughput \(Enhanced Fan\-Out\)](enhanced-consumers.md)
 + [Migrating Consumers from KCL 1\.x to KCL 2\.x](kcl-migration.md)

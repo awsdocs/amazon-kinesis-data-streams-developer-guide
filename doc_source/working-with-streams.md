@@ -8,7 +8,6 @@ The Java example code in this chapter demonstrates how to perform basic Kinesis 
 + [Creating a Stream](kinesis-using-sdk-java-create-stream.md)
 + [Listing Streams](kinesis-using-sdk-java-list-streams.md)
 + [Listing Shards](kinesis-using-sdk-java-list-shards.md)
-+ [Retrieving Shards from a Stream](kinesis-using-sdk-java-retrieve-shards.md)
 + [Deleting a Stream](kinesis-using-sdk-java-delete-stream.md)
 + [Resharding a Stream](kinesis-using-sdk-java-resharding.md)
 + [Changing the Data Retention Period](kinesis-extended-retention.md)

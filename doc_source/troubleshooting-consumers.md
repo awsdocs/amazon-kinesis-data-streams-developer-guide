@@ -1,7 +1,7 @@
 # Troubleshooting Kinesis Data Streams Consumers<a name="troubleshooting-consumers"></a>
 
 **Topics**
-+ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w7aac19c25b5)
++ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w7aac19c27b5)
 + [Records Belonging to the Same Shard are Processed by Different Record Processors at the Same Time](#records-belonging-to-the-same-shard)
 + [Consumer Application is Reading at a Slower Rate Than Expected](#consumer-app-reading-slower)
 + [GetRecords Returns Empty Records Array Even When There is Data in the Stream](#getrecords-returns-empty)
@@ -9,7 +9,7 @@
 + [Consumer Record Processing Falling Behind](#record-processing-falls-behind)
 + [Unauthorized KMS master key permission error](#unauthorized-kms-consumer)
 
-## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w7aac19c25b5"></a>
+## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w7aac19c27b5"></a>
 
 The most common cause of skipped records is an unhandled exception thrown from `processRecords`\. The Kinesis Client Library \(KCL\) relies on your `processRecords` code to handle any exceptions that arise from processing the data records\. Any exception thrown from `processRecords` is absorbed by the KCL\. To avoid infinite retries on a recurring failure, the KCL does not resend the batch of records processed at the time of the exception\. The KCL then calls `processRecords` for the next batch of data records without restarting the record processor\. This effectively results in consumer applications observing skipped records\. To prevent skipped records, handle all exceptions within `processRecords` appropriately\.
 
@@ -31,7 +31,7 @@ For more information, see [Handling Duplicate Records](kinesis-record-processor-
 
 The most common reasons for read throughput being slower than expected are as follows:
 
-1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Kinesis Data Streams Quotas](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
+1. Multiple consumer applications have total reads exceeding the per\-shard limits\. For more information, see [Kinesis Data Streams Quotas and Limits](service-sizes-and-limits.md)\. In this case, increase the number of shards in the Kinesis data stream\.
 
 1. The [limit](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_RequestSyntax) that specifies the maximum number of GetRecords per call may have been configured with a low value\. If you are using the KCL, you may have configured the worker with a low value for the `maxRecords` property\. In general, we recommend using the system defaults for this property\.
 
@@ -59,7 +59,7 @@ If you use the Kinesis Client Library \(KCL\), the above consumption pattern is 
 
 A new shard iterator is returned by every GetRecords request \(as `NextShardIterator`\), which you then use in the next GetRecords request \(as `ShardIterator`\)\. Typically, this shard iterator does not expire before you use it\. However, you may find that shard iterators expire because you have not called GetRecords for more than 5 minutes, or because you've performed a restart of your consumer application\.
 
-If the shard iterator expires immediately, before you can use it, this might indicate that the DynamoDB table used by Kinesis does not have enough capacity to store the lease data\. This situation is more likely to happen if you have a large number of shards\. To solve this problem, increase the write capacity assigned to the shard table\. For more information, see [Tracking Amazon Kinesis Data Streams Application State](kinesis-record-processor-ddb.md)\.
+If the shard iterator expires immediately, before you can use it, this might indicate that the DynamoDB table used by Kinesis does not have enough capacity to store the lease data\. This situation is more likely to happen if you have a large number of shards\. To solve this problem, increase the write capacity assigned to the shard table\. For more information, see [Using a Lease Table to Track the Shards Processed by the KCL Consumer Application](shared-throughput-kcl-consumers.md#shared-throughput-kcl-consumers-leasetable)\.
 
 ## Consumer Record Processing Falling Behind<a name="record-processing-falls-behind"></a>
 

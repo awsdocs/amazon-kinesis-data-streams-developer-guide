@@ -91,3 +91,5 @@ Kinesis Data Streams interface VPC endpoints with policies are supported in the 
 + China \(Ningxia\)
 + Asia Pacific \(Hong Kong\)
 + Middle East \(Bahrain\)
++ Europe \(Milan\)
++ Africa \(Cape Town\)

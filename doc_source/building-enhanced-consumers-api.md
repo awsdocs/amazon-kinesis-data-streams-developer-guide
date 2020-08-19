@@ -9,6 +9,8 @@ You can use API operations to build a consumer that uses enhanced fan\-out in Ki
 1. Call [RegisterStreamConsumer](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_RegisterStreamConsumer.html) to register your application as a consumer that uses enhanced fan\-out\. Kinesis Data Streams generates an Amazon Resource Name \(ARN\) for the consumer and returns it in the response\.
 
 1. To start listening to a specific shard, pass the consumer ARN in a call to [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html)\. Kinesis Data Streams then starts pushing the records from that shard to you, in the form of events of type [SubscribeToShardEvent](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShardEvent.html) over an HTTP/2 connection\. The connection remains open for up to 5 minutes\. Call [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html) again if you want to continue receiving records from the shard after the `future` that is returned by the call to [SubscribeToShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_SubscribeToShard.html) completes normally or exceptionally\.
+**Note**  
+`SubscribeToShard` API also returns the list of the child shards of the current shard when the end of the current shard is reached\. 
 
 1. To deregister a consumer that is using enhanced fan\-out, call [DeregisterStreamConsumer](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeregisterStreamConsumer.html)\.
 
@@ -71,3 +73,5 @@ The following code is an example of how you can subscribe your consumer to a sha
         }
     }
 ```
+
+ If `event.ContinuationSequenceNumber` returns `null`, it indicates that a shard split or merge has occurred that involved this shard\. This shard is now in a `CLOSED` state, and you have read all available data records from this shard\. In this scenario, per example above, you can use `event.childShards` to learn about the new child shards of the shard that is being processed that were created by the split or merge\. For more information, see [ChildShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ChildShard.html)\.

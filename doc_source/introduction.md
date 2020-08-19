@@ -13,7 +13,7 @@ For more information about AWS big data solutions, see [Big Data on AWS](https:/
 + [Creating and Updating Data Streams](amazon-kinesis-streams.md)
 + [Kinesis Data Streams Producers](amazon-kinesis-producers.md)
 + [Kinesis Data Streams Consumers](amazon-kinesis-consumers.md)
-+ [Kinesis Data Streams Quotas](service-sizes-and-limits.md)
++ [Kinesis Data Streams Quotas and Limits](service-sizes-and-limits.md)
 
 ## What Can I Do with Kinesis Data Streams?<a name="use-service-for-what"></a>
 

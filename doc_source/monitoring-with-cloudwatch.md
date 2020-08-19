@@ -61,7 +61,7 @@ Kinesis Data Streams sends these stream\-level metrics to CloudWatch every minut
 
 The `AWS/Kinesis` namespace includes the following shard\-level metrics\.
 
-Kinesis sends the following shard\-level metrics to CloudWatch every minute\. These metrics are not enabled by default\. There is a charge for enhanced metrics emitted from Kinesis\. For more information, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/) under the heading *Amazon CloudWatch Custom Metrics*\. The charges are given per shard per metric per month\.
+Kinesis sends the following shard\-level metrics to CloudWatch every minute\. Each metric dimension creates 1 CloudWatch metric and makes approximately 43,200 `PutMetricData` API calls per month\. These metrics are not enabled by default\. There is a charge for enhanced metrics emitted from Kinesis\. For more information, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/) under the heading *Amazon CloudWatch Custom Metrics*\. The charges are given per shard per metric per month\.
 
 
 | Metric | Description | 

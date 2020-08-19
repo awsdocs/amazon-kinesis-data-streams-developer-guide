@@ -3,7 +3,6 @@
 Learn how to optimize your Amazon Kinesis Data Streams consumer\.
 
 **Topics**
-+ [Tracking Amazon Kinesis Data Streams Application State](kinesis-record-processor-ddb.md)
 + [Low\-Latency Processing](kinesis-low-latency.md)
 + [Using AWS Lambda with the Kinesis Producer Library](kinesis-record-deaggregation.md)
 + [Resharding, Scaling, and Parallel Processing](kinesis-record-processor-scaling.md)

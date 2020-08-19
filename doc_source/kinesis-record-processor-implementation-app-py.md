@@ -77,7 +77,7 @@ The sample provides default values for the configuration properties\. You can ov
 
 The KCL requires an application name that is unique among your applications, and among Amazon DynamoDB tables in the same Region\. It uses the application name configuration value in the following ways:
 + All workers that are associated with this application name are assumed to be working together on the same stream\. These workers can be distributed on multiple instances\. If you run an additional instance of the same application code, but with a different application name, the KCL treats the second instance as an entirely separate application that is also operating on the same stream\.
-+ The KCL creates a DynamoDB table with the application name and uses the table to maintain state information \(such as checkpoints and worker\-shard mapping\) for the application\. Each application has its own DynamoDB table\. For more information, see [Tracking Amazon Kinesis Data Streams Application State](kinesis-record-processor-ddb.md)\.
++ The KCL creates a DynamoDB table with the application name and uses the table to maintain state information \(such as checkpoints and worker\-shard mapping\) for the application\. Each application has its own DynamoDB table\. For more information, see [Using a Lease Table to Track the Shards Processed by the KCL Consumer Application](shared-throughput-kcl-consumers.md#shared-throughput-kcl-consumers-leasetable)\.
 
 ### Set Up Credentials<a name="kinesis-record-processor-creds-py"></a>
 

@@ -5,7 +5,7 @@ This tutorial uses the real\-world scenario of stock market trade monitoring\. T
 Refer to the [source code](https://github.com/aws-samples/amazon-kinesis-learning ) and review the following information\.
 
 **StockTrade class**  
-An individual stock trade is represented by an instance of the [StockTrade](https://github.com/aws-samples/amazon-kinesis-learning/blob/master/src/com/amazonaws/services/kinesis/samples/stocktrades/model/StockTrade.java) class\. This instance contains attributes such as the ticker symbol, price, number of shares, the type of the trade \(buy or sell\), and an ID uniquely identifying the trade\. This class is implemented for you\. 
+An individual stock trade is represented by an instance of the StockTrade class\. This instance contains attributes such as the ticker symbol, price, number of shares, the type of the trade \(buy or sell\), and an ID uniquely identifying the trade\. This class is implemented for you\. 
 
 **Stream record**  
 A stream is a sequence of records\. A record is a serialization of a `StockTrade` instance in JSON format\. For example:   
@@ -21,10 +21,10 @@ A stream is a sequence of records\. A record is a serialization of a `StockTrade
 ```
 
 **StockTradeGenerator class**  
-[StockTradeGenerator](https://github.com/aws-samples/amazon-kinesis-learning/blob/master/src/com/amazonaws/services/kinesis/samples/stocktrades/writer/StockTradeGenerator.java) has a method called `getRandomTrade()` that returns a new randomly generated stock trade every time it is invoked\. This class is implemented for you\.
+StockTradeGenerator has a method called `getRandomTrade()` that returns a new randomly generated stock trade every time it is invoked\. This class is implemented for you\.
 
 **StockTradesWriter class**  
-The `main` method of the producer, [StockTradesWriter](https://github.com/aws-samples/amazon-kinesis-learning/blob/master/src/com/amazonaws/services/kinesis/samples/stocktrades/writer/StockTradesWriter.java) continuously retrieves a random trade and then sends it to Kinesis Data Streams by performing the following tasks:  
+The `main` method of the producer, StockTradesWriter continuously retrieves a random trade and then sends it to Kinesis Data Streams by performing the following tasks:  
 
 1. Reads the data stream name and region name as input\.
 

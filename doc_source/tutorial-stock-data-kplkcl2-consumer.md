@@ -1,6 +1,6 @@
 # Step 5: Implement the Consumer<a name="tutorial-stock-data-kplkcl2-consumer"></a>
 
-The consumer application in this tutorial continuously processes the stock trades in your data stream\. It then outputs the most popular stocks being bought and sold every minute\. The application is built on top of the Kinesis Client Library \(KCL\), which does much of the heavy lifting common to consumer apps\. For more information, see [Developing Custom Consumers with Shared Throughput Using KCL](shared-throughput-kcl-consumers.md)\. 
+The consumer application in this tutorial continuously processes the stock trades in your data stream\. It then outputs the most popular stocks being bought and sold every minute\. The application is built on top of the Kinesis Client Library \(KCL\), which does much of the heavy lifting common to consumer apps\. For more information, see [Using the Kinesis Client Library](shared-throughput-kcl-consumers.md)\. 
 
 Refer to the source code and review the following information\.
 

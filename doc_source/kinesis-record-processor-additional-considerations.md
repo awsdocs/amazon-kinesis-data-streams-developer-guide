@@ -33,6 +33,6 @@ When your Amazon Kinesis Data Streams application has completed its intended tas
 
 The throughput of a stream is provisioned at the shard level\. Each shard has a read throughput of up to 5 transactions per second for reads, up to a maximum total data read rate of 2 MB per second\. If an application \(or a group of applications operating on the same stream\) attempts to get data from a shard at a faster rate, Kinesis Data Streams throttles the corresponding Get operations\. 
 
-In an Amazon Kinesis Data Streams application, if a record processor is processing data faster than the limit — such as in the case of a failover — throttling occurs\. Because the [Kinesis Client Library](developing-consumers-with-kcl.md#kinesis-record-processor-overview-kcl) manages the interactions between the application and Kinesis Data Streams, throttling exceptions occur in the KCL code rather than in the application code\. However, because the KCL logs these exceptions, you see them in the logs\.
+In an Amazon Kinesis Data Streams application, if a record processor is processing data faster than the limit — such as in the case of a failover — throttling occurs\. Because KCL manages the interactions between the application and Kinesis Data Streams, throttling exceptions occur in the KCL code rather than in the application code\. However, because the KCL logs these exceptions, you see them in the logs\.
 
 If you find that your application is throttled consistently, you should consider increasing the number of shards for the stream\.

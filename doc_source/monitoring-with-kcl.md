@@ -50,6 +50,7 @@ These metrics are aggregated across all KCL workers within the scope of the appl
 + [ShutdownTask](#shutdown-task)
 + [ShardSyncTask](#shard-sync-task)
 + [BlockOnParentTask](#block-parent-task)
++ [PeriodicShardSyncManager](#periodic-task)
 
 #### InitializeTask<a name="init-task"></a>
 
@@ -100,6 +101,18 @@ If the shard is split or merged with other shards, then new child shards are cre
 | --- | --- | 
 | Success |  Number of successful checks for parent shard completion\. Metric level: Summary Units: Count  | 
 | Time |  Time taken for parent shards completion\. Metric level: Summary Unit: Milliseconds  | 
+
+#### PeriodicShardSyncManager<a name="periodic-task"></a>
+
+The `PeriodicShardSyncManager` is responsible for examining the data streams that are being processed by the KCL consumer application, identifying data streams with partial leases and handing them off for synchronization\.\.
+
+
+| Metric | Description | 
+| --- | --- | 
+| NumStreamsToSync |  The number of data streams \(per AWS account\) being processed by the consumer application that contain partial leases and that must be handed off for synchronization\.  Metric level: Summary Units: Count  | 
+| NumStreamsWithPartialLeases |  The number of data streams \(per AWS account\) that the consumer application is processing that contain partial leases\.  Metric level: Summary Units: Count  | 
+| Success |  The number of times `PeriodicShardSyncManager` was able to successfully identify partial leases in the data streams that the consumer application is processing\.  Metric level: Summary Units: Count  | 
+| Time |  The amount of the time \(in miliseconds\) that the `PeriodicShardSyncManager` takes to examine the data streams that the consumer application is processing, in order to determine which data streams require shard synchronization\.  Metric level: Summary Units: Milliseconds  | 
 
 ### Per\-Worker Metrics<a name="kcl-metrics-per-worker"></a>
 

@@ -1,12 +1,13 @@
 # Developing Custom Consumers with Shared Throughput Using the AWS SDK for Java<a name="developing-consumers-with-sdk"></a>
 
-You can develop consumers using the Amazon Kinesis Data Streams API with the AWS SDK for Java\. If you are new to Kinesis Data Streams, start by becoming familiar with the concepts and terminology presented in [What Is Amazon Kinesis Data Streams?](introduction.md) and [Getting Started with Amazon Kinesis Data Streams](getting-started.md)\.
+One of the methods for developing custom Kinesis Data Streams consumers with shared throughout is to use the Amazon Kinesis Data Streams APIs\. This section describes using the Kinesis Data Streams APIs with the AWS SDK for Java\. The Java sample code in this section demonstrates how to perform basic KDS API operations, and is divided up logically by operation type\. 
 
-These examples discuss the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to get data from a stream\. However, for most use cases, you should prefer using the Kinesis Client Library \(KCL\) \. For more information, see [Developing KCL 1\.x Consumers](developing-consumers-with-kcl.md)\.
+These examples don't represent production\-ready code\. They don't check for all possible exceptions or account for all possible security or performance considerations\. 
 
-The Java example code in this section demonstrates how to perform basic Kinesis Data Streams API operations, and is divided up logically by operation type\. These examples don't represent production\-ready code\. They don't check for all possible exceptions or account for all possible security or performance considerations\. Also, you can call the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
+You can call the Kinesis Data Streams APIs using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\. 
 
-Each task has prerequisites\. For example, you cannot add data to a stream until you have created a stream, which requires you to create a client\. For more information, see [Creating and Managing Streams](working-with-streams.md)\.
+**Important**  
+The recommended method for developing custom Kinesis Data Streams consumers with shared throughout is to use the Kinesis Client Library \(KCL\)\. KCL helps you consume and process data from a Kinesis data stream by taking care of many of the complex tasks associated with distributed computing\. For more information, see [Developing Custom Consumers with Shared Throughput Using KCL](https://docs.aws.amazon.com/streams/latest/dev/shared-throughput-kcl-consumers.html)\.
 
 **Topics**
 + [Getting Data from a Stream](#kinesis-using-sdk-java-get-data)
@@ -16,22 +17,23 @@ Each task has prerequisites\. For example, you cannot add data to a stream until
 
 ## Getting Data from a Stream<a name="kinesis-using-sdk-java-get-data"></a>
 
-The Kinesis Data Streams API provides the `getShardIterator` and `getRecords` methods to retrieve data from a stream\. This is a pull model, where your code draws data directly from the shards of the stream\.
+The Kinesis Data Streams APIs include the `getShardIterator` and `getRecords` methods that you can invoke to retrieve records from a data stream\. This is the pull model, where your code draws data records directly from the shards of the data stream\.
 
-We recommend that you use the record processor support provided by the Kinesis Client Library \(KCL\) to retrieve stream data in consumer applications\. This is a push model, where you implement the code that processes the data\. The KCL retrieves data records from the stream and delivers them to your application code\. In addition, the KCL provides failover, recovery, and load balancing functionality\. For more information, see [Developing KCL 1\.x Consumers](developing-consumers-with-kcl.md)\.
+**Important**  
+We recommend that you use the record processor support provided by KCL to retrieve records from your data streams\. This is the push model, where you implement the code that processes the data\. The KCL retrieves data records from the data stream and delivers them to your application code\. In addition, the KCL provides failover, recovery, and load balancing functionality\. For more information, see [Developing Custom Consumers with Shared Throughput Using KCL](https://docs.aws.amazon.com/streams/latest/dev/shared-throughput-kcl-consumers.html)\.
 
-However, in some cases you might prefer to use the Kinesis Data Streams API with the AWS SDK for Java\. For example, to implement custom tools for monitoring or debugging your streams\.
+However, in some cases you might prefer to use the Kinesis Data Streams APIs\. For example, to implement custom tools for monitoring or debugging your data streams\.
 
 **Important**  
 Kinesis Data Streams supports changes to the data record retention period of your data stream\. For more information, see [Changing the Data Retention Period](kinesis-extended-retention.md)\.
 
 ## Using Shard Iterators<a name="kinesis-using-sdk-java-get-data-shard-iterators"></a>
 
-You retrieve records from the stream on a per\-shard basis\. For each shard, and for each batch of records that you retrieve from that shard, you must obtain a *shard iterator*\. The shard iterator is used in the `getRecordsRequest` object to specify the shard from which records are to be retrieved\. The type associated with the shard iterator determines the point in the shard from which the records should be retrieved \(see later in this section for more details\)\. Before you can work with the shard iterator, you need to retrieve the shard, as discussed in [Retrieving Shards from a Stream](kinesis-using-sdk-java-retrieve-shards.md)\.
+You retrieve records from the stream on a per\-shard basis\. For each shard, and for each batch of records that you retrieve from that shard, you must obtain a *shard iterator*\. The shard iterator is used in the `getRecordsRequest` object to specify the shard from which records are to be retrieved\. The type associated with the shard iterator determines the point in the shard from which the records should be retrieved \(see later in this section for more details\)\. Before you can work with the shard iterator, you need to retrieve the shard, as discussed in [DescribeStream API \- Deprecated](kinesis-using-sdk-java-list-shards.md#kinesis-using-sdk-java-retrieve-shards)\.
 
 Obtain the initial shard iterator using the `getShardIterator` method\. Obtain shard iterators for additional batches of records using the `getNextShardIterator` method of the `getRecordsResult` object returned by the `getRecords` method\. A shard iterator is valid for 5 minutes\. If you use a shard iterator while it is valid, you get a new one\. Each shard iterator remains valid for 5 minutes, even after it is used\.
 
-To obtain the initial shard iterator, instantiate `GetShardIteratorRequest` and pass it to the `getShardIterator` method\. To configure the request, specify the stream and the shard ID\. For information about how to obtain the streams in your AWS account, see [Listing StreamsListing Shards](kinesis-using-sdk-java-list-streams.md)\. For information about how to obtain the shards in a stream, see [Retrieving Shards from a Stream](kinesis-using-sdk-java-retrieve-shards.md)\.
+To obtain the initial shard iterator, instantiate `GetShardIteratorRequest` and pass it to the `getShardIterator` method\. To configure the request, specify the stream and the shard ID\. For information about how to obtain the streams in your AWS account, see [Listing Streams](kinesis-using-sdk-java-list-streams.md)\. For information about how to obtain the shards in a stream, see [DescribeStream API \- Deprecated](kinesis-using-sdk-java-list-shards.md#kinesis-using-sdk-java-retrieve-shards)\.
 
 ```
 String shardIterator;
@@ -121,6 +123,7 @@ while (true) {
    
   // Create a new getRecordsRequest with an existing shardIterator 
   // Set the maximum records to return to 25
+  
   GetRecordsRequest getRecordsRequest = new GetRecordsRequest();
   getRecordsRequest.setShardIterator(shardIterator);
   getRecordsRequest.setLimit(25); 
@@ -145,9 +148,9 @@ If you are using the Kinesis Client Library, it might make multiple calls before
 
 ## Adapting to a Reshard<a name="kinesis-using-sdk-java-get-data-reshard"></a>
 
- If `getRecordsResult.getNextShardIterator` returns `null`, it indicates the following: A shard split or merge has occurred that involved this shard, this shard is now in a `CLOSED` state, and you have read all available data records from this shard\. 
+ If `getRecordsResult.getNextShardIterator` returns `null`, it indicates that a shard split or merge has occurred that involved this shard\. This shard is now in a `CLOSED` state and you have read all available data records from this shard\. 
 
- In this scenario, you should re\-enumerate the shards in the stream to pick up the new shards that were created by the split or merge\. 
+ In this scenario, you can use `getRecordsResult.childShards` to learn about the new child shards of the shard that is being processed that were created by the split or merge\. For more information, see [ChildShard](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ChildShard.html)\.
 
  In the case of a split, the two new shards both have `parentShardId` equal to the shard ID of the shard that you were processing previously\. The value of `adjacentParentShardId` for both of these shards is `null`\. 
 
