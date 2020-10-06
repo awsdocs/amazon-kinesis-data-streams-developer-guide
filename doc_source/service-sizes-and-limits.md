@@ -9,7 +9,9 @@ Amazon Kinesis Data Streams has the following stream and shard quotas and limits
 + The maximum size of the data payload of a record before base64\-encoding is up to 1 MB\.
 + [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) can retrieve up to 10 MB of data per call from a single shard, and up to 10,000 records per call\. Each call to `GetRecords` is counted as one read transaction\.
 + Each shard can support up to five read transactions per second\. Each read transaction can provide up to 10,000 records with an upper quota of 10 MB per transaction\.
-+ Each shard can support up to a maximum total data read rate of 2 MB per second via [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. If a call to `GetRecords` returns 10 MB, subsequent calls made within the next 5 seconds throw an exception\.
++ Each shard can support up to a maximum total data read rate of 2 MB per second via [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. If a call to `GetRecords` returns 10 MB, subsequent calls made within the next 5 seconds throw an exception\. 
++ You can register up to 20 consumers per stream to use [enhanced fan-out](https://docs.aws.amazon.com/streams/latest/dev/enhanced-consumers.html)\.
+
 
 ## API Limits<a name="kds-api-limits"></a>
 
