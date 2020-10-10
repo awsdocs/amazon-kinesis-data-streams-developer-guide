@@ -117,7 +117,7 @@ Recall that the `aws kinesis` commands have a Kinesis Data Streams API behind th
 
 The long string of seemingly random characters is the shard iterator \(yours will be different\)\. You will need to copy/paste the shard iterator into the get command, shown next\. Shard iterators have a valid lifetime of 300 seconds, which should be enough time for you to copy/paste the shard iterator into the next command\. Notice you will need to remove any newlines from your shard iterator before pasting to the next command\. If you get an error message that the shard iterator is no longer valid, simply execute the `get-shard-iterator` command again\.
 
-**GetRecods**
+**GetRecords**
 
 The `get-records` command gets data from the stream, and it resolves to a call to [https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) in the Kinesis Data Streams API\. The shard iterator specifies the position in the shard from which you want to start reading data records sequentially\. If there are no records available in the portion of the shard that the iterator points to, `GetRecords` returns an empty list\. Note that it might take multiple calls to get to a portion of the shard that contains records\. 
 
