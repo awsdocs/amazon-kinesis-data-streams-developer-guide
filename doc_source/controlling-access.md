@@ -57,7 +57,7 @@ As you create and manage IAM policies, you might want to use the [IAM Policy Gen
 
 ## Actions for Kinesis Data Streams<a name="kinesis-using-iam-actions"></a>
 
-In an IAM policy statement, you can specify any API action from any service that supports IAM\. For Kinesis Data Streams, use the following prefix with the name of the API action: `kinesis:`\. For example: `kinesis:CreateStream`, `kinesis:ListStreams`, and `kinesis:DescribeStream`\.
+In an IAM policy statement, you can specify any API action from any service that supports IAM\. For Kinesis Data Streams, use the following prefix with the name of the API action: `kinesis:`\. For example: `kinesis:CreateStream`, `kinesis:ListStreams`, and `kinesis:DescribeStreamSummary`\.
 
 To specify multiple actions in a single statement, separate them with commas as follows:
 
@@ -100,7 +100,7 @@ For example:
 The following example policies demonstrate how you could control user access to your Kinesis data streams\.
 
 **Example 1: Allow users to get data from a stream**  
- This policy allows a user or group to perform the `DescribeStream`, `GetShardIterator`, and `GetRecords` operations on the specified stream and `ListStreams` on any stream\. This policy could be applied to users who should be able to get data from a specific stream\.   
+ This policy allows a user or group to perform the `DescribeStreamSummary`, `GetShardIterator`, and `GetRecords` operations on the specified stream and `ListStreams` on any stream\. This policy could be applied to users who should be able to get data from a specific stream\.   
 
 ```
 {
@@ -110,7 +110,7 @@ The following example policies demonstrate how you could control user access to 
             "Effect": "Allow",
             "Action": [
                 "kinesis:Get*",
-                "kinesis:DescribeStream"
+                "kinesis:DescribeStreamSummary"
             ],
             "Resource": [
                 "arn:aws:kinesis:us-east-1:111122223333:stream/stream1"

@@ -22,7 +22,8 @@ metric levels
 Every metric is assigned an individual level\. When you set a metrics reporting level, metrics with an individual level below the reporting level are not sent to CloudWatch\. The levels are: `NONE`, `SUMMARY`, and `DETAILED`\. The default setting is `DETAILED`; that is, all metrics are sent to CloudWatch\. A reporting level of `NONE` means that no metrics are sent at all\. For information about which levels are assigned to what metrics, see [List of Metrics](#kcl-metrics-list)\.
 
 enabled dimensions  
-Every KCL metric has associated dimensions that also get sent to CloudWatch\. `Operation` dimension is always uploaded and cannot be disabled\. By default, the `WorkerIdentifier` dimension is disabled, and only the `Operation` and `ShardId` dimensions are uploaded\.  
+Every KCL metric has associated dimensions that also get sent to CloudWatch\. In KCL 2\.x, if KCL is configured to process a single data stream, all the metrics dimensions \(`Operation`, `ShardId`, and `WorkerIdentifier`\) are enabled by default\. Also, in KCL 2\.x, if KCL is configured to process a single data stream, `Operation` dimension cannot be disabled\. In KCL 2\.x, if KCL is configured to process multiple data streams, all the metrics dimentions \(`Operation`, `ShardId`, `StreamId`, and `WorkerIdentifier`\) are enabled by default\. Also, in KCL 2\.x, if KCL is configured to process multiple data streams, the `Operation` and the `StreamId` dimensions cannot be disabled\. `StreamId` dimention is available only for the per\-shard metrics\.  
+ In KCL 1\.x, only the `Operation` and the `ShardId` dimensions are enabled by default, and the `WorkerIdentifier` dimension is disabled\. In KCL 1\.x, the `Operation` dimension cannot be disabled\.  
 For more information about CloudWatch metric dimensions, see the [Dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Dimension) section in the Amazon CloudWatch Concepts topic, in the *Amazon CloudWatch User Guide*\.  
 When the `WorkerIdentifier` dimension is enabled, if a different value is used for the worker ID property every time a particular KCL worker restarts, new sets of metrics with new `WorkerIdentifier` dimension values are sent to CloudWatch\. If you need the `WorkerIdentifier` dimension value to be the same across specific KCL worker restarts, you must explicitly specify the same worker ID value during initialization for each worker\. Note that the worker ID value for each active KCL worker must be unique across all KCL workers\.
 
@@ -51,6 +52,7 @@ These metrics are aggregated across all KCL workers within the scope of the appl
 + [ShardSyncTask](#shard-sync-task)
 + [BlockOnParentTask](#block-parent-task)
 + [PeriodicShardSyncManager](#periodic-task)
++ [MultistreamTracker](#multi-task)
 
 #### InitializeTask<a name="init-task"></a>
 
@@ -104,7 +106,9 @@ If the shard is split or merged with other shards, then new child shards are cre
 
 #### PeriodicShardSyncManager<a name="periodic-task"></a>
 
-The `PeriodicShardSyncManager` is responsible for examining the data streams that are being processed by the KCL consumer application, identifying data streams with partial leases and handing them off for synchronization\.\.
+The `PeriodicShardSyncManager` is responsible for examining the data streams that are being processed by the KCL consumer application, identifying data streams with partial leases and handing them off for synchronization\.
+
+The following metrics are available when KCL is configured to process a single data stream \(then the value of NumStreamsToSync and NumStreamsWithPartialLeases is set to 1\) and also when KCL is configured to process multiple data streams\.
 
 
 | Metric | Description | 
@@ -113,6 +117,17 @@ The `PeriodicShardSyncManager` is responsible for examining the data streams tha
 | NumStreamsWithPartialLeases |  The number of data streams \(per AWS account\) that the consumer application is processing that contain partial leases\.  Metric level: Summary Units: Count  | 
 | Success |  The number of times `PeriodicShardSyncManager` was able to successfully identify partial leases in the data streams that the consumer application is processing\.  Metric level: Summary Units: Count  | 
 | Time |  The amount of the time \(in miliseconds\) that the `PeriodicShardSyncManager` takes to examine the data streams that the consumer application is processing, in order to determine which data streams require shard synchronization\.  Metric level: Summary Units: Milliseconds  | 
+
+#### MultistreamTracker<a name="multi-task"></a>
+
+The `MultistreamTracker` interface enables you to build KCL consumer applications that can process multiple data streams at the same time\.
+
+
+| Metric | Description | 
+| --- | --- | 
+| DeletedStreams\.Count |  The number of data streams deleted at this time period\. Metric level: Summary Units: Count  | 
+| ActiveStreams\.Count |  The number of active data streams being processed\. Metric level: Summary Units: Count  | 
+| StreamsPendingDeletion\.Count |  The number of data streams that are pending deletion based on `FormerStreamsLeasesDeletionStrategy`\.  Metric level: Summary Units: Count  | 
 
 ### Per\-Worker Metrics<a name="kcl-metrics-per-worker"></a>
 

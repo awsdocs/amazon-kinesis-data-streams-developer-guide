@@ -1,7 +1,7 @@
 # Troubleshooting Kinesis Data Streams Consumers<a name="troubleshooting-consumers"></a>
 
 **Topics**
-+ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w7aac19c27b5)
++ [Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library](#w8aac21c27b5)
 + [Records Belonging to the Same Shard are Processed by Different Record Processors at the Same Time](#records-belonging-to-the-same-shard)
 + [Consumer Application is Reading at a Slower Rate Than Expected](#consumer-app-reading-slower)
 + [GetRecords Returns Empty Records Array Even When There is Data in the Stream](#getrecords-returns-empty)
@@ -9,7 +9,7 @@
 + [Consumer Record Processing Falling Behind](#record-processing-falls-behind)
 + [Unauthorized KMS master key permission error](#unauthorized-kms-consumer)
 
-## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w7aac19c27b5"></a>
+## Some Kinesis Data Streams Records are Skipped When Using the Kinesis Client Library<a name="w8aac21c27b5"></a>
 
 The most common cause of skipped records is an unhandled exception thrown from `processRecords`\. The Kinesis Client Library \(KCL\) relies on your `processRecords` code to handle any exceptions that arise from processing the data records\. Any exception thrown from `processRecords` is absorbed by the KCL\. To avoid infinite retries on a recurring failure, the KCL does not resend the batch of records processed at the time of the exception\. The KCL then calls `processRecords` for the next batch of data records without restarting the record processor\. This effectively results in consumer applications observing skipped records\. To prevent skipped records, handle all exceptions within `processRecords` appropriately\.
 
@@ -65,7 +65,7 @@ If the shard iterator expires immediately, before you can use it, this might ind
 
 For most use cases, consumer applications are reading the latest data from the stream\. In certain circumstances, consumer reads may fall behind, which may not be desired\. After you identify how far behind your consumers are reading, look at the most common reasons why consumers fall behind\. 
 
-Start with the `GetRecords.IteratorAgeMilliseconds` metric, which tracks the read position across all shards and consumers in the stream\. Note that if an iterator's age passes 50% of the retention period \(by default 24 hours, configurable up to 7 days\), there is risk for data loss due to record expiration\. A quick stopgap solution is to increase the retention period\. This stops the loss of important data while you troubleshoot the issue further\. For more information, see [Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch](monitoring-with-cloudwatch.md)\. Next, identify how far behind your consumer application is reading from each shard using a custom CloudWatch metric emitted by the Kinesis Client Library \(KCL\), `MillisBehindLatest`\. For more information, see [Monitoring the Kinesis Client Library with Amazon CloudWatch](monitoring-with-kcl.md)\.
+Start with the `GetRecords.IteratorAgeMilliseconds` metric, which tracks the read position across all shards and consumers in the stream\. Note that if an iterator's age passes 50% of the retention period \(by default, 24 hours, configurable up to 365 days\), there is risk for data loss due to record expiration\. A quick stopgap solution is to increase the retention period\. This stops the loss of important data while you troubleshoot the issue further\. For more information, see [Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch](monitoring-with-cloudwatch.md)\. Next, identify how far behind your consumer application is reading from each shard using a custom CloudWatch metric emitted by the Kinesis Client Library \(KCL\), `MillisBehindLatest`\. For more information, see [Monitoring the Kinesis Client Library with Amazon CloudWatch](monitoring-with-kcl.md)\.
 
 Here are the most common reasons consumers can fall behind:
 + Sudden large increases to `GetRecords.IteratorAgeMilliseconds` or `MillisBehindLatest` usually indicate a transient problem, such as API operation failures to a downstream application\. You should investigate these sudden increases if either of the metrics consistently display this behavior\. 

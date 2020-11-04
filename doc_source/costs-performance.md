@@ -16,26 +16,7 @@ For every encrypted stream, the Kinesis service calls the AWS KMS service approx
 
 ## Availability of Server\-Side Encryption by Region<a name="sse-regions"></a>
 
-Server\-side encryption of Kinesis streams is available in the following regions\.
-
-
-| Region Name | Region | 
-| --- | --- | 
-| US East \(Ohio\) | us\-east\-2 | 
-| US East \(N\. Virginia\) | us\-east\-1 | 
-| US West \(Oregon\) | us\-west\-2 | 
-| US West \(N\. California\) | us\-west\-1 | 
-| AWS GovCloud \(US\-West\) | us\-gov\-west\-1 | 
-| Canada \(Central\) | ca\-central\-1 | 
-| Europe \(Ireland\) | eu\-west\-1 | 
-| Europe \(London\) | eu\-west\-2 | 
-| Europe \(Frankfurt\) | eu\-central\-1 | 
-| Asia Pacific \(Tokyo\) Region | ap\-northeast\-1 | 
-| Asia Pacific \(Seoul\) Region | ap\-northeast\-2 | 
-| Asia Pacific \(Singapore\) | ap\-southeast\-1 | 
-| Asia Pacific \(Mumbai\) | ap\-south\-1 | 
-| Asia Pacific \(Sydney\) | ap\-southeast\-2 | 
-| South America \(São Paulo\) | sa\-east\-1 | 
+Currently, server\-side encryption of Kinesis streams is available in all the regions supported for Kinesis Data Streams, including AWS GovCloud \(US\-West\), but it is NOT avaialble in the China regions\. For more information about supported regions for Kinesis Data Streams see [https://docs\.aws\.amazon\.com/general/latest/gr/ak\.html](https://docs.aws.amazon.com/general/latest/gr/ak.html)\.
 
 ## Performance Considerations<a name="performance-considerations"></a>
 

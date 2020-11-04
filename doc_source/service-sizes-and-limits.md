@@ -2,7 +2,7 @@
 
 Amazon Kinesis Data Streams has the following stream and shard quotas and limits\.
 + There is no upper quota on the number of streams you can have in an account\.
-+ The default shard quota is 500 shards per data stream for the following AWS regions: US East \(N\. Virginia\), US West \(Oregon\), and Europe \(Ireland\)\. For all other regions, the default shard quota is 200 shards per data stream\. 
++ The default shard quota is 500 shards per AWS account for the following AWS regions: US East \(N\. Virginia\), US West \(Oregon\), and Europe \(Ireland\)\. For all other regions, the default shard quota is 200 shards per AWS account\. 
 
   To request the shards per data stream quota increase, follow the procedure outlined in [Requesting a Quota Increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\.
 + A single shard can ingest up to 1 MB of data per second \(including partition keys\) or 1,000 records per second for writes\. Similarly, if you scale your stream to 5,000 shards, the stream can ingest up to 5 GB per second or 5 million records per second\. If you need more ingest capacity, you can easily scale up the number of shards in the stream using the AWS Management Console or the [UpdateShardCount](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\.

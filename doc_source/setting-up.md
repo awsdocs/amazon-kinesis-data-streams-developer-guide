@@ -1,6 +1,6 @@
 # Step 1: Set Up an AWS Account and Create an Administrator User<a name="setting-up"></a>
 
-Before you use Amazon Kinesis Data Analytics for Java Applications for the first time, complete the following tasks:
+Before you use Amazon Kinesis Data Analytics for Flink Applications for the first time, complete the following tasks:
 
 1. [Sign Up for AWS](#setting-up-signup)
 

@@ -1,6 +1,6 @@
-# Step 3: Create and Run a Kinesis Data Analytics for Java Application<a name="get-started-exercise"></a>
+# Step 3: Create and Run a Kinesis Data Analytics for Flink Application<a name="get-started-exercise"></a>
 
-In this exercise, you create a Kinesis Data Analytics for Java application with data streams as a source and a sink\.
+In this exercise, you create a Kinesis Data Analytics for Flink application with data streams as a source and a sink\.
 
 **Topics**
 + [Create Two Amazon Kinesis Data Streams](#get-started-exercise-1)
@@ -12,7 +12,7 @@ In this exercise, you create a Kinesis Data Analytics for Java application with 
 
 ## Create Two Amazon Kinesis Data Streams<a name="get-started-exercise-1"></a>
 
-Before you create a Kinesis Data Analytics for Java application for this exercise, create two Kinesis data streams \(`ExampleInputStream` and `ExampleOutputStream`\)\. Your application uses these streams for the application source and destination streams\.
+Before you create a Kinesis Data Analytics for Flink application for this exercise, create two Kinesis data streams \(`ExampleInputStream` and `ExampleOutputStream`\)\. Your application uses these streams for the application source and destination streams\.
 
 You can create these streams using either the Amazon Kinesis console or the following AWS CLI command\. For console instructions, see [Creating and Updating Data Streams](https://docs.aws.amazon.com/kinesis/latest/dev/amazon-kinesis-streams.html)\. 
 
@@ -105,7 +105,7 @@ The application code is located in the `CustomSinkStreamingJob.java` and `CloudW
 In this section, you use the Apache Maven compiler to create the Java code for the application\. For information about installing Apache Maven and the Java Development Kit \(JDK\), see [Prerequisites for Completing the Exercises](tutorial-stock-data.md#setting-up-prerequisites)\.
 
 Your Java application requires the following components:
-+ A [Project Object Model \(pom\.xml\)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) file\. This file contains information about the application's configuration and dependencies, including the Kinesis Data Analytics for Java Applications libraries\.
++ A [Project Object Model \(pom\.xml\)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) file\. This file contains information about the application's configuration and dependencies, including the Kinesis Data Analytics for Flink Applications libraries\.
 + A `main` method that contains the application's logic\.
 
 **Note**  
@@ -252,7 +252,7 @@ Your application code is now stored in an Amazon S3 bucket where your applicatio
 
 ## Create and Run the Kinesis Data Analytics Application<a name="get-started-exercise-7"></a>
 
-You can create and run a Kinesis Data Analytics for Java application using either the console or the AWS CLI\.
+You can create and run a Kinesis Data Analytics for Flink application using either the console or the AWS CLI\.
 
 **Note**  
 When you create the application using the console, your AWS Identity and Access Management \(IAM\) and Amazon CloudWatch Logs resources are created for you\. When you create the application using the AWS CLI, you create these resources separately\.
@@ -282,7 +282,7 @@ Follow these steps to create, configure, update, and run the application using t
 1. Choose **Create application**\.
 
 **Note**  
-When you create a Kinesis Data Analytics for Java application using the console, you have the option of having an IAM role and policy created for your application\. Your application uses this role and policy to access its dependent resources\. These IAM resources are named using your application name and Region as follows:  
+When you create a Kinesis Data Analytics for Flink application using the console, you have the option of having an IAM role and policy created for your application\. Your application uses this role and policy to access its dependent resources\. These IAM resources are named using your application name and Region as follows:  
 Policy: `kinesis-analytics-service-MyApplication-us-west-2`
 Role: `kinesis-analytics-MyApplication-us-west-2`
 
@@ -410,7 +410,7 @@ On the **MyApplication** page, choose **Configure**\. Update the application set
 
 ### Create and Run the Application \(AWS CLI\)<a name="get-started-exercise-7-cli"></a>
 
-In this section, you use the AWS CLI to create and run the Kinesis Data Analytics application\. Kinesis Data Analytics for Java Applications uses the `kinesisanalyticsv2` AWS CLI command to create and interact with Kinesis Data Analytics applications\.
+In this section, you use the AWS CLI to create and run the Kinesis Data Analytics application\. Kinesis Data Analytics for Flink Applications uses the `kinesisanalyticsv2` AWS CLI command to create and interact with Kinesis Data Analytics applications\.
 
 #### Create a Permissions Policy<a name="get-started-exercise-7-cli-policy"></a>
 
@@ -456,7 +456,7 @@ To access other AWS services, you can use the AWS SDK for Java\. Kinesis Data An
 
 #### Create an IAM Role<a name="get-started-exercise-7-cli-role"></a>
 
-In this section, you create an IAM role that the Kinesis Data Analytics for Java application can assume to read a source stream and write to the sink stream\.
+In this section, you create an IAM role that the Kinesis Data Analytics for Flink application can assume to read a source stream and write to the sink stream\.
 
 Kinesis Data Analytics cannot access your stream without permissions\. You grant these permissions via an IAM role\. Each IAM role has two policies attached\. The trust policy grants Kinesis Data Analytics permission to assume the role, and the permissions policy determines what Kinesis Data Analytics can do after assuming the role\.
 

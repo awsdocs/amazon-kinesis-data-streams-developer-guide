@@ -7,6 +7,7 @@ One of the methods of developing custom consumer applications that can process d
 + [KCL Available Versions](#shared-throughput-kcl-consumers-versions)
 + [KCL Concepts](#shared-throughput-kcl-consumers-concepts)
 + [Using a Lease Table to Track the Shards Processed by the KCL Consumer Application](#shared-throughput-kcl-consumers-leasetable)
++ [Processing Multiple Data Streams with the same KCL 2\.x for Java Consumer Application](#shared-throughput-kcl-multistream)
 
 ## What is the Kinesis Client Library?<a name="shared-throughput-kcl-consumers-overview"></a>
 
@@ -86,7 +87,7 @@ If the lease table for your KCL consumer application does not exist when the app
 **Important**  
  Your account is charged for the costs associated with the DynamoDB table, in addition to the costs associated with Kinesis Data Streams itself\. 
 
-Each row in the lease table represents a shard that is being processed by the workers of your consumer application\. The hash key for the lease table is **leaseKey**, which is the shard ID\.
+Each row in the lease table represents a shard that is being processed by the workers of your consumer application\. If your KCL consumer application processes only one data stream, then `leaseKey` which is the hash key for the lease table is the shard ID\. If you are [Processing Multiple Data Streams with the same KCL 2\.x for Java Consumer Application](#shared-throughput-kcl-multistream), then the structure of the leaseKey looks like this: `account-id:StreamName:streamCreationTimestamp:ShardId`\. For example, `111111111:multiStreamTest-1:12345:shardId-000000000336`\.
 
 In addition to the shard ID, each row also includes the following data:
 + **checkpoint:** The most recent checkpoint sequence number for the shard\. This value is unique across all shards in the data stream\.
@@ -102,6 +103,12 @@ This data is present in the lease table for every shard starting with KCL 1\.14 
 + **childshards:** Used by the `LeaseCleanupManager` to review the child shard's processing status and decide whether the parent shard can be deleted from the lease table\.
 **Note**  
 This data is present in the lease table for every shard starting with KCL 1\.14 and KCL 2\.3\.
++ **shardID:** The ID of the shard\.
+**Note**  
+This data is only present in the lease table if you are [Processing Multiple Data Streams with the same KCL 2\.x for Java Consumer Application](#shared-throughput-kcl-multistream)\. This is only supported in KCL 2\.x for Java, starting with KCL 2\.3 for Java and beyond\. 
++ **stream name** The identifier of the data stream in the following format: `account-id:StreamName:streamCreationTimestamp`\.
+**Note**  
+This data is only present in the lease table if you are [Processing Multiple Data Streams with the same KCL 2\.x for Java Consumer Application](#shared-throughput-kcl-multistream)\. This is only supported in KCL 2\.x for Java, starting with KCL 2\.3 for Java and beyond\. 
 
 ### Throughput<a name="shared-throughput-kcl-leasetable-throughput"></a>
 
@@ -179,3 +186,108 @@ Starting with the latest supported versions of KCL 1\.x \(KCL 1\.14\) and beyond
   New configuration options are available to configure `LeaseCleanupManager`\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/streams/latest/dev/shared-throughput-kcl-consumers.html)
 + Including an optimization to `KinesisShardSyncer` to only create leases for one layer of shards\.
+
+## Processing Multiple Data Streams with the same KCL 2\.x for Java Consumer Application<a name="shared-throughput-kcl-multistream"></a>
+
+This section describes the following changes in KCL 2\.x for Java that enable you to create KCL consumer applicaitons that can process more than one data stream at the same time\. 
+
+**Important**  
+Multistream processing is only supported in KCL 2\.x for Java, starting with KCL 2\.3 for Java and beyond\.   
+Multistream processing is NOT supported for any other languages in which KCL 2\.x can be implemented\.  
+Multistream processing is NOT supported in any versions of KCL 1\.x\.
++ **MultistreamTracker interface**
+
+  To build a consumer application that can process multiple streams at the same time, you must implement a new interface called [MultistreamTracker](https://github.com/awslabs/amazon-kinesis-client/blob/0c5042dadf794fe988438436252a5a8fe70b6b0b/amazon-kinesis-client/src/main/java/software/amazon/kinesis/processor/MultiStreamTracker.java)\. This interface includes the `streamConfigList` method that returns the list of data streams and their configurations to be processed by the KCL consumer application\. Notice that the data streams that are being processed can be changed during the consumer application runtime\. `streamConfigList` is called periodically by the KCL to learn about the changes in data streams to process\.
+
+  The `streamConfigList` method populates the [StreamConfig](https://github.com/awslabs/amazon-kinesis-client/blob/0c5042dadf794fe988438436252a5a8fe70b6b0b/amazon-kinesis-client/src/main/java/software/amazon/kinesis/common/StreamConfig.java#L23) list\. 
+
+  ```
+  package software.amazon.kinesis.common;
+  
+  import lombok.Data;
+  import lombok.experimental.Accessors;
+  
+  @Data
+  @Accessors(fluent = true)
+  public class StreamConfig {
+      private final StreamIdentifier streamIdentifier;
+      private final InitialPositionInStreamExtended initialPositionInStreamExtended;
+      private String consumerArn;
+  }
+  ```
+
+  Note that the `StreamIdentifier` and `InitialPositionInStreamExtended` are required fields, while `consumerArn` is optional\. You must provide the `consumerArn` only if you are using KCL 2\.x to implement an enhanced fan\-out consumer application\.
+
+  For more information about `StreamIdentifier`, see [https://github\.com/awslabs/amazon\-kinesis\-client/blob/0c5042dadf794fe988438436252a5a8fe70b6b0b/amazon\-kinesis\-client/src/main/java/software/amazon/kinesis/common/StreamIdentifier\.java\#L29](https://github.com/awslabs/amazon-kinesis-client/blob/0c5042dadf794fe988438436252a5a8fe70b6b0b/amazon-kinesis-client/src/main/java/software/amazon/kinesis/common/StreamIdentifier.java#L29)\. You can create a multistream instance for the `StreamIdentifier` from the serialized stream identifier\. The serialized stream identifier should be of the following format: `account-id:StreamName:streamCreationTimestamp`\.
+
+  ```
+    * @param streamIdentifierSer
+       * @return StreamIdentifier
+       */
+      public static StreamIdentifier multiStreamInstance(String streamIdentifierSer) {
+          if (PATTERN.matcher(streamIdentifierSer).matches()) {
+              final String[] split = streamIdentifierSer.split(DELIMITER);
+              return new StreamIdentifier(split[0], split[1], Long.parseLong(split[2]));
+          } else {
+              throw new IllegalArgumentException("Unable to deserialize StreamIdentifier from " + streamIdentifierSer);
+          }
+      }
+  ```
+
+  `MultistreamTracker` also includes a strategy for deleting leases of old streams in the lease table \(`formerStreamsLeasesDeletionStrategy`\)\. Notice that the strategy CANNOT be changed during the consumer application runtime\. For more information, see [https://github\.com/awslabs/amazon\-kinesis\-client/blob/0c5042dadf794fe988438436252a5a8fe70b6b0b/amazon\-kinesis\-client/src/main/java/software/amazon/kinesis/processor/FormerStreamsLeasesDeletionStrategy\.java](https://github.com/awslabs/amazon-kinesis-client/blob/0c5042dadf794fe988438436252a5a8fe70b6b0b/amazon-kinesis-client/src/main/java/software/amazon/kinesis/processor/FormerStreamsLeasesDeletionStrategy.java)
++ [ConfigsBuilder](https://github.com/awslabs/amazon-kinesis-client/blob/0c5042dadf794fe988438436252a5a8fe70b6b0b/amazon-kinesis-client/src/main/java/software/amazon/kinesis/common/ConfigsBuilder.java) is a an application\-wide class that you can use to specify all of the KCL 2\.x configuration settings to be used when building your KCL consumer application\. `ConfigsBuilder` class now has support for the `MultistreamTracker` interface\. You can initialize ConfigsBuilder either with the name of the one data stream to consume records from:
+
+  ```
+   /**
+       * Constructor to initialize ConfigsBuilder with StreamName
+       * @param streamName
+       * @param applicationName
+       * @param kinesisClient
+       * @param dynamoDBClient
+       * @param cloudWatchClient
+       * @param workerIdentifier
+       * @param shardRecordProcessorFactory
+       */
+      public ConfigsBuilder(@NonNull String streamName, @NonNull String applicationName,
+              @NonNull KinesisAsyncClient kinesisClient, @NonNull DynamoDbAsyncClient dynamoDBClient,
+              @NonNull CloudWatchAsyncClient cloudWatchClient, @NonNull String workerIdentifier,
+              @NonNull ShardRecordProcessorFactory shardRecordProcessorFactory) {
+          this.appStreamTracker = Either.right(streamName);
+          this.applicationName = applicationName;
+          this.kinesisClient = kinesisClient;
+          this.dynamoDBClient = dynamoDBClient;
+          this.cloudWatchClient = cloudWatchClient;
+          this.workerIdentifier = workerIdentifier;
+          this.shardRecordProcessorFactory = shardRecordProcessorFactory;
+      }
+  ```
+
+  Or you can initialize ConfigsBuilder with `MultiStreamTracker` if you want to implement a KCL consumer application that processes multiple streams at the same time\.
+
+  ```
+  * Constructor to initialize ConfigsBuilder with MultiStreamTracker
+       * @param multiStreamTracker
+       * @param applicationName
+       * @param kinesisClient
+       * @param dynamoDBClient
+       * @param cloudWatchClient
+       * @param workerIdentifier
+       * @param shardRecordProcessorFactory
+       */
+      public ConfigsBuilder(@NonNull MultiStreamTracker multiStreamTracker, @NonNull String applicationName,
+              @NonNull KinesisAsyncClient kinesisClient, @NonNull DynamoDbAsyncClient dynamoDBClient,
+              @NonNull CloudWatchAsyncClient cloudWatchClient, @NonNull String workerIdentifier,
+              @NonNull ShardRecordProcessorFactory shardRecordProcessorFactory) {
+          this.appStreamTracker = Either.left(multiStreamTracker);
+          this.applicationName = applicationName;
+          this.kinesisClient = kinesisClient;
+          this.dynamoDBClient = dynamoDBClient;
+          this.cloudWatchClient = cloudWatchClient;
+          this.workerIdentifier = workerIdentifier;
+          this.shardRecordProcessorFactory = shardRecordProcessorFactory;
+      }
+  ```
++ With multistream support implemented for your KCL consumer application, each row of the application's lease table now contains the shard ID and the stream name of the multiple data streams that this application processes\. 
++ When multistream support for your KCL consumer application is implemented, the leaseKey takes the following structure: `account-id:StreamName:streamCreationTimestamp:ShardId`\. For example, `111111111:multiStreamTest-1:12345:shardId-000000000336`\.
+**Important**  
+When your existing KCL consumer application is configured to process only one data stream, the leaseKey \(which is the hash key for the lease table\) is the shard ID\. If you reconfigure this existing KCL consumer application to process multiple data streams, it breaks your lease table, because with multistream support, the leaseKey structure must be as follows: `account-id:StreamName:StreamCreationTimestamp:ShardId`\.

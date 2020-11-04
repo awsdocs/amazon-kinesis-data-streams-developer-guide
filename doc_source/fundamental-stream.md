@@ -22,18 +22,27 @@ aws kinesis create-stream --stream-name Foo --shard-count 1
  The parameter `--shard-count` is required, and for this part of the tutorial you are using one shard in your stream\. Next, issue the following command to check on the stream's creation progress: 
 
 ```
-aws kinesis describe-stream --stream-name Foo
+aws kinesis describe-stream-summary --stream-name Foo
 ```
 
 You should get output that is similar to the following example:
 
 ```
 {
-    "StreamDescription": {
-        "StreamStatus": "CREATING",
+    "StreamDescriptionSummary": {
         "StreamName": "Foo",
-        "StreamARN": "arn:aws:kinesis:us-west-2:account-id:stream/Foo",
-        "Shards": []
+        "StreamARN": "arn:aws:kinesis:us-west-2:123456789012:stream/Foo",
+        "StreamStatus": "CREATING",
+        "RetentionPeriodHours": 48,
+        "StreamCreationTimestamp": 1572297168.0,
+        "EnhancedMonitoring": [
+            {
+                "ShardLevelMetrics": []
+            }
+        ],
+        "EncryptionType": "NONE",
+        "OpenShardCount": 3,
+        "ConsumerCount": 0
     }
 }
 ```
@@ -42,22 +51,20 @@ You should get output that is similar to the following example:
 
 ```
 {
-    "StreamDescription": {
-        "StreamStatus": "ACTIVE",
+    "StreamDescriptionSummary": {
         "StreamName": "Foo",
-        "StreamARN": "arn:aws:kinesis:us-west-2:account-id:stream/Foo",
-        "Shards": [
+        "StreamARN": "arn:aws:kinesis:us-west-2:123456789012:stream/Foo",
+        "StreamStatus": "ACTIVE",
+        "RetentionPeriodHours": 48,
+        "StreamCreationTimestamp": 1572297168.0,
+        "EnhancedMonitoring": [
             {
-                "ShardId": "shardId-000000000000",
-                "HashKeyRange": {
-                    "EndingHashKey": "170141183460469231731687303715884105727",
-                    "StartingHashKey": "0"
-                },
-                "SequenceNumberRange": {
-                    "StartingSequenceNumber": "49546986683135544286507457935754639466300920667981217794"
-                }
+                "ShardLevelMetrics": []
             }
-        ]
+        ],
+        "EncryptionType": "NONE",
+        "OpenShardCount": 3,
+        "ConsumerCount": 0
     }
 }
 ```
@@ -117,7 +124,7 @@ Recall that the `aws kinesis` commands have a Kinesis Data Streams API behind th
 
 The long string of seemingly random characters is the shard iterator \(yours will be different\)\. You will need to copy/paste the shard iterator into the get command, shown next\. Shard iterators have a valid lifetime of 300 seconds, which should be enough time for you to copy/paste the shard iterator into the next command\. Notice you will need to remove any newlines from your shard iterator before pasting to the next command\. If you get an error message that the shard iterator is no longer valid, simply execute the `get-shard-iterator` command again\.
 
-**GetRecods**
+**GetRecords**
 
 The `get-records` command gets data from the stream, and it resolves to a call to [https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) in the Kinesis Data Streams API\. The shard iterator specifies the position in the shard from which you want to start reading data records sequentially\. If there are no records available in the portion of the shard that the iterator points to, `GetRecords` returns an empty list\. Note that it might take multiple calls to get to a portion of the shard that contains records\. 
 
@@ -162,7 +169,7 @@ The first thing you'll likely notice about your record in this part of the tutor
 
  It's not always the case that `get-records` will return all records in the stream/shard specified\. When that happens, use the `NextShardIterator` from the last result to get the next set of records\. So if more data were being put into the stream \(the normal situation in production applications\), you could keep polling for data using `get-records` each time\. However, if you do not call `get-records` using the next shard iterator within the 300 second shard iterator lifetime, you will get an error message, and you will need to use the `get-shard-iterator` command to get a fresh shard iterator\.
 
-Also provided in this output is `MillisBehindLatest`, which is the number of milliseconds the [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) operation's response is from the tip of the stream, indicating how far behind current time the consumer is\. A value of zero indicates record processing is caught up, and there are no new records to process at this moment\. In the case of this tutorial, you may see a number that's quite large if you've been taking time to read along as you go\. That's not a problem, data records will stay in a stream for 24 hours waiting for you to retrieve them\. This time frame is called the retention period and it is configurable up to 168 hours \(7 days\)\.
+Also provided in this output is `MillisBehindLatest`, which is the number of milliseconds the [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) operation's response is from the tip of the stream, indicating how far behind current time the consumer is\. A value of zero indicates record processing is caught up, and there are no new records to process at this moment\. In the case of this tutorial, you may see a number that's quite large if you've been taking time to read along as you go\. That's not a problem, by default, data records stay in a stream for 24 hours waiting for you to retrieve them\. This time frame is called the retention period and it is configurable up to 365 days\.
 
 Note that a successful `get-records` result will always have a `NextShardIterator` even if there are no more records currently in the stream\. This is a polling model that assumes a producer is potentially putting more records into the stream at any given time\. Although you can write your own polling routines, if you use the previously mentioned KCL for developing consumer applications, this polling is taken care of for you\.
 
@@ -186,25 +193,22 @@ aws kinesis delete-stream --stream-name Foo
  Success results in no output, so you might want to use `describe-stream` to check on deletion progress: 
 
 ```
-aws kinesis describe-stream --stream-name Foo
+aws kinesis describe-stream-summary --stream-name Foo
 ```
 
- If you execute this command immediately after the delete command, you will likely see output similar to the following example: 
+ If you execute this command immediately after the delete command, you will likely see output part of which is similar to the following example: 
 
 ```
 {
-    "StreamDescription": {
-        "StreamStatus": "DELETING",
-        "StreamName": "Foo",
-        "StreamARN": "arn:aws:kinesis:us-west-2:account-id:stream/Foo",
-        "Shards": []
-    }
-}
+    "StreamDescriptionSummary": {
+        "StreamName": "samplestream",
+        "StreamARN": "arn:aws:kinesis:us-west-2:123456789012:stream/samplestream",
+        "StreamStatus": "ACTIVE",
 ```
 
  After the stream is fully deleted, `describe-stream` will result in a "not found" error: 
 
 ```
-A client error (ResourceNotFoundException) occurred when calling the DescribeStream operation: 
-Stream Foo under account 112233445566 not found.
+A client error (ResourceNotFoundException) occurred when calling the DescribeStreamSummary operation: 
+Stream Foo under account 123456789012 not found.
 ```

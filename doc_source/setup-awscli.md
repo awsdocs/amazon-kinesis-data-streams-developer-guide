@@ -1,6 +1,6 @@
 # Step 2: Set Up the AWS Command Line Interface \(AWS CLI\)<a name="setup-awscli"></a>
 
-In this step, you download and configure the AWS CLI to use with Amazon Kinesis Data Analytics for Java Applications\.
+In this step, you download and configure the AWS CLI to use with Amazon Kinesis Data Analytics for Flink Applications\.
 
 **Note**  
 The getting started exercises in this guide assume that you are using administrator credentials \(`adminuser`\) in your account to perform the operations\.
@@ -44,4 +44,4 @@ After you set up an AWS account and the AWS CLI, you can try the next exercise, 
 
 ## Next Step<a name="setting-up-next-step-3"></a>
 
-[ Step 3: Create and Run a Kinesis Data Analytics for Java Application](get-started-exercise.md)
+[ Step 3: Create and Run a Kinesis Data Analytics for Flink Application](get-started-exercise.md)
