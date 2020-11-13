@@ -29,11 +29,8 @@ while ( System.currentTimeMillis() < endTime )
     if ( streamStatus.equals( "ACTIVE" ) ) {
       break;
     }
-   //
-    // sleep for one second
-    //
     try {
-      Thread.sleep( 1000 );
+      Thread.sleep( millis=1000 );
     }
     catch ( Exception e ) {}
   }
