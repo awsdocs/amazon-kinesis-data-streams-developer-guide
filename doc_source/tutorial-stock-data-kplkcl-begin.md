@@ -8,7 +8,7 @@ Before you begin, ensure that you are familiar with the concepts discussed in [A
 
 You need an AWS account and a web browser to access the AWS Management Console\.
 
-For console access, use your IAM user name and password to sign in to the [AWS Management Console](https://console.aws.amazon.com/console/home) from the [IAM sign\-in page](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html)\. IAM lets you securely control access to AWS services and resources in your AWS account\. For details about console and programmatic credentials, see [Understanding and Getting Your Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) in the *AWS General Reference*\.
+For console access, use your IAM user name and password to sign in to the [AWS Management Console](https://console.aws.amazon.com/console/home) from the [IAM sign\-in page](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html)\. IAM lets you securely control access to AWS services and resources in your AWS account\. For details about console and programmatic credentials, see [Understanding and getting your security credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) in the *AWS General Reference*\.
 
 For more information about IAM and security key setup instructions, see [Create an IAM User](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-an-iam-user)\.
 

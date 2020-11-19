@@ -17,6 +17,7 @@ You can monitor the KPL with Amazon CloudWatch\. For more information, see [Moni
 + [Configuring the Kinesis Producer Library](kinesis-kpl-config.md)
 + [Consumer De\-aggregation](kinesis-kpl-consumer-deaggregation.md)
 + [Using the KPL with Kinesis Data Firehose](kpl-with-firehose.md)
++ [Using the KPL with the AWS Glue Schema Registry](kpl-with-schemaregistry.md)
 
 ## Role of the KPL<a name="developing-producers-with-kpl-role"></a>
 

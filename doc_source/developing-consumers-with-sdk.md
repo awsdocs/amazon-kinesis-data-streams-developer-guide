@@ -14,6 +14,7 @@ The recommended method for developing custom Kinesis Data Streams consumers with
 + [Using Shard Iterators](#kinesis-using-sdk-java-get-data-shard-iterators)
 + [Using GetRecords](#kinesis-using-sdk-java-get-data-getrecords)
 + [Adapting to a Reshard](#kinesis-using-sdk-java-get-data-reshard)
++ [Interacting with Data Using the AWS Glue Schema Registry](#kinesis-using-sdk-java-glue-schema-registry)
 
 ## Getting Data from a Stream<a name="kinesis-using-sdk-java-get-data"></a>
 
@@ -159,3 +160,9 @@ If you are using the Kinesis Client Library, it might make multiple calls before
  If you are using multiple processors to retrieve data from the stream \(say, one processor per shard\), and a shard split or merge occurs, adjust the number of processors up or down to adapt to the change in the number of shards\. 
 
  For more information about resharding, including a discussion of shards states—such as `CLOSED`—see [Resharding a Stream](kinesis-using-sdk-java-resharding.md)\. 
+
+## Interacting with Data Using the AWS Glue Schema Registry<a name="kinesis-using-sdk-java-glue-schema-registry"></a>
+
+You can integrate your Kinesis data streams with the AWS Glue schema registry\. The AWS Glue schema registry allows you to centrally discover, control, and evolve schemas, while ensuring data produced is continuously validated by a registered schema\. A schema defines the structure and format of a data record\. A schema is a versioned specification for reliable data publication, consumption, or storage\. The AWS Glue Schema Registry enables you to improve end\-to\-end data quality and data governance within your streaming applications\. For more information, see [AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html)\. One of the ways to set up this integration is through the `GetRecords` Kinesis Data Streams API available in the AWS Java SDK\. 
+
+For detailed instructions on how to set up integration of Kinesis Data Streams with Schema Registry using the `GetRecords` Kinesis Data Streams APIs, see the "Interacting with Data Using the Kinesis Data Streams APIs" section in [Use Case: Integrating Amazon Kinesis Data Streams with the AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry-integrations.html#schema-registry-integrations-kds)\.

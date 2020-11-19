@@ -8,6 +8,10 @@ The Java example code in this chapter demonstrates how to perform basic Kinesis 
 
 Each task has prerequisites; for example, you cannot add data to a stream until you have created a stream, which requires you to create a client \. For more information, see [Creating and Managing Streams](working-with-streams.md)\.
 
+**Topics**
++ [Adding Data to a Stream](#kinesis-using-sdk-java-add-data-to-stream)
++ [Interacting with Data Using the AWS Glue Schema Registry](#kinesis-integration-glue-schema-registry)
+
 ## Adding Data to a Stream<a name="kinesis-using-sdk-java-add-data-to-stream"></a>
 
 Once a stream is created, you can add data to it in the form of records\. A record is a data structure that contains the data to be processed in the form of a data blob\. After you store the data in the record, Kinesis Data Streams does not inspect, interpret, or change the data in any way\. Each record also has an associated sequence number and partition key\.
@@ -187,3 +191,9 @@ for (int j = 0; j < 10; j++)
 The preceding code sample uses `setSequenceNumberForOrdering` to guarantee strictly increasing ordering within each partition key\. To use this parameter effectively, set the `SequenceNumberForOrdering` of the current record \(record *n*\) to the sequence number of the preceding record \(record *n\-1*\)\. To get the sequence number of a record that has been added to the stream, call `getSequenceNumber` on the result of `putRecord`\.
 
 The `SequenceNumberForOrdering` parameter ensures strictly increasing sequence numbers for the same partition key\. `SequenceNumberForOrdering` does not provide ordering of records across multiple partition keys\. 
+
+## Interacting with Data Using the AWS Glue Schema Registry<a name="kinesis-integration-glue-schema-registry"></a>
+
+You can integrate your Kinesis data streams with the AWS Glue schema registry\. The AWS Glue schema registry allows you to centrally discover, control, and evolve schemas, while ensuring data produced is continuously validated by a registered schema\. A schema defines the structure and format of a data record\. A schema is a versioned specification for reliable data publication, consumption, or storage\. The AWS Glue Schema Registry enables you to improve end\-to\-end data quality and data governance within your streaming applications\. For more information, see [AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html)\. One of the ways to set up this integration is through the `PutRecords` and `PutRecord` Kinesis Data Streams APIs available in the AWS Java SDK\. 
+
+For detailed instructions on how to set up integration of Kinesis Data Streams with Schema Registry using the PutRecords and PutRecord Kinesis Data Streams APIs, see the "Interacting with Data Using the Kinesis Data Streams APIs" section in [Use Case: Integrating Amazon Kinesis Data Streams with the AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry-integrations.html#schema-registry-integrations-kds)\.

@@ -8,6 +8,7 @@ One of the methods of developing custom consumer applications that can process d
 + [KCL Concepts](#shared-throughput-kcl-consumers-concepts)
 + [Using a Lease Table to Track the Shards Processed by the KCL Consumer Application](#shared-throughput-kcl-consumers-leasetable)
 + [Processing Multiple Data Streams with the same KCL 2\.x for Java Consumer Application](#shared-throughput-kcl-multistream)
++ [Using the Kinesis Client Library with the AWS Glue Schema Registry](#shared-throughput-kcl-consumers-glue-schema-registry)
 
 ## What is the Kinesis Client Library?<a name="shared-throughput-kcl-consumers-overview"></a>
 
@@ -291,3 +292,12 @@ Multistream processing is NOT supported in any versions of KCL 1\.x\.
 + When multistream support for your KCL consumer application is implemented, the leaseKey takes the following structure: `account-id:StreamName:streamCreationTimestamp:ShardId`\. For example, `111111111:multiStreamTest-1:12345:shardId-000000000336`\.
 **Important**  
 When your existing KCL consumer application is configured to process only one data stream, the leaseKey \(which is the hash key for the lease table\) is the shard ID\. If you reconfigure this existing KCL consumer application to process multiple data streams, it breaks your lease table, because with multistream support, the leaseKey structure must be as follows: `account-id:StreamName:StreamCreationTimestamp:ShardId`\.
+
+## Using the Kinesis Client Library with the AWS Glue Schema Registry<a name="shared-throughput-kcl-consumers-glue-schema-registry"></a>
+
+You can integrate your Kinesis data streams with the AWS Glue schema registry\. The AWS Glue schema registry allows you to centrally discover, control, and evolve schemas, while ensuring data produced is continuously validated by a registered schema\. A schema defines the structure and format of a data record\. A schema is a versioned specification for reliable data publication, consumption, or storage\. The AWS Glue Schema Registry enables you to improve end\-to\-end data quality and data governance within your streaming applications\. For more information, see [AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html)\. One of the ways to set up this integration is through the KCL in Java\. 
+
+**Important**  
+Currently, Kinesis Data Streams and AWS Glue schema registry integration is only supported for the Kinesis data streams that use KCL 2\.3 consumers implemented in Java\. Multi\-language support is not provided\. KCL 1\.0 consumers are not supported\. KCL 2\.x consumers prior to KCL 2\.3 are not supported\.
+
+For detailed instructions on how to set up integration of Kinesis Data Streams with Schema Registry using the KCL, see the "Interacting with Data Using the KPL/KCL Libraries" section in [Use Case: Integrating Amazon Kinesis Data Streams with the AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry-integrations.html#schema-registry-integrations-kds)\.

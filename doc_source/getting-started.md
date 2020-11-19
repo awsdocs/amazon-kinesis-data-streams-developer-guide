@@ -8,7 +8,7 @@ This section shows you how to perform basic Amazon Kinesis Data Streams operatio
 + [Install and Configure the AWS CLI](kinesis-tutorial-cli-installation.md)
 + [Perform Basic Kinesis Data Stream Operations Using the AWS CLI](fundamental-stream.md)
 
-For CLI access, you need an access key ID and secret access key\. Use IAM user access keys instead of AWS account root user access keys\. IAM lets you securely control access to AWS services and resources in your AWS account\. For more information about creating access keys, see [Understanding and Getting Your Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) in the *AWS General Reference*\.
+For CLI access, you need an access key ID and secret access key\. Use IAM user access keys instead of AWS account root user access keys\. IAM lets you securely control access to AWS services and resources in your AWS account\. For more information about creating access keys, see [Understanding and getting your security credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) in the *AWS General Reference*\.
 
 You can find detailed step\-by\-step IAM and security key set up instructions at [Create an IAM User](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-an-iam-user)\.
 

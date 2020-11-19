@@ -35,7 +35,7 @@ The following section describes limits for the KDS control plane APIs\. KDS cont
 | DescribeStreamSummary | 20 TPS | N/A |  | 
 | DisableEnhancedMonitoring | 5 TPS | N/A |  | 
 | EnableEnhancedMonitoring | 5 TPS | N/A |  | 
-| IncreaseStreamRetentionPeriod | 5 TPS | The maximum value of a stream's retention period is 168 hours \(7 days\)\.  |  | 
+| IncreaseStreamRetentionPeriod | 5 TPS | The maximum value of a stream's retention period is 8760 hours \(365 days\)\.  |  | 
 | ListShards | 100 TPS | N/A |  | 
 | ListStreamConsumers | 5 TPS | N/A |  | 
 | ListStreams | 5 TPS | N/A |  | 

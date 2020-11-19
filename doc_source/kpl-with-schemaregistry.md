@@ -1,0 +1,8 @@
+# Using the KPL with the AWS Glue Schema Registry<a name="kpl-with-schemaregistry"></a>
+
+You can integrate your Kinesis data streams with the AWS Glue schema registry\. The AWS Glue schema registry allows you to centrally discover, control, and evolve schemas, while ensuring data produced is continuously validated by a registered schema\. A schema defines the structure and format of a data record\. A schema is a versioned specification for reliable data publication, consumption, or storage\. The AWS Glue Schema Registry enables you to improve end\-to\-end data quality and data governance within your streaming applications\. For more information, see [AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html)\. One of the ways to set up this integration is through the KPL and Kinesis Client Library \(KCL\) libraries in Java\. 
+
+**Important**  
+Currently, Kinesis Data Streams and AWS Glue schema registry integration is only supported for the Kinesis data streams that use KPL producers implemented in Java\. Multi\-language support is not provided\. 
+
+For detailed instructions on how to set up integration of Kinesis Data Streams with Schema Registry using the KPL, see the "Interacting with Data Using the KPL/KCL Libraries" section in [Use Case: Integrating Amazon Kinesis Data Streams with the AWS Glue Schema Registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry-integrations.html#schema-registry-integrations-kds)\.
