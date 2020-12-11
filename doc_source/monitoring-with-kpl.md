@@ -54,6 +54,8 @@ As described previously, you can select which metrics to upload with the *metric
 
 Uploading data points individually is untenable because it could produce millions of uploads per second, if traffic is high\. For this reason, the KPL aggregates metrics locally into 1\-minute buckets and uploads a statistics object to CloudWatch one time per minute, per enabled metric\.
 
+
+
 ## List of Metrics<a name="kpl-metrics-list"></a>
 
 

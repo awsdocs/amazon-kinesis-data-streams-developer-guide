@@ -1,5 +1,7 @@
 # Step 4: Implement the Producer<a name="tutorial-stock-data-kplkcl-producer"></a>
 
+
+
 The application in the [Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x[Tutorial: Process Real\-Time Stock Data Using KPL and KCL 1\.x](tutorial-stock-data-kplkcl.md)](tutorial-stock-data-kplkcl.md) uses the real\-world scenario of stock market trade monitoring\. The following principles briefly explain how this scenario maps to the producer and supporting code structure\.
 
 Refer to the source code and review the following information\.

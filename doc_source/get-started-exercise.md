@@ -49,29 +49,33 @@ This section requires the [AWS SDK for Python \(Boto\)](https://aws.amazon.com/d
 
    ```
     
-   import json
-   import boto3
-   import random
    import datetime
+   import json
+   import random
+   import boto3
    
-   kinesis = boto3.client('kinesis')
-   def getReferrer():
-       data = {}
-       now = datetime.datetime.now()
-       str_now = now.isoformat()
-       data['EVENT_TIME'] = str_now
-       data['TICKER'] = random.choice(['AAPL', 'AMZN', 'MSFT', 'INTC', 'TBV'])
-       price = random.random() * 100
-       data['PRICE'] = round(price, 2)
-       return data
+   STREAM_NAME = "ExampleInputStream"
    
-   while True:
-           data = json.dumps(getReferrer())
+   
+   def get_data():
+       return {
+           'EVENT_TIME': datetime.datetime.now().isoformat(),
+           'TICKER': random.choice(['AAPL', 'AMZN', 'MSFT', 'INTC', 'TBV']),
+           'PRICE': round(random.random() * 100, 2)}
+   
+   
+   def generate(stream_name, kinesis_client):
+       while True:
+           data = get_data()
            print(data)
-           kinesis.put_record(
-                   StreamName="ExampleInputStream",
-                   Data=data,
-                   PartitionKey="partitionkey")
+           kinesis_client.put_record(
+               StreamName=stream_name,
+               Data=json.dumps(data),
+               PartitionKey="partitionkey")
+   
+   
+   if __name__ == '__main__':
+       generate(STREAM_NAME, boto3.client('kinesis'))
    ```
 
 1. Later in the tutorial, you run the `stock.py` script to send data to the application\. 

@@ -1,5 +1,7 @@
 # Step 4: Implement the Producer<a name="tutorial-stock-data-kplkcl2-producer"></a>
 
+
+
 This tutorial uses the real\-world scenario of stock market trade monitoring\. The following principles briefly explain how this scenario maps to the producer and its supporting code structure\.
 
 Refer to the [source code](https://github.com/aws-samples/amazon-kinesis-learning ) and review the following information\.
