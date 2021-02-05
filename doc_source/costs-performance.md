@@ -16,7 +16,7 @@ For every encrypted stream, the Kinesis service calls the AWS KMS service approx
 
 ## Availability of Server\-Side Encryption by Region<a name="sse-regions"></a>
 
-Currently, server\-side encryption of Kinesis streams is available in all the regions supported for Kinesis Data Streams, including AWS GovCloud \(US\-West\), but it is NOT avaialble in the China regions\. For more information about supported regions for Kinesis Data Streams see [https://docs\.aws\.amazon\.com/general/latest/gr/ak\.html](https://docs.aws.amazon.com/general/latest/gr/ak.html)\.
+Currently, server\-side encryption of Kinesis streams is available in all the regions supported for Kinesis Data Streams, including AWS GovCloud \(US\-West\), and the China regions\. For more information about supported regions for Kinesis Data Streams see [https://docs\.aws\.amazon\.com/general/latest/gr/ak\.html](https://docs.aws.amazon.com/general/latest/gr/ak.html)\.
 
 ## Performance Considerations<a name="performance-considerations"></a>
 

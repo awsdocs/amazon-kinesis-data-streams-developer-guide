@@ -71,27 +71,27 @@ The following are example endpoint policies for accessing Kinesis data streams\.
 ## Availability of VPC Endpoint Policies for Kinesis Data Streams<a name="availability"></a>
 
 Kinesis Data Streams interface VPC endpoints with policies are supported in the following regions: 
-+ US West \(Oregon\)
 + Europe \(Paris\)
 + Europe \(Ireland\)
 + US East \(N\. Virginia\)
 + Europe \(Stockholm\)
-+ Asia Pacific \(Mumbai\)
 + US East \(Ohio\)
 + Europe \(Frankfurt\)
 + South America \(São Paulo\)
-+ Asia Pacific \(Seoul\)
 + Europe \(London\)
 + Asia Pacific \(Tokyo\)
 + US West \(N\. California\)
 + Asia Pacific \(Singapore\)
 + Asia Pacific \(Sydney\)
-+ Canada \(Central\)
 + China \(Beijing\)
 + China \(Ningxia\)
 + Asia Pacific \(Hong Kong\)
 + Middle East \(Bahrain\)
 + Europe \(Milan\)
 + Africa \(Cape Town\)
++ Asia Pacific \(Mumbai\) except aps1\-az2 
++ Asia Pacific \(Seoul\) except apne2\-az4
++ Canada \(Central\) except cac1\-az4
++ US West \(Oregon\) except usw2\-az4
 + AWS GovCloud \(US\-East\)
 + AWS GovCloud \(US\-West\)
