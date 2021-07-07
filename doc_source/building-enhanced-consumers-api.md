@@ -1,6 +1,6 @@
 # Developing Enhanced Fan\-Out Consumers with the Kinesis Data Streams API<a name="building-enhanced-consumers-api"></a>
 
-*Enhanced fan\-out* is an Amazon Kinesis Data Streams feature that enables consumers to receive records from a data stream with dedicated throughput of up to 2 MB of data per second per shard\. A consumer that uses enhanced fan\-out doesn't have to contend with other consumers that are receiving data from the stream\. For more information, see [Developing Custom Consumers with Dedicated Throughput \(Enhanced Fan\-Out\)](enhanced-consumers.md)\.
+*Enhanced fan\-out* is an Amazon Kinesis Data Streams feature that enables consumers to receive records from a data stream with dedicated throughput of up to 2 MiB of data per second per shard\. A consumer that uses enhanced fan\-out doesn't have to contend with other consumers that are receiving data from the stream\. For more information, see [Developing Custom Consumers with Dedicated Throughput \(Enhanced Fan\-Out\)](enhanced-consumers.md)\.
 
 You can use API operations to build a consumer that uses enhanced fan\-out in Kinesis Data Streams\.
 

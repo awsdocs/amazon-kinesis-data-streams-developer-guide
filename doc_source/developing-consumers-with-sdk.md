@@ -81,7 +81,7 @@ You can use sequence numbers to guarantee strictly increasing ordering of record
 
 After you obtain the shard iterator, instantiate a `GetRecordsRequest` object\. Specify the iterator for the request using the `setShardIterator` method\. 
 
-Optionally, you can also set the number of records to retrieve using the `setLimit` method\. The number of records returned by `getRecords` is always equal to or less than this limit\. If you do not specify this limit, `getRecords` returns 10 MB of retrieved records\. The sample code below sets this limit to 25 records\.
+Optionally, you can also set the number of records to retrieve using the `setLimit` method\. The number of records returned by `getRecords` is always equal to or less than this limit\. If you do not specify this limit, `getRecords` returns 10 MiB of retrieved records\. The sample code below sets this limit to 25 records\.
 
 If no records are returned, that means no data records are currently available from this shard at the sequence number referenced by the shard iterator\. In this situation, your application should wait for an amount of time that's appropriate for the data sources for the stream, but at least 1 second\. Then try to get data from the shard again using the shard iterator returned by the preceding call to `getRecords`\. There is about a 3\-second latency from the time that a record is added to the stream to the time that it is available from `getRecords`\. 
 

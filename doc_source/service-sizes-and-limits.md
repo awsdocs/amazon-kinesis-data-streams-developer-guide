@@ -5,11 +5,11 @@ Amazon Kinesis Data Streams has the following stream and shard quotas and limits
 + The default shard quota is 500 shards per AWS account for the following AWS regions: US East \(N\. Virginia\), US West \(Oregon\), and Europe \(Ireland\)\. For all other regions, the default shard quota is 200 shards per AWS account\. 
 
   To request the shards per data stream quota increase, follow the procedure outlined in [Requesting a Quota Increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\.
-+ A single shard can ingest up to 1 MB of data per second \(including partition keys\) or 1,000 records per second for writes\. Similarly, if you scale your stream to 5,000 shards, the stream can ingest up to 5 GB per second or 5 million records per second\. If you need more ingest capacity, you can easily scale up the number of shards in the stream using the AWS Management Console or the [UpdateShardCount](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\.
-+ The maximum size of the data payload of a record before base64\-encoding is up to 1 MB\.
-+ [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) can retrieve up to 10 MB of data per call from a single shard, and up to 10,000 records per call\. Each call to `GetRecords` is counted as one read transaction\.
-+ Each shard can support up to five read transactions per second\. Each read transaction can provide up to 10,000 records with an upper quota of 10 MB per transaction\.
-+ Each shard can support up to a maximum total data read rate of 2 MB per second via [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. If a call to `GetRecords` returns 10 MB, subsequent calls made within the next 5 seconds throw an exception\.
++ A single shard can ingest up to 1 MiB of data per second \(including partition keys\) or 1,000 records per second for writes\. Similarly, if you scale your stream to 5,000 shards, the stream can ingest up to 5 GB per second or 5 million records per second\. If you need more ingest capacity, you can easily scale up the number of shards in the stream using the AWS Management Console or the [UpdateShardCount](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\.
++ The maximum size of the data payload of a record before base64\-encoding is up to 1 MiB\.
++ [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) can retrieve up to 10 MiB of data per call from a single shard, and up to 10,000 records per call\. Each call to `GetRecords` is counted as one read transaction\.
++ Each shard can support up to five read transactions per second\. Each read transaction can provide up to 10,000 records with an upper quota of 10 MiB per transaction\.
++ Each shard can support up to a maximum total data read rate of 2 MiB per second via [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. If a call to `GetRecords` returns 10 MiB, subsequent calls made within the next 5 seconds throw an exception\.
 
 ## API Limits<a name="kds-api-limits"></a>
 
@@ -57,10 +57,10 @@ The following section describes the limits for the KDS data plane APIs\. KDS dat
 
 | API | API call limit | Payload limit | Additional details | 
 | --- | --- | --- | --- | 
-| GetRecords | 5 TPS | The maximum number of records that can be returned per call is 10,000\. The maximum size of data that GetRecords can return is 10 MB\.  | If a call returns this amount of data, subsequent calls made within the next 5 seconds throw ProvisionedThroughputExceededException\. If there is insufficient provisioned throughput on the stream, subsequent calls made within the next 1 second throw ProvisionedThroughputExceededException\. | 
+| GetRecords | 5 TPS | The maximum number of records that can be returned per call is 10,000\. The maximum size of data that GetRecords can return is 10 MiB\.  | If a call returns this amount of data, subsequent calls made within the next 5 seconds throw ProvisionedThroughputExceededException\. If there is insufficient provisioned throughput on the stream, subsequent calls made within the next 1 second throw ProvisionedThroughputExceededException\. | 
 | GetShardIterator | 5 TPS |  | A shard iterator expires 5 minutes after it is returned to the requester\. If a GetShardIterator request is made too often, you receive a ProvisionedThroughputExceededException\. | 
-| PutRecord | 1000 TPS | Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MB per second\.  |  | 
-| PutRecords |  | Each PutRecords request can support up to 500 records\. Each record in the request can be as large as 1 MB, up to a limit of 5 MB for the entire request, including partition keys\. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MB per second\.  |  | 
+| PutRecord | 1000 TPS | Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second\.  |  | 
+| PutRecords |  | Each PutRecords request can support up to 500 records\. Each record in the request can be as large as 1 MiB, up to a limit of 5 MiB for the entire request, including partition keys\. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second\.  |  | 
 | SubscribeToShard | You can make one call to SubscribeToShard per second per registered consumer per shard\.  |  | If you call SubscribeToShard again with the same ConsumerARN and ShardId within 5 seconds of a successful call, you'll get a ResourceInUseException\.  | 
 
 ## Increasing Quotas<a name="increasing-kds-limits"></a>

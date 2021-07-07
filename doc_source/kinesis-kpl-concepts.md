@@ -32,7 +32,7 @@ The two types of KPL batching are designed to coexist and can be turned on or of
 
 *Aggregation* refers to the storage of multiple records in a Kinesis Data Streams record\. Aggregation allows customers to increase the number of records sent per API call, which effectively increases producer throughput\.
 
-Kinesis Data Streams shards support up to 1,000 Kinesis Data Streams records per second, or 1 MB throughput\. The Kinesis Data Streams records per second limit binds customers with records smaller than 1 KB\. Record aggregation allows customers to combine multiple records into a single Kinesis Data Streams record\. This allows customers to improve their per shard throughput\. 
+Kinesis Data Streams shards support up to 1,000 Kinesis Data Streams records per second, or 1 MiB throughput\. The Kinesis Data Streams records per second limit binds customers with records smaller than 1 KB\. Record aggregation allows customers to combine multiple records into a single Kinesis Data Streams record\. This allows customers to improve their per shard throughput\. 
 
 Consider the case of one shard in region us\-east\-1 that is currently running at a constant rate of 1,000 records per second, with records that are 512 bytes each\. With KPL aggregation, you can pack 1,000 records into only 10 Kinesis Data Streams records, reducing the RPS to 10 \(at 50 KB each\)\.
 

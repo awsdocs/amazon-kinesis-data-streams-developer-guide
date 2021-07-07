@@ -20,7 +20,7 @@ A *Kinesis data stream* is a set of [shards](#shard)\. Each shard has a sequence
 
 ### Data Record<a name="data-record"></a>
 
-A *data record* is the unit of data stored in a [Kinesis data stream](#stream)\. Data records are composed of a [sequence number](#sequence-number), a [partition key](#partition-key), and a data blob, which is an immutable sequence of bytes\. Kinesis Data Streams does not inspect, interpret, or change the data in the blob in any way\. A data blob can be up to 1 MB\.
+A *data record* is the unit of data stored in a [Kinesis data stream](#stream)\. Data records are composed of a [sequence number](#sequence-number), a [partition key](#partition-key), and a data blob, which is an immutable sequence of bytes\. Kinesis Data Streams does not inspect, interpret, or change the data in the blob in any way\. A data blob can be up to 1 MiB\.
 
 ### Retention Period<a name="retention"></a>
 
@@ -44,7 +44,7 @@ The output of a Kinesis Data Streams application can be input for another stream
 
 ### Shard<a name="shard"></a>
 
-A *shard* is a uniquely identified sequence of data records in a stream\. A stream is composed of one or more shards, each of which provides a fixed unit of capacity\. Each shard can support up to 5 transactions per second for reads, up to a maximum total data read rate of 2 MB per second and up to 1,000 records per second for writes, up to a maximum total data write rate of 1 MB per second \(including partition keys\)\. The data capacity of your stream is a function of the number of shards that you specify for the stream\. The total capacity of the stream is the sum of the capacities of its shards\.
+A *shard* is a uniquely identified sequence of data records in a stream\. A stream is composed of one or more shards, each of which provides a fixed unit of capacity\. Each shard can support up to 5 transactions per second for reads, up to a maximum total data read rate of 2 MiB per second and up to 1,000 records per second for writes, up to a maximum total data write rate of 1 MiB per second \(including partition keys\)\. The data capacity of your stream is a function of the number of shards that you specify for the stream\. The total capacity of the stream is the sum of the capacities of its shards\.
 
 If your data rate increases, you can increase or decrease the number of shards allocated to your stream\. For more information, see [Resharding a Stream](kinesis-using-sdk-java-resharding.md)\.
 
