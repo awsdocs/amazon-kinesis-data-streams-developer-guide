@@ -32,6 +32,6 @@ When the stream scales up to have many shards \(because many producers are sendi
 As a stream is continuously processed, its output can be sent to other destinations\. AWS provides [connectors](https://github.com/awslabs/amazon-kinesis-connectors) to integrate Kinesis Data Streams with other AWS services and third\-party tools\.
 
 ## Next Steps<a name="tutorial-stock-data-kplkcl-next-steps"></a>
-+ For more information about using Kinesis Data Streams API operations, see [Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md), [Developing Custom Consumers with Shared Throughput Using the AWS SDK for Java ](developing-consumers-with-sdk.md), and [Creating and Managing Streams](working-with-streams.md)\.
++ For more information about using Kinesis Data Streams API operations, see [Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md), [Developing Custom Consumers with Shared Throughput Using the AWS SDK for Java](developing-consumers-with-sdk.md), and [Creating and Managing Streams](working-with-streams.md)\.
 + For more information about the Kinesis Client Library, see [Developing KCL 1\.x Consumers](developing-consumers-with-kcl.md)\. 
 + For more information about how to optimize your application, see [Advanced Topics](advanced-consumers.md)\. 

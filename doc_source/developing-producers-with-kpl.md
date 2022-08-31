@@ -18,6 +18,10 @@ You can monitor the KPL with Amazon CloudWatch\. For more information, see [Moni
 + [Consumer De\-aggregation](kinesis-kpl-consumer-deaggregation.md)
 + [Using the KPL with Kinesis Data Firehose](kpl-with-firehose.md)
 + [Using the KPL with the AWS Glue Schema Registry](kpl-with-schemaregistry.md)
++ [KPL Proxy Configuration](kpl-proxy-configuration.md)
+
+**Note**  
+It is recommended that you upgrade to the latest KPL version\. KPL is regularly updated with newer releases that include the latest dependency and security patches, bug fixes, and backward\-compatible new features\. For more information, see [https://github\.com/awslabs/amazon\-kinesis\-producer/releases/](https://github.com/awslabs/amazon-kinesis-producer/releases/)\.
 
 ## Role of the KPL<a name="developing-producers-with-kpl-role"></a>
 
@@ -36,17 +40,17 @@ The following list represents some of the major advantages to using the KPL for 
 
 The KPL can be used in either synchronous or asynchronous use cases\. We suggest using the higher performance of the asynchronous interface unless there is a specific reason to use synchronous behavior\. For more information about these two use cases and example code, see [Writing to your Kinesis Data Stream Using the KPL](kinesis-kpl-writing.md)\.
 
-**Performance Benefits**  
+ **Performance Benefits**   
 The KPL can help build high\-performance producers\. Consider a situation where your Amazon EC2 instances serve as a proxy for collecting 100\-byte events from hundreds or thousands of low power devices and writing records into a Kinesis data stream\. These EC2 instances must each write thousands of events per second to your data stream\. To achieve the throughput needed, producers must implement complicated logic, such as batching or multithreading, in addition to retry logic and record de\-aggregation at the consumer side\. The KPL performs all of these tasks for you\. 
 
-**Consumer\-Side Ease of Use**  
+ **Consumer\-Side Ease of Use**   
 For consumer\-side developers using the KCL in Java, the KPL integrates without additional effort\. When the KCL retrieves an aggregated Kinesis Data Streams record consisting of multiple KPL user records, it automatically invokes the KPL to extract the individual user records before returning them to the user\.   
 For consumer\-side developers who do not use the KCL but instead use the API operation `GetRecords` directly, a KPL Java library is available to extract the individual user records before returning them to the user\. 
 
-**Producer Monitoring**   
+ **Producer Monitoring**   
 You can collect, monitor, and analyze your Kinesis Data Streams producers using Amazon CloudWatch and the KPL\. The KPL emits throughput, error, and other metrics to CloudWatch on your behalf, and is configurable to monitor at the stream, shard, or producer level\.
 
-**Asynchronous Architecture**   
+ **Asynchronous Architecture**   
 Because the KPL may buffer records before sending them to Kinesis Data Streams, it does not force the caller application to block and wait for a confirmation that the record has arrived at the server before continuing execution\. A call to put a record into the KPL always returns immediately and does not wait for the record to be sent or a response to be received from the server\. Instead, a `Future` object is created that receives the result of sending the record to Kinesis Data Streams at a later time\. This is the same behavior as asynchronous clients in the AWS SDK\.
 
 ## When Not to Use the KPL<a name="developing-producers-with-kpl-when"></a>

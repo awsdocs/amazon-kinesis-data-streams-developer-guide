@@ -89,9 +89,10 @@ Kinesis Data Streams interface VPC endpoints with policies are supported in the 
 + Middle East \(Bahrain\)
 + Europe \(Milan\)
 + Africa \(Cape Town\)
-+ Asia Pacific \(Mumbai\) except aps1\-az2 
-+ Asia Pacific \(Seoul\) except apne2\-az4
-+ Canada \(Central\) except cac1\-az4
++ Asia Pacific \(Mumbai\)
++ Asia Pacific \(Seoul\)
++ Canada \(Central\)
 + US West \(Oregon\) except usw2\-az4
 + AWS GovCloud \(US\-East\)
 + AWS GovCloud \(US\-West\)
++ Asia Pacific \(Osaka\)

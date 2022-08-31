@@ -75,14 +75,30 @@ With the `ListShards` API, you can use the [ShardFilter](https://docs.aws.amazon
 
 If you use the `ShardFilter` parameter when invoking the ListShards API, the `Type` is the required property and must be specified\. If you specify the `AT_TRIM_HORIZON`, `FROM_TRIM_HORIZON`, or `AT_LATEST` types, you do not need to specify either the `ShardId` or the `Timestamp` optional properties\.
 
-If you specify the `AFTER_SHARD_ID` type, you must also provide the value for the optional `ShardId` property\. The `ShardId` property is identical in fuctionality to the `ExclusiveStartShardId` parameter of the ListShards API\. When `ShardId` property is specified, the response includes the shards starting with the shard whose ID immediately follows the `ShardId` that you provided\.
+If you specify the `AFTER_SHARD_ID` type, you must also provide the value for the optional `ShardId` property\. The `ShardId` property is identical in functionality to the `ExclusiveStartShardId` parameter of the ListShards API\. When `ShardId` property is specified, the response includes the shards starting with the shard whose ID immediately follows the `ShardId` that you provided\.
 
 If you specify the `AT_TIMESTAMP` or `FROM_TIMESTAMP_ID` type, you must also provide the value for the optional `Timestamp` property\. If you specify the `AT_TIMESTAMP` type, then all shards that were open at the provided timestamp are returned\. If you specify the `FROM_TIMESTAMP` type, then all shards starting from the provided timestamp to TIP are returned\. 
+
+**Important**  
+`DescribeStreamSummary` and `ListShard` APIs provide a more scalable way to retrieve information about your data streams\. More specifically, the quotas for the DescribeStream API can cause throttling\. For more information, see [Quotas and Limits](service-sizes-and-limits.md)\. Note also that `DescribeStream` quotas are shared across all applications that interact with all data streams in your AWS account\. The quotas for the ListShards API, on the other hand, are specific to a single data stream\. So not only do you get higher TPS with the ListShards API, but the action scales better as you create more data streams\.  
+We recommend that you migrate all of your producers and consumers that call the DescribeStream API to instead invoke the DescribeStreamSummary and the ListShard APIs\. To identify these producers and consumers, we recommend using Athena to parse CloudTrail logs as user agents for KPL and KCL are captured in the API calls\.   
+
+```
+SELECT useridentity.sessioncontext.sessionissuer.username, 
+useridentity.arn,eventname,useragent, count(*) FROM 
+cloudtrail_logs WHERE Eventname IN ('DescribeStream')  AND 
+eventtime
+    BETWEEN ''
+        AND ''
+GROUP BY  useridentity.sessioncontext.sessionissuer.username,useridentity.arn,eventname,useragent
+ORDER BY  count(*) DESC LIMIT 100
+```
+We also recommend that the AWS Lambda and Kinesis Data Firehose integrations with Kinesis Data Streams that invoke the `DescribeStream` API are reconfigured so that the integrations instead invoke `DescribeStreamSummary` and `ListShards`\. Specifically, for AWS Lambda, you must update your event source mapping\. For Kinesis Data Firehose, the corresponding IAM permissions must be updated so that they include the `ListShards` IAM permission\. 
 
 ## DescribeStream API \- Deprecated<a name="kinesis-using-sdk-java-retrieve-shards"></a>
 
 **Important**  
-The information below descibes a currently deprecated way of retrieving shards from a data stream via the DescribeStream API\. It is currently highly recommended that you use the `ListShards` API to retrieve the shards that comprise the data stream\.
+The information below describes a currently deprecated way of retrieving shards from a data stream via the DescribeStream API\. It is currently highly recommended that you use the `ListShards` API to retrieve the shards that comprise the data stream\.
 
 The response object returned by the `describeStream` method enables you to retrieve information about the shards that comprise the stream\. To retrieve the shards, call the `getShards` method on this object\. This method might not return all the shards from the stream in a single call\. In the following code, we check the `getHasMoreShards` method on `getStreamDescription` to see if there are additional shards that were not returned\. If so, that is, if this method returns `true`, we continue to call `getShards` in a loop, adding each new batch of returned shards to our list of shards\. The loop exits when `getHasMoreShards` returns `false`; that is, all shards have been returned\. Note that `getShards` does not return shards that are in the `EXPIRED` state\. For more information about shard states, including the `EXPIRED` state, see [Data Routing, Data Persistence, and Shard State after a Reshard](kinesis-using-sdk-java-after-resharding.md#kinesis-using-sdk-java-resharding-data-routing)\. 
 

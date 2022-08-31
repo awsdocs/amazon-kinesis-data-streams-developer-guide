@@ -35,7 +35,7 @@ Take into account the number of entities providing data and the approximate numb
 **Number of consuming applications**  
 The number of applications that independently read from the stream to process the stream in a different way and produce different output\. Each application can have multiple instances running on different machines \(that is, run in a cluster\) so that it can keep up with a high volume stream\.
 
-If the estimated number of shards shown exceeds your current shard limit, you might need to submit a request to increase that limit before you can create a stream with that number of shards\. To request an increase to your shard limit, use the [Kinesis Data Streams Limits form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis)\. For more information about streams and shards, see [Creating and Updating Data Streams](amazon-kinesis-streams.md) and [Creating and Managing Streams](working-with-streams.md)\.
+If the estimated number of shards shown exceeds your current shard limit, you might need to submit a request to increase that limit before you can create a stream with that number of shards\. To request an increase to your shard limit, use the [Kinesis Data Streams Limits form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis)\. For more information about streams and shards, see [Creating and Managing Streams](working-with-streams.md)\.
 
 ## Next Steps<a name="tutorial-stock-data-kplkcl-create-stream-next"></a>
 

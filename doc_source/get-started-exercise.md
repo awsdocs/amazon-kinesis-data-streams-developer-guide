@@ -280,8 +280,7 @@ Follow these steps to create, configure, update, and run the application using t
    + For **Description**, enter **My java test app**\.
    + For **Runtime**, choose **Apache Flink 1\.6**\.
 
-1. For **Access permissions**, choose **Create / update IAM role `kinesis-analytics-MyApplication-us-west-2`**\.  
-![\[Console screenshot showing the settings on the create application page.\]](http://docs.aws.amazon.com/streams/latest/dev/images/create_01.png)
+1. For **Access permissions**, choose **Create / update IAM role `kinesis-analytics-MyApplication-us-west-2`**\.
 
 1. Choose **Create application**\.
 
@@ -365,8 +364,7 @@ Edit the IAM policy to add permissions to access the Kinesis data streams\.
 
 #### Configure the Application<a name="get-started-exercise-7-console-configure"></a>
 
-1. On the **MyApplication** page, choose **Configure**\.  
-![\[Screenshot showing the MyApplication page and the configure and run buttons.\]](http://docs.aws.amazon.com/streams/latest/dev/images/create_02.png)
+1. On the **MyApplication** page, choose **Configure**\.
 
 1. On the **Configure application** page, provide the **Code location**:
    + For **Amazon S3 bucket**, enter **ka\-app\-code\-*<username>***\.
@@ -383,8 +381,7 @@ Edit the IAM policy to add permissions to access the Kinesis data streams\.
 
 1. For **CloudWatch logging**, select the **Enable** check box\.
 
-1. Choose **Update**\.  
-![\[Screenshot of the Configure application page with the settings as described in this procedure.\]](http://docs.aws.amazon.com/streams/latest/dev/images/create_03.png)
+1. Choose **Update**\.
 
 **Note**  
 When you choose to enable CloudWatch logging, Kinesis Data Analytics creates a log group and log stream for you\. The names of these resources are as follows:   
@@ -393,18 +390,13 @@ Log stream: `kinesis-analytics-log-stream`
 
 #### Run the Application<a name="get-started-exercise-7-console-run"></a>
 
-1. On the **MyApplication** page, choose **Run**\. Confirm the action\.  
-![\[Screenshot of the MyApplication page and the run button.\]](http://docs.aws.amazon.com/streams/latest/dev/images/create_04.png)
+1. On the **MyApplication** page, choose **Run**\. Confirm the action\.
 
 1. When the application is running, refresh the page\. The console shows the **Application graph**\.
-
-![\[Screenshot of the Application graph.\]](http://docs.aws.amazon.com/streams/latest/dev/images/create_04_1.png)
 
 #### Stop the Application<a name="get-started-exercise-7-console-stop"></a>
 
 On the **MyApplication** page, choose **Stop**\. Confirm the action\.
-
-![\[Screenshot of the MyApplication page and the stop button.\]](http://docs.aws.amazon.com/streams/latest/dev/images/create_05.png)
 
 #### Update the Application<a name="get-started-exercise-7-console-update"></a>
 

@@ -26,7 +26,7 @@ You can use tags to categorize your streams\. For example, you can categorize st
 
 ## Tracking Costs Using Tagging<a name="tagging-billing"></a>
 
-You can use tags to categorize and track your AWS costs\. When you apply tags to your AWS resources, including streams, your AWS cost allocation report includes usage and costs aggregated by tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information, see [Use Cost Allocation Tags for Custom Billing Reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*\.
+You can use tags to categorize and track your AWS costs\. When you apply tags to your AWS resources, including streams, your AWS cost allocation report includes usage and costs aggregated by tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information, see [Use Cost Allocation Tags for Custom Billing Reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing User Guide*\.
 
 ## Tag Restrictions<a name="tagging-restrictions"></a>
 

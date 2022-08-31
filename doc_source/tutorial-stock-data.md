@@ -30,7 +30,5 @@ To complete the steps in this guide, you must have the following:
   ```
   $ mvn -version
   ```
-**Note**  
-Kinesis Data Analytics for Flink Applications only supports Java and Flink applications that are built with Apache Maven\.
 
 To get started, go to [Step 1: Set Up an AWS Account and Create an Administrator User](setting-up.md)\.

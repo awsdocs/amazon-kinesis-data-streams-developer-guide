@@ -3,6 +3,7 @@
 **Topics**
 + [Producer Application is Writing at a Slower Rate Than Expected](#producer-writing-at-slower-rate)
 + [Unauthorized KMS master key permission error](#unauthorized-kms-producer)
++ [Common issues, questions, and troubleshooting ideas for producers](#misc-troubleshooting-producer)
 
 ## Producer Application is Writing at a Slower Rate Than Expected<a name="producer-writing-at-slower-rate"></a>
 
@@ -12,7 +13,7 @@
 
 ### Service Limits Exceeded<a name="service-limits-exceeded"></a>
 
-To find out if service limits are being exceeded, check to see if your producer is throwing throughput exceptions from the service, and validate what API operations are being throttled\. Keep in mind that there are different limits based on the call, see [Kinesis Data Streams Quotas and Limits](service-sizes-and-limits.md)\. For example, in addition to the shard\-level limits for writes and reads that are most commonly known, there are the following stream\-level limits:
+To find out if service limits are being exceeded, check to see if your producer is throwing throughput exceptions from the service, and validate what API operations are being throttled\. Keep in mind that there are different limits based on the call, see [Quotas and Limits](service-sizes-and-limits.md)\. For example, in addition to the shard\-level limits for writes and reads that are most commonly known, there are the following stream\-level limits:
 + [CreateStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html)
 + [DeleteStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeleteStream.html)
 + [ListStreams](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html)
@@ -43,3 +44,10 @@ A small producer is usually a mobile app, IoT device, or web client\. If it’s 
 ## Unauthorized KMS master key permission error<a name="unauthorized-kms-producer"></a>
 
 This error occurs when a producer application writes to an encrypted stream without permissions on the KMS master key\. To assign permissions to an application to access a KMS key, see [Using Key Policies in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) and [Using IAM Policies with AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html)\.
+
+## Common issues, questions, and troubleshooting ideas for producers<a name="misc-troubleshooting-producer"></a>
++ [Why is my Kinesis data stream returning a 500 Internal Server Error?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-data-stream-500-error/)
++ [How do I troubleshoot timeout errors when writing from Flink to Kinesis Data Streams?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-flink-timeout/)
++ [How do I troubleshoot throttling errors in Kinesis Data Streams?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-data-stream-throttling-errors/)
++ [Why is my Kinesis data stream throttling?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-data-stream-throttling/)
++ [How can I put data records into a Kinesis data stream using the KPL?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-data-stream-kpl/)

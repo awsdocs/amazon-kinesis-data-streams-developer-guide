@@ -1,8 +1,9 @@
-# Kinesis Data Streams Quotas and Limits<a name="service-sizes-and-limits"></a>
+# Quotas and Limits<a name="service-sizes-and-limits"></a>
 
 Amazon Kinesis Data Streams has the following stream and shard quotas and limits\.
-+ There is no upper quota on the number of streams you can have in an account\.
-+ The default shard quota is 500 shards per AWS account for the following AWS regions: US East \(N\. Virginia\), US West \(Oregon\), and Europe \(Ireland\)\. For all other regions, the default shard quota is 200 shards per AWS account\. 
++ There is no upper quota on the number of streams with the provisioned mode that you can have in an account\.
++ Within your AWS account, by default, you can create up to 50 data streams with the on\-demand capacity mode\. If you require an increase of this quota, contact AWS support\. 
++ The default shard quota is 500 shards per AWS account for the following AWS regions: US East \(N\. Virginia\), US West \(Oregon\), and Europe \(Ireland\)\. For all other regions, the default shard quota is 200 shards per AWS account\. This limit is only applicable for data streams with the provisioned capacity mode\.
 
   To request the shards per data stream quota increase, follow the procedure outlined in [Requesting a Quota Increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\.
 + A single shard can ingest up to 1 MB of data per second \(including partition keys\) or 1,000 records per second for writes\. Similarly, if you scale your stream to 5,000 shards, the stream can ingest up to 5 GB per second or 5 million records per second\. If you need more ingest capacity, you can easily scale up the number of shards in the stream using the AWS Management Console or the [UpdateShardCount](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_UpdateShardCount.html) API\.
@@ -10,6 +11,10 @@ Amazon Kinesis Data Streams has the following stream and shard quotas and limits
 + [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) can retrieve up to 10 MB of data per call from a single shard, and up to 10,000 records per call\. Each call to `GetRecords` is counted as one read transaction\.
 + Each shard can support up to five read transactions per second\. Each read transaction can provide up to 10,000 records with an upper quota of 10 MB per transaction\.
 + Each shard can support up to a maximum total data read rate of 2 MB per second via [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html)\. If a call to `GetRecords` returns 10 MB, subsequent calls made within the next 5 seconds throw an exception\.
++ By default, new data streams created with the on\-demand capacity mode have 4 MB/s of 'write' and 8 MB/s of 'read' throughput\. As the traffic increases, data streams with the on\-demand capacity mode scale up to 200 MB/s of 'write' and 400 MB/s 'read' throughput\. If you require additional throughput, contact AWS support\.
++ Within your AWS account, by default, you can create up to 50 data streams with the on\-demand capacity mode\. If you require an increase of this quota, contact AWS support\. 
++ You can create 20 registered consumers \(Enhanced Fan\-out Limit\) for each data stream\. 
++ For each data stream in your AWS account, you can switch between the on\-demand and provisioned capacity modes twice within 24 hours\. 
 
 ## API Limits<a name="kds-api-limits"></a>
 
@@ -47,6 +52,7 @@ The following section describes limits for the KDS control plane APIs\. KDS cont
 | StartStreamEncryption |  |  | You can successfully apply a new AWS KMS key for server\-side encryption 25 times in a rolling 24\-hour period\.  | 
 | StopStreamEncryption |  |  | You can successfully disable server\-side encryption 25 times in a rolling 24\-hour period\.  | 
 | UpdateShardCount |  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html)  |  | 
+| UpdateStreamMode |  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html)  |  | 
 
 ### KDS Data Plane API Limits<a name="kds-api-limits-data"></a>
 

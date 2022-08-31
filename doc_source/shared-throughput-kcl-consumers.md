@@ -10,6 +10,9 @@ One of the methods of developing custom consumer applications that can process d
 + [Processing Multiple Data Streams with the same KCL 2\.x for Java Consumer Application](#shared-throughput-kcl-multistream)
 + [Using the Kinesis Client Library with the AWS Glue Schema Registry](#shared-throughput-kcl-consumers-glue-schema-registry)
 
+**Note**  
+For both KCL 1\.x and KCL 2\.x, it is recommended that you upgrade to the latest KCL 1\.x version or KCL 2\.x version, depending on your usage scenario\. Both KCL 1\.x and KCL 2\.x are regularly updated with newer releases that include the latest dependency and security patches, bug fixes, and backward\-compatible new features\. For more information, see [https://github\.com/awslabs/amazon\-kinesis\-client/releases](https://github.com/awslabs/amazon-kinesis-client/releases)\.
+
 ## What is the Kinesis Client Library?<a name="shared-throughput-kcl-consumers-overview"></a>
 
 KCL helps you consume and process data from a Kinesis data stream by taking care of many of the complex tasks associated with distributed computing\. These include load balancing across multiple consumer application instances, responding to consumer application instance failures, checkpointing processed records, and reacting to resharding\. The KCL takes care of all of these subtasks so that you can focus your efforts on writing your custom record\-processing logic\.

@@ -22,6 +22,14 @@ A *Kinesis data stream* is a set of [shards](#shard)\. Each shard has a sequence
 
 A *data record* is the unit of data stored in a [Kinesis data stream](#stream)\. Data records are composed of a [sequence number](#sequence-number), a [partition key](#partition-key), and a data blob, which is an immutable sequence of bytes\. Kinesis Data Streams does not inspect, interpret, or change the data in the blob in any way\. A data blob can be up to 1 MB\.
 
+### Capacity Mode<a name="stream-capacity-mode"></a>
+
+A data stream *capacity mode* determines how capacity is managed and how you are charged for the usage of your data stream\. Currenly, in Kinesis Data Streams, you can choose between an **on\-demand** mode and a **provisioned** mode for your data streams\. For more information, see [Choosing the Data Stream Capacity Mode](how-do-i-size-a-stream.md)\.
+
+With the **on\-demand** mode, Kinesis Data Streams automatically manages the shards in order to provide the necessary throughput\. You are charged only for the actual throughput that you use and Kinesis Data Streams automatically accommodates your workloads’ throughput needs as they ramp up or down\. For more information, see [On\-demand Mode](how-do-i-size-a-stream.md#ondemandmode)\.
+
+With the **provisioned** mode, you must specify the number of shards for the data stream\. The total capacity of a data stream is the sum of the capacities of its shards\. You can increase or decrease the number of shards in a data stream as needed and you are charged for the number of shards at an hourly rate\. For more information, see [Provisioned Mode](how-do-i-size-a-stream.md#provisionedmode)\.
+
 ### Retention Period<a name="retention"></a>
 
 The *retention period* is the length of time that data records are accessible after they are added to the stream\. A stream’s retention period is set to a default of 24 hours after creation\. You can increase the retention period up to 8760 hours \(365 days\) using the [IncreaseStreamRetentionPeriod](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_IncreaseStreamRetentionPeriod.html) operation, and decrease the retention period down to a minimum of 24 hours using the [DecreaseStreamRetentionPeriod](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DecreaseStreamRetentionPeriod.html) operation\. Additional charges apply for streams with a retention period set to more than 24 hours\. For more information, see [Amazon Kinesis Data Streams Pricing](https://aws.amazon.com/kinesis/pricing/)\.

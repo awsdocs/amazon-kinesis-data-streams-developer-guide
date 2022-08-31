@@ -7,7 +7,7 @@ There are two primary reasons why records may be delivered more than one time to
 Consider a producer that experiences a network\-related timeout after it makes a call to `PutRecord`, but before it can receive an acknowledgement from Amazon Kinesis Data Streams\. The producer cannot be sure if the record was delivered to Kinesis Data Streams\. Assuming that every record is important to the application, the producer would have been written to retry the call with the same data\. If both `PutRecord` calls on that same data were successfully committed to Kinesis Data Streams, then there will be two Kinesis Data Streams records\. Although the two records have identical data, they also have unique sequence numbers\. Applications that need strict guarantees should embed a primary key within the record to remove duplicates later when processing\. Note that the number of duplicates due to producer retries is usually low compared to the number of duplicates due to consumer retries\.
 
 **Note**  
-If you use the AWS SDK `PutRecord`, the default [configuration retries a failed `PutRecord` call up to three times\.](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html)
+If you use the AWS SDK `PutRecord`, the default [configuration retries a failed `PutRecord` call up to three times\.](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/ClientConfiguration.html)
 
 ## Consumer Retries<a name="kinesis-record-processor-duplicates-consumer"></a>
 
@@ -43,7 +43,7 @@ Thus, records 10001\-20000 are consumed more than one time\.
 
 ### Being Resilient to Consumer Retries<a name="kinesis-record-processor-duplicates-consumer-resilience"></a>
 
-Even though records may be processed more than one time, your application may want to present the side effects as if records were processed only one time \(idempotent processing\)\. Solutions to this problem vary in complexity and accuracy\. If the destination of the final data can handle duplicates well, we recommend relying on the final destination to achieve idempotent processing\. For example, with [Elasticsearch](http://www.elasticsearch.org/) you can use a combination of versioning and unique IDs to prevent duplicated processing\. 
+Even though records may be processed more than one time, your application may want to present the side effects as if records were processed only one time \(idempotent processing\)\. Solutions to this problem vary in complexity and accuracy\. If the destination of the final data can handle duplicates well, we recommend relying on the final destination to achieve idempotent processing\. For example, with [Opensearch](https://www.opensearch.org/) you can use a combination of versioning and unique IDs to prevent duplicated processing\. 
 
 In the example application in the previous section, it continuously reads records from a stream, aggregates records into a local file, and uploads the file to Amazon S3\. As illustrated, records 10001 \-20000 are consumed more than one time resulting in multiple Amazon S3 files with the same data\. One way to mitigate duplicates from this example is to ensure that step 3 uses the following scheme: 
 

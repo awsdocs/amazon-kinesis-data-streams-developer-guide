@@ -1,25 +1,22 @@
 # Amazon Kinesis Data Streams Developer Guide
 
 -----
-*****Copyright &copy; 2021 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
 + [What Is Amazon Kinesis Data Streams?](introduction.md)
-   + [Creating and Updating Data Streams](amazon-kinesis-streams.md)
-   + [Kinesis Data Streams Producers](amazon-kinesis-producers.md)
-   + [Kinesis Data Streams Consumers](amazon-kinesis-consumers.md)
-   + [Kinesis Data Streams Quotas and Limits](service-sizes-and-limits.md)
 + [Amazon Kinesis Data Streams Terminology and Concepts](key-concepts.md)
++ [Quotas and Limits](service-sizes-and-limits.md)
 + [Setting Up for Amazon Kinesis Data Streams](before-you-begin.md)
 + [Getting Started with Amazon Kinesis Data Streams](getting-started.md)
    + [Install and Configure the AWS CLI](kinesis-tutorial-cli-installation.md)
@@ -50,7 +47,10 @@ Amazon's trademarks and trade dress may not be used in
    + [Tutorial: Using AWS Lambda with Amazon Kinesis Data Streams](tutorial-stock-data-lambda.md)
    + [AWS Streaming Data Solution for Amazon Kinesis](examples-streaming-solution.md)
 + [Creating and Managing Streams](working-with-streams.md)
-   + [Creating a Stream](kinesis-using-sdk-java-create-stream.md)
+   + [Choosing the Data Stream Capacity Mode](how-do-i-size-a-stream.md)
+   + [Creating a Stream via the AWS Management Console](how-do-i-create-a-stream.md)
+   + [Creating a Stream via the APIs](kinesis-using-sdk-java-create-stream.md)
+   + [Updating a Stream](updating-a-stream.md)
    + [Listing Streams](kinesis-using-sdk-java-list-streams.md)
    + [Listing Shards](kinesis-using-sdk-java-list-shards.md)
    + [Deleting a Stream](kinesis-using-sdk-java-delete-stream.md)
@@ -61,7 +61,6 @@ Amazon's trademarks and trade dress may not be used in
       + [After Resharding](kinesis-using-sdk-java-after-resharding.md)
    + [Changing the Data Retention Period](kinesis-extended-retention.md)
    + [Tagging Your Streams in Amazon Kinesis Data Streams](tagging.md)
-   + [Managing Kinesis Data Streams Using the Console](managing-streams-console.md)
 + [Writing Data to Amazon Kinesis Data Streams](building-producers.md)
    + [Developing Producers Using the Amazon Kinesis Producer Library](developing-producers-with-kpl.md)
       + [Installing the KPL](kinesis-kpl-dl-install.md)
@@ -74,6 +73,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Consumer De-aggregation](kinesis-kpl-consumer-deaggregation.md)
       + [Using the KPL with Kinesis Data Firehose](kpl-with-firehose.md)
       + [Using the KPL with the AWS Glue Schema Registry](kpl-with-schemaregistry.md)
+      + [KPL Proxy Configuration](kpl-proxy-configuration.md)
    + [Developing Producers Using the Amazon Kinesis Data Streams API with the AWS SDK for Java](developing-producers-with-sdk.md)
    + [Writing to Amazon Kinesis Data Streams Using Kinesis Agent](writing-with-agents.md)
    + [Troubleshooting Amazon Kinesis Data Streams Producers](troubleshooting-producers.md)

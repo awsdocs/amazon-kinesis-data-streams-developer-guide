@@ -11,6 +11,8 @@ Splitting increases the number of shards in your stream and therefore increases 
 
 Resharding is typically performed by an administrative application that is distinct from the producer \(put\) applications and the consumer \(get\) applications\. Such an administrative application monitors the overall performance of the stream based on metrics provided by Amazon CloudWatch or based on metrics collected from the producers and consumers\. The administrative application also needs a broader set of IAM permissions than the consumers or producers because the consumers and producers usually should not need access to the APIs used for resharding\. For more information about IAM permissions for Kinesis Data Streams, see [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](controlling-access.md)\. 
 
+For more information about resharding, see [How do I change the number of open shards in Kinesis Data Streams?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-data-streams-open-shards/)
+
 **Topics**
 + [Strategies for Resharding](kinesis-using-sdk-java-resharding-strategies.md)
 + [Splitting a Shard](kinesis-using-sdk-java-resharding-split.md)

@@ -1,15 +1,17 @@
 # Creating and Managing Streams<a name="working-with-streams"></a>
 
-These examples discuss the [Amazon Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) and use the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) to create, delete, and work with a Kinesis data stream\.
+Amazon Kinesis Data Streams ingests a large amount of data in real time, durably stores the data, and makes the data available for consumption\. The unit of data stored by Kinesis Data Streams is a *data record*\. A *data stream* represents a group of data records\. The data records in a data stream are distributed into shards\.
 
-The Java example code in this chapter demonstrates how to perform basic Kinesis Data Streams API operations, and are divided up logically by operation type\. These examples do not represent production\-ready code, in that they do not check for all possible exceptions, or account for all possible security or performance considerations\. Also, you can call the [Kinesis Data Streams API](https://docs.aws.amazon.com/kinesis/latest/APIReference/) using other different programming languages\. For more information about all available AWS SDKs, see [Start Developing with Amazon Web Services](https://aws.amazon.com/developers/getting-started/)\.
+A *shard* has a sequence of data records in a stream\. It serves as a base throughput unit of a Kinesis data stream\. A shard supports 1 MB/s and 1000 records per second for *writes* and 2 MB/s for *reads* in both on\-demand and provisioned capacity modes\. The shard limits ensure predictable performance, making it easier to design and operate a highly reliable data streaming workflow\. 
 
 **Topics**
-+ [Creating a Stream](kinesis-using-sdk-java-create-stream.md)
++ [Choosing the Data Stream Capacity Mode](how-do-i-size-a-stream.md)
++ [Creating a Stream via the AWS Management Console](how-do-i-create-a-stream.md)
++ [Creating a Stream via the APIs](kinesis-using-sdk-java-create-stream.md)
++ [Updating a Stream](updating-a-stream.md)
 + [Listing Streams](kinesis-using-sdk-java-list-streams.md)
 + [Listing Shards](kinesis-using-sdk-java-list-shards.md)
 + [Deleting a Stream](kinesis-using-sdk-java-delete-stream.md)
 + [Resharding a Stream](kinesis-using-sdk-java-resharding.md)
 + [Changing the Data Retention Period](kinesis-extended-retention.md)
 + [Tagging Your Streams in Amazon Kinesis Data Streams](tagging.md)
-+ [Managing Kinesis Data Streams Using the Console](managing-streams-console.md)

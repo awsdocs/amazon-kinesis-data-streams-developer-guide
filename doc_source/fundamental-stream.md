@@ -16,10 +16,10 @@ After you create a stream, your account incurs nominal charges for Kinesis Data 
  Your first step is to create a stream and verify that it was successfully created\. Use the following command to create a stream named "Foo": 
 
 ```
-aws kinesis create-stream --stream-name Foo --shard-count 1
+aws kinesis create-stream --stream-name Foo
 ```
 
- The parameter `--shard-count` is required, and for this part of the tutorial you are using one shard in your stream\. Next, issue the following command to check on the stream's creation progress: 
+Next, issue the following command to check on the stream's creation progress: 
 
 ```
 aws kinesis describe-stream-summary --stream-name Foo

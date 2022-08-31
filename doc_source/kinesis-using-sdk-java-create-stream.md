@@ -1,4 +1,4 @@
-# Creating a Stream<a name="kinesis-using-sdk-java-create-stream"></a>
+# Creating a Stream via the APIs<a name="kinesis-using-sdk-java-create-stream"></a>
 
 Use the following steps to create your Kinesis data stream\.
 
@@ -20,17 +20,24 @@ For more information, see [Kinesis Data Streams Regions and Endpoints](https://d
 
 ## Create the Stream<a name="kinesis-using-sdk-java-create-the-stream"></a>
 
-Now that you have created your Kinesis Data Streams client, you can create a stream to work with, which you can accomplish with the Kinesis Data Streams console, or programmatically\. To create a stream programmatically, instantiate a `CreateStreamRequest` object and specify a name for the stream and the number of shards for the stream to use\.
+Now that you have created your Kinesis Data Streams client, you can create a stream to work with, which you can accomplish with the Kinesis Data Streams console, or programmatically\. To create a stream programmatically, instantiate a `CreateStreamRequest` object and specify a name for the stream and \(if you want to use provisioned mode\) the number of shards for the stream to use\.
++ **On\-demand**:
 
-```
-CreateStreamRequest createStreamRequest = new CreateStreamRequest();
-createStreamRequest.setStreamName( myStreamName );
-createStreamRequest.setShardCount( myStreamSize );
-```
+  ```
+  CreateStreamRequest createStreamRequest = new CreateStreamRequest();
+  createStreamRequest.setStreamName( myStreamName );
+  ```
++ **Provisioned**:
+
+  ```
+  CreateStreamRequest createStreamRequest = new CreateStreamRequest();
+  createStreamRequest.setStreamName( myStreamName );
+  createStreamRequest.setShardCount( myStreamSize );
+  ```
 
 The stream name identifies the stream\. The name is scoped to the AWS account used by the application\. It is also scoped by Region\. That is, two streams in two different AWS accounts can have the same name, and two streams in the same AWS account but in two different Regions can have the same name, but not two streams on the same account and in the same Region\.
 
-The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput\. More shards also increase the cost that AWS charges for the stream\. For more information about calculating an appropriate number of shards for your application, see [Determining the Initial Size of a Kinesis Data Stream](amazon-kinesis-streams.md#how-do-i-size-a-stream)\.
+The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput\. More shards also increase the cost that AWS charges for the stream\. For more information about calculating an appropriate number of shards for your application, see [Choosing the Data Stream Capacity Mode](how-do-i-size-a-stream.md)\.
 
  After the `createStreamRequest` object is configured, create a stream by calling the `createStream` method on the client\. After calling `createStream`, wait for the stream to reach the `ACTIVE` state before performing any operations on the stream\. To check the state of the stream, call the `describeStream` method\. However, `describeStream` throws an exception if the stream does not exist\. Therefore, enclose the `describeStream` call in a `try/catch` block\. 
 

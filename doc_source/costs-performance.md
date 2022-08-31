@@ -10,9 +10,11 @@ The following describes the costs by resource:
 + The CMK for Kinesis that's managed by AWS \(alias = `aws/kinesis`\) is free\.
 + User\-generated KMS keys are subject to KMS key costs\. For more information, see [AWS Key Management Service Pricing](http://aws.amazon.com/kms/pricing/#Keys)\.
 
+API usage costs apply for every CMK, including custom ones\. Kinesis Data Streams calls KMS approximately every 5 minutes when it is rotating the data key\. In a 30\-day month, the total cost of KMS API calls initiated by a Kinesis data stream should be less than a few dollars\. Please note that this cost scales with the number of user credentials you use on your data producers and consumers because each user credential requires a unique API call to AWS KMS\. When you use IAM role for authentication, each assume\-role\-call will result in unique user credentials and you might want to cache user credentials returned by the assume\-role\-call to save KMS costs\.
+
 ## KMS API Usage<a name="api-usage"></a>
 
-For every encrypted stream, the Kinesis service calls the AWS KMS service approximately every five minutes to create a new data encryption key\. In a 30\-day month, each encrypted stream generates approximately 8,640 KMS API requests\. API requests to generate new data encryption keys are subject to AWS KMS usage costs\. For more information, see [AWS Key Management Service Pricing: Usage](http://aws.amazon.com/kms/pricing/#Usage)\.
+For every encrypted stream, when reading from TIP and using a single IAM account/user access key across readers and writers, Kinesis service calls the AWS KMS service approximately 12 times every 5 minutes\. Not reading from TIP could lead to higher calls to AWS KMS service\. API requests to generate new data encryption keys are subject to AWS KMS usage costs\. For more information, see [AWS Key Management Service Pricing: Usage](http://aws.amazon.com/kms/pricing/#Usage)\.
 
 ## Availability of Server\-Side Encryption by Region<a name="sse-regions"></a>
 

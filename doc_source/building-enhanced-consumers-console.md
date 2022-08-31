@@ -2,7 +2,7 @@
 
 Consumers that use *enhanced fan\-out* in Amazon Kinesis Data Streams can receive records from a data stream with dedicated throughput of up to 2 MB of data per second per shard\. For more information, see [Developing Custom Consumers with Dedicated Throughput \(Enhanced Fan\-Out\)](enhanced-consumers.md)\.
 
-You can use the AWS Management Console to see a list of all the consumers that are registered to use enhanced fan\-out with a specific stream\. For each such consumer, you can see details such as ARN, status, and creation date, in addition to the monitoring metrics and the tags associated with the consumer\.
+You can use the AWS Management Console to see a list of all the consumers that are registered to use enhanced fan\-out with a specific stream\. For each such consumer, you can see details such as ARN, status, creation date, and monitoring metrics\.
 
 **To view consumers that are registered to use enhanced fan\-out, their status, creation date, and metrics on the console**
 

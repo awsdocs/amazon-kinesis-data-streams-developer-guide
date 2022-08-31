@@ -30,4 +30,4 @@ This code calls the `getHasMoreStreams` method on `listStreamsRequest` to check 
 + `UPDATING`
 + `DELETING`
 
-You can check the state of a stream using the `describeStream` method, as shown in the previous section, [Creating a Stream](kinesis-using-sdk-java-create-stream.md)\.
+You can check the state of a stream using the `describeStream` method, as shown in the previous section, [Creating a Stream via the APIs](kinesis-using-sdk-java-create-stream.md)\.

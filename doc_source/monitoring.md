@@ -6,3 +6,7 @@ You can monitor your data streams in Amazon Kinesis Data Streams using the follo
 + [API logging](logging-using-cloudtrail.md)— Kinesis Data Streams uses AWS CloudTrail to log API calls and store the data in an Amazon S3 bucket\.
 + [Kinesis Client Library](monitoring-with-kcl.md)— Kinesis Client Library \(KCL\) provides metrics per shard, worker, and KCL application\.
 + [Kinesis Producer Library](monitoring-with-kpl.md)— Kinesis Producer Library \(KPL\) provides metrics per shard, worker, and KPL application\.
+
+For more information about common monitoring issues, questions, and troubleshooting, see the following:
++  [Which metrics should I use to monitor and troubleshoot Kinesis Data Streams issues?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-data-streams-troubleshoot/)
++ [Why does the IteratorAgeMilliseconds value in Kinesis Data Streams keep increasing?](https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-data-streams-iteratorage-metric/)

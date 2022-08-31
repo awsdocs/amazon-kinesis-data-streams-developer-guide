@@ -24,7 +24,7 @@ The `processRecords` method is implemented for you, and performs the following s
 + Sets the next reporting time\.
 + If at least 1 minute has elapsed since the last checkpoint, calls `checkpoint()`\. 
 + Sets the next checkpointing time\.
-This method uses 60\-second intervals for the reporting and checkpointing rate\. For more information about checkpointing, see ??? 
+This method uses 60\-second intervals for the reporting and checkpointing rate\. For more information about checkpointing, see [Using the Kinesis Client Library](https://docs.aws.amazon.com/streams/latest/dev/shared-throughput-kcl-consumers.html)\. 
 
 **StockStats class**  
 This class provides data retention and statistics tracking for the most popular stocks over time\. This code is provided for you and contains the following methods:  
