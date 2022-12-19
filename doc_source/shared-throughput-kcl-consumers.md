@@ -25,7 +25,7 @@ The KCL is a Java library\. Support for languages other than Java is provided us
 The KCL acts as an intermediary between your record processing logic and Kinesis Data Streams\. The KCL performs the following tasks:
 + Connects to the data stream 
 + Enumerates the shards within the data stream
-+ Uses leases to coordinates shard associations with its workers 
++ Uses leases to coordinate shard associations with its workers 
 + Instantiates a record processor for every shard it manages 
 + Pulls data records from the data stream 
 + Pushes the records to the corresponding record processor 
