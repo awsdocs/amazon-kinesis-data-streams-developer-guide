@@ -1,3 +1,0 @@
-# Using the KPL with Kinesis Data Firehose<a name="kpl-with-firehose"></a>
-
-If you use the Kinesis Producer Library \(KPL\) to write data to a Kinesis data stream, you can use aggregation to combine the records that you write to that Kinesis data stream\. If you then use that data stream as a source for your Kinesis Data Firehose delivery stream, Kinesis Data Firehose de\-aggregates the records before it delivers them to the destination\. If you configure your delivery stream to transform the data, Kinesis Data Firehose de\-aggregates the records before it delivers them to AWS Lambda\. For more information, see [Writing to Kinesis Data Firehose Using Kinesis Data Streams](https://docs.aws.amazon.com/firehose/latest/dev/writing-with-kinesis-streams.html)\.

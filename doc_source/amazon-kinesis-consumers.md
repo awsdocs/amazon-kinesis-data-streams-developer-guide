@@ -1,9 +1,0 @@
-# Kinesis Data Streams Consumers<a name="amazon-kinesis-consumers"></a>
-
-A consumer, known as an *Amazon Kinesis Data Streams application*, is an application that you build to read and process data records from Kinesis data streams\. 
-
-If you want to send stream records directly to services such as Amazon Simple Storage Service \(Amazon S3\), Amazon Redshift, Amazon Elasticsearch Service \(Amazon ES\), or Splunk, you can use a Kinesis Data Firehose delivery stream instead of creating a consumer application\. For more information, see [Creating an Amazon Kinesis Firehose Delivery Stream](https://docs.aws.amazon.com/firehose/latest/dev/basic-create.html) in the *Kinesis Data Firehose Developer Guide*\. However, if you need to process data records in a custom way, see [Reading Data from Amazon Kinesis Data Streams](building-consumers.md) for guidance on how to build a consumer\.
-
-When you build a consumer, you can deploy it to an Amazon EC2 instance by adding to one of your Amazon Machine Images \(AMIs\)\. You can scale the consumer by running it on multiple Amazon EC2 instances under an Auto Scaling group\. Using an Auto Scaling group helps automatically start new instances if there is an EC2 instance failure\. It can also elastically scale the number of instances as the load on the application changes over time\. Auto Scaling groups ensure that a certain number of EC2 instances are always running\. To trigger scaling events in the Auto Scaling group, you can specify metrics such as CPU and memory utilization to scale up or down the number of EC2 instances processing data from the stream\. For more information, see the *[Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/)*\.
-
-## <a name="enhanced-fan-out-consumers"></a>

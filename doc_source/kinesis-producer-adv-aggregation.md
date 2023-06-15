@@ -1,7 +1,0 @@
-# Considerations When Using KPL Aggregation<a name="kinesis-producer-adv-aggregation"></a>
-
-While the sequence number scheme of the resulting Amazon Kinesis Data Streams records remains the same, aggregation causes the indexing of Kinesis Producer Library \(KPL\) user records contained within an aggregated Kinesis Data Streams record to start at 0 \(zero\); however, as long as you do not rely on sequence numbers to uniquely identify your KPL user records, your code can ignore this, as the aggregation \(of your KPL user records into a Kinesis Data Streams record\) and subsequent de\-aggregation \(of a Kinesis Data Streams record into your KPL user records\) automatically takes care of this for you\. This applies whether your consumer is using the KCL or the AWS SDK\. To use this aggregation functionality, you’ll need to pull the Java part of the KPL into your build if your consumer is written using the API provided in the AWS SDK\.
-
-If you intend to use sequence numbers as unique identifiers for your KPL user records, we recommend that you use the contract\-abiding `public int hashCode()` and `public boolean equals(Object obj)` operations provided in `Record` and `UserRecord` to enable the comparison of your KPL user records\. Additionally, if you want to examine the subsequence number of your KPL user record, you can cast it to a `UserRecord` instance and retrieve its subsequence number\.
-
-For more information, see [Consumer De\-aggregation](kinesis-kpl-consumer-deaggregation.md)\.
